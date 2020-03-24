@@ -1,0 +1,21 @@
+$black: #000000;
+$white: #FFFFFF;
+
+.colors {
+  &__font {
+    &_white {
+      color: $white;
+    }
+    &_black {
+      color: $black;
+    }
+  }
+  &__background {
+    &_white {
+      background-color: $white;
+    }
+    &_black {
+      background-color: $black;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+$default-size: 1920;
+$default-size-mobile: 414;
+$mobile-break-point: 768px;
+$desktop-break-point: 1920px;
+
+@function nonScalePx ($size) {
+  @if $size == 0 {
+    @return 0px
+  } @else {
+    @return ($desktop-break-point / ($default-size / $size));
+  }
+}
+
+@function pxToVwDesktop($size) {
+  @if $size == 0 {
+    @return 0px
+  } @else {
+    @return ($size * 100vw / $default-size);
+  }
+}
+
+@function pxToVwMobile($size, $is-mobile: false) {
+  @if $size == 0 {
+    @return 0px
+  } @else {
+    @return ($size * 100vw / $default-size-mobile);
+  }
+}
+
+.container {
+  width: nonScalePx(1300);
+  margin: 0 auto;
+
+  @media (max-width: $desktop-break-point) {
+    width: 100%;
+    padding-left: pxToVwDesktop(315);
+    padding-right: pxToVwDesktop(315);
+  }
+
+  @media (max-width: $mobile-break-point) {
+    width: 100%;
+    padding-left: pxToVwMobile(20);
+    padding-right: pxToVwMobile(20);
+  }
+}

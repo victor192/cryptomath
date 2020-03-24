@@ -1,0 +1,41 @@
+$helvetica-neue-bold: Helvetica-Neue-Bold;
+$helvetica-neue: Helvetica-Neue;
+$helvetica-neue-regular: Helvetica-Neue-Regular;
+$helvetica-regular: Helvetica-Regular;
+$helvetica-bold: Helvetica-Bold;
+$georgia-regular: Georgia-Regular;
+$georgia-bold: Georgia-Bold;
+
+.fonts {
+  &__helvetica-neue {
+    font-family: $helvetica-neue;
+
+    &_bold {
+      font-family: $helvetica-neue-bold;
+    }
+
+    &_regular {
+      font-family: $helvetica-neue-regular;
+    }
+  }
+
+  &__helvetica {
+    &_regular {
+      font-family: $helvetica-regular;
+    }
+
+    &_bold {
+      font-family: $helvetica-bold;
+    }
+  }
+
+  &__georgia {
+    &_regular {
+      font-family: $georgia-regular;
+    }
+
+    &_bold {
+      font-family: $georgia-bold;
+    }
+  }
+}

@@ -38,4 +38,28 @@ $georgia-bold: Georgia-Bold;
       font-family: $georgia-bold;
     }
   }
+
+  &__h4 {
+    font-size: nonScalePx(30);
+    font-family: $helvetica-bold;
+    line-height: nonScalePx(30 * 1.25);
+  }
+
+  &__h5 {
+    font-size: nonScalePx(24);
+    font-family: $helvetica-neue-bold;
+    line-height: nonScalePx(24 * 1.25);
+  }
+
+  @media (max-width: $desktop-break-point) {
+    &__h4 {
+      font-size: pxToVwDesktop(30);
+      line-height: pxToVwDesktop(30 * 1.25);
+    }
+
+    &__h5 {
+      font-size: pxToVwDesktop(24);
+      line-height: pxToVwDesktop(24 * 1.25);
+    }
+  }
 }

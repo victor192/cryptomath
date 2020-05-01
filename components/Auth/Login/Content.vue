@@ -1,7 +1,7 @@
 <template>
   <div class="login-content">
     <ui-card class="login-content__form">
-      <h5 class="login-content__form_title fonts__h5">Log in</h5>
+      <h5 class="login-content__form_title fonts__h5">{{ $t('auth.login.form.title') }}</h5>
       <div class="login-content__form_dodecahedron">
         <img src="~/assets/images/dodecahedron.png" alt="dodecahedron icon"/>
       </div>
@@ -16,17 +16,20 @@
           label-for="email"
           class="field"
         >
-          <template slot="label">Email</template>
+          <template slot="label">{{ $t('auth.login.form.email.label') }}</template>
           <template slot="input">
-            <ui-form-alert v-if="errors.email">
-              <span class="fonts__text2">Enter email</span>
-            </ui-form-alert>
+            <transition name="fade">
+              <ui-form-alert v-if="errors.email">
+                <span class="fonts__text2">{{ $t('auth.login.form.email.error') }}</span>
+              </ui-form-alert>
+            </transition>
             <ui-form-input
               v-model="email"
               id="input"
               type="email"
-              placeholder="Enter your email"
+              :placeholder="$t('auth.login.form.email.placeholder')"
               :is-invalid="errors.email"
+              @input="hideErrors('email')"
             />
           </template>
         </ui-form-group>
@@ -37,26 +40,31 @@
         >
           <template slot="label">
             <div class="password-label">
-              <span>Password</span>
-              <nuxt-link to="auth/reminder">Forgot password?</nuxt-link>
+              <span>{{ $t('auth.login.form.password.label') }}</span>
+              <nuxt-link to="auth/reminder">{{ $t('auth.login.form.password.reminder') }}</nuxt-link>
             </div>
           </template>
           <template slot="input">
-            <ui-form-alert v-if="errors.password">
-              <span class="fonts__text2">Enter password</span>
-            </ui-form-alert>
+            <transition name="fade">
+              <ui-form-alert v-if="errors.password">
+                <span class="fonts__text2">{{ $t('auth.login.form.password.error') }}</span>
+              </ui-form-alert>
+            </transition>
             <ui-form-input
               v-model="password"
               id="password"
               type="password"
-              placeholder="Enter your password"
+              :placeholder="$t('auth.login.form.password.placeholder')"
+              :is-invalid="errors.password"
+              @input="hideErrors('password')"
             />
           </template>
         </ui-form-group>
         <div class="form__buttons">
           <ui-button
             :variant="['primary']"
-          >Log in</ui-button>
+            @click.native="login"
+          >{{ $t('auth.login.form.login') }}</ui-button>
         </div>
       </div>
     </ui-card>
@@ -64,7 +72,13 @@
       class="login-content__register"
       center
     >
-      <span class="fonts__text2">Have no account yet? <nuxt-link to="/auth/register">Sign up</nuxt-link></span>
+      <i18n
+        path="auth.login.register.text"
+        tag="span"
+        class="fonts__text2"
+      >
+        <nuxt-link slot="link" to="/auth/register">{{ $t('auth.login.register.link') }}</nuxt-link>
+      </i18n>
     </ui-card>
   </div>
 </template>
@@ -98,6 +112,41 @@ export default {
           show: false,
           message: () => ''
         }
+      }
+    }
+  },
+  methods: {
+    validate() {
+      if (this.email === '') {
+        return [false, 'empty_email']
+      }
+
+      if (this.password === '') {
+        return [false, 'empty_password']
+      }
+
+      return [true, false]
+    },
+    login() {
+      const [status, error] = this.validate()
+
+      if (status) {
+
+      }
+      else {
+        switch (error) {
+          case 'empty_email':
+            this.errors.email = true
+            break;
+          case 'empty_password':
+            this.errors.password = true
+            break;
+        }
+      }
+    },
+    hideErrors(name) {
+      if (this.errors[name]) {
+        this.errors[name] = false
       }
     }
   }

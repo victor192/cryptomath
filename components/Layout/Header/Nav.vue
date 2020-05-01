@@ -1,19 +1,19 @@
 <template>
   <div class="header-nav colors__font_white">
-    <nuxt-link to="/articles" class="header-nav__link fonts__h5">Articles</nuxt-link>
-    <nuxt-link to="/games" class="header-nav__link fonts__h5">Games</nuxt-link>
-    <nuxt-link to="/authors" class="header-nav__link fonts__h5">Authors</nuxt-link>
-    <nuxt-link to="/problems" class="header-nav__link fonts__h5">Problems</nuxt-link>
+    <nuxt-link to="/articles" class="header-nav__link fonts__h5">{{ $t('layout.header.links.articles') }}</nuxt-link>
+    <nuxt-link to="/games" class="header-nav__link fonts__h5">{{ $t('layout.header.links.games') }}</nuxt-link>
+    <nuxt-link to="/authors" class="header-nav__link fonts__h5">{{ $t('layout.header.links.authors') }}</nuxt-link>
+    <nuxt-link to="/problems" class="header-nav__link fonts__h5">{{ $t('layout.header.links.problems') }}</nuxt-link>
     <div class="header-nav__auth">
       <ui-button
         :variant="['outline', 'secondary']"
         to="/auth/login"
         class="header-nav__auth_login"
-      >Log in</ui-button>
+      >{{ $t('layout.header.links.login') }}</ui-button>
       <ui-button
         :variant="['primary']"
         to="/auth/register"
-      >Sign up</ui-button>
+      >{{ $t('layout.header.links.register') }}</ui-button>
     </div>
   </div>
 </template>

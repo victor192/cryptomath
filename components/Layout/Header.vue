@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import HeaderLogo from "@/components/Layout/Header/Logo";
-import HeaderNav from "@/components/Layout/Header/Nav";
+import HeaderLogo from "~/components/Layout/Header/Logo";
+import HeaderNav from "~/components/Layout/Header/Nav";
 
 export default {
   name: "PageHeader",

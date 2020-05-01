@@ -1,0 +1,41 @@
+{
+  "layout": {
+    "header": {
+      "project": "CryptoMath",
+      "links": {
+        "articles": "Articles",
+        "games": "Games",
+        "authors": "Authors",
+        "problems": "Problems",
+        "login": "Log in",
+        "register": "Sign up"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "form": {
+        "title": "Log in",
+        "alerts": {
+          "user_not_found": "Are you trying to trick us?"
+        },
+        "email": {
+          "label": "Email",
+          "error": "Enter your email address immediately!",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "label": "Password",
+          "error": "Enter your password quickly!",
+          "placeholder": "Enter your password",
+          "reminder": "Forgot password?"
+        },
+        "login": "Log in"
+      },
+      "register": {
+        "text": "Have no account yet? {link}",
+        "link": "Sign up"
+      }
+    }
+  }
+}

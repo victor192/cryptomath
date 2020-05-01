@@ -1,7 +1,7 @@
 <template>
   <div class="header-logo" @click="goToHomepage">
     <img src="~/assets/images/logo.svg" alt="logo image" />
-    <h4 class="header-logo__title fonts__h4 colors__font_white">CryptoMath</h4>
+    <h4 class="header-logo__title fonts__h4 colors__font_white">{{ $t('layout.header.project') }}</h4>
   </div>
 </template>
 
@@ -10,10 +10,10 @@ export default {
   name: "HeaderLogo",
   methods: {
     goToHomepage() {
-      this.$router.push({ name: "index" });
+      this.$router.push(this.localePath({ name: "index" }))
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -21,8 +21,8 @@ export default {
 
 .header-logo {
   display: flex;
-  cursor: pointer;
   align-items: center;
+  cursor: pointer;
 
   img {
     width: nonScalePx(40);
@@ -31,7 +31,6 @@ export default {
 
   &__title {
     margin-left: nonScalePx(16);
-    padding-top: nonScalePx(5);
   }
 
   @media (max-width: $desktop-break-point) {
@@ -42,7 +41,6 @@ export default {
 
     &__title {
       margin-left: pxToVwDesktop(16);
-      padding-top: pxToVwDesktop(5);
     }
   }
 }

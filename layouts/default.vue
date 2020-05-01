@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import PageHeader from "@/components/Layout/Header";
+  import PageHeader from "~/components/Layout/Header";
   export default {
     components: {PageHeader}
   }
@@ -19,10 +19,9 @@
   .default-layout {
     height: 100vh;
     background-color: $white;
-    background-image: linear-gradient(rgba($white,.95), rgba($white,.98)), url(../assets/images/bg.jpg);
+    background-image: url(../assets/images/bg.png);
     background-position: top left;
     background-repeat: repeat;
-    background-size: nonScalePx(300);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +31,6 @@
     margin: 0;
 
     @media (max-width: $desktop-break-point) {
-      background-size: pxToVwDesktop(300);
       padding-top: pxToVwDesktop(64);
     }
   }

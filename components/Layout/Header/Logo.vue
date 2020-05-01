@@ -31,7 +31,7 @@ export default {
 
   &__title {
     margin-left: nonScalePx(16);
-    line-height: nonScalePx(30 * 1.1);
+    padding-top: nonScalePx(5);
   }
 
   @media (max-width: $desktop-break-point) {
@@ -42,7 +42,7 @@ export default {
 
     &__title {
       margin-left: pxToVwDesktop(16);
-      line-height: pxToVwDesktop(30 * 1.1);
+      padding-top: pxToVwDesktop(5);
     }
   }
 }

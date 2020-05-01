@@ -3,8 +3,12 @@ $helvetica-neue: Helvetica-Neue;
 $helvetica-neue-regular: Helvetica-Neue-Regular;
 $helvetica-regular: Helvetica-Regular;
 $helvetica-bold: Helvetica-Bold;
+$helvetica: Helvetica;
 $georgia-regular: Georgia-Regular;
 $georgia-bold: Georgia-Bold;
+$lato: Lato;
+$lato-regular: Lato-Regular;
+$lato-bold: Lato-Bold;
 
 .fonts {
   &__helvetica-neue {
@@ -20,6 +24,8 @@ $georgia-bold: Georgia-Bold;
   }
 
   &__helvetica {
+    font-family: $helvetica;
+
     &_regular {
       font-family: $helvetica-regular;
     }
@@ -39,6 +45,18 @@ $georgia-bold: Georgia-Bold;
     }
   }
 
+  &__lato {
+    font-family: $lato;
+
+    &_bold {
+      font-family: $lato-bold;
+    }
+
+    &_regular {
+      font-family: $lato-regular;
+    }
+  }
+
   &__h4 {
     font-size: nonScalePx(30);
     font-family: $helvetica-bold;
@@ -51,6 +69,11 @@ $georgia-bold: Georgia-Bold;
     line-height: nonScalePx(24 * 1.25);
   }
 
+  &__text2 {
+    font-size: nonScalePx(18);
+    font-family: $helvetica-regular;
+  }
+
   @media (max-width: $desktop-break-point) {
     &__h4 {
       font-size: pxToVwDesktop(30);
@@ -60,6 +83,10 @@ $georgia-bold: Georgia-Bold;
     &__h5 {
       font-size: pxToVwDesktop(24);
       line-height: pxToVwDesktop(24 * 1.25);
+    }
+
+    &__text2 {
+      font-size: pxToVwDesktop(18);
     }
   }
 }

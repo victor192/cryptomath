@@ -5,15 +5,26 @@
     <nuxt-link to="/authors" class="header-nav__link fonts__h5">Authors</nuxt-link>
     <nuxt-link to="/problems" class="header-nav__link fonts__h5">Problems</nuxt-link>
     <div class="header-nav__auth">
-      <nuxt-link to="/auth/login" role="button" class="btn btn__outline header-nav__auth_login">Log in</nuxt-link>
-      <nuxt-link to="auth/register" role="button" class="btn btn__primary">Sign up</nuxt-link>
+      <ui-button
+        :variant="['outline', 'secondary']"
+        to="/auth/login"
+        class="header-nav__auth_login"
+      >Log in</ui-button>
+      <ui-button
+        :variant="['primary']"
+        to="/auth/register"
+      >Sign up</ui-button>
     </div>
   </div>
 </template>
 
 <script>
+import UiButton from '~/components/UI/Buttons/Button'
 export default {
   name: "HeaderNav",
+  components: {
+    UiButton
+  }
 };
 </script>
 
@@ -29,6 +40,7 @@ export default {
   &__link {
     color: $white;
     margin-right: nonScalePx(24);
+    padding-top: nonScalePx(5);
 
     &:last-child {
       margin-right: 0;
@@ -36,6 +48,8 @@ export default {
   }
 
   &__auth {
+    display: flex;
+    align-items: center;
     margin-left: nonScalePx(32);
 
     &_login {
@@ -46,6 +60,7 @@ export default {
   @media (max-width: $desktop-break-point) {
     &__link {
       margin-right: pxToVwDesktop(24);
+      padding-top: pxToVwDesktop(5);
     }
 
     &__auth {

@@ -1,38 +1,107 @@
 <template>
   <div class="login-content">
-    <div class="login-content__form">
+    <ui-card class="login-content__form">
       <h5 class="login-content__form_title fonts__h5">Log in</h5>
       <div class="login-content__form_dodecahedron">
         <img src="~/assets/images/dodecahedron.png" alt="dodecahedron icon"/>
       </div>
-      <div class="form">
-        <div class="form__row">
-          <label for="email" class="form__row_label">Email</label>
-          <div class="form__row_input-holder">
-            <input type="email" id="email"/>
-          </div>
-        </div>
-        <div class="form__row">
-          <div class="password-label">
-            <label for="password" class="form__row_label">Password</label>
-            <nuxt-link to="auth/reminder">Forgot password?</nuxt-link>
-          </div>
-          <div class="form__row_input-holder">
-            <input type="password" id="password"/>
-          </div>
-        </div>
+      <div class="login-content__form_fields">
+        <ui-alert
+          v-if="errors.global.show"
+          variant="danger"
+          class="alert fonts__text2"
+        >{{ errors.global.message() }}</ui-alert>
+        <!-- Email -->
+        <ui-form-group
+          label-for="email"
+          class="field"
+        >
+          <template slot="label">Email</template>
+          <template slot="input">
+            <ui-form-alert v-if="errors.email">
+              <span class="fonts__text2">Enter email</span>
+            </ui-form-alert>
+            <ui-form-input
+              v-model="email"
+              id="input"
+              type="email"
+              placeholder="Enter your email"
+              :is-invalid="errors.email"
+            />
+          </template>
+        </ui-form-group>
+        <!--  Password  -->
+        <ui-form-group
+          label-for="password"
+          class="field"
+        >
+          <template slot="label">
+            <div class="password-label">
+              <span>Password</span>
+              <nuxt-link to="auth/reminder">Forgot password?</nuxt-link>
+            </div>
+          </template>
+          <template slot="input">
+            <ui-form-alert v-if="errors.password">
+              <span class="fonts__text2">Enter password</span>
+            </ui-form-alert>
+            <ui-form-input
+              v-model="password"
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+            />
+          </template>
+        </ui-form-group>
         <div class="form__buttons">
-          <button class="btn btn__primary">Log in</button>
+          <ui-button
+            :variant="['primary']"
+          >Log in</ui-button>
         </div>
       </div>
-    </div>
+    </ui-card>
+    <ui-card
+      class="login-content__register"
+      center
+    >
+      <span class="fonts__text2">Have no account yet? <nuxt-link to="/auth/register">Sign up</nuxt-link></span>
+    </ui-card>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'LoginContent'
+import UiCard from "~/components/UI/Cards/Card"
+import UiButton from "~/components/UI/Buttons/Button";
+import UiFormGroup from "~/components/UI/Forms/FormGroup";
+import UiFormInput from "~/components/UI/Forms/FormInput";
+import UiAlert from "~/components/UI/Alerts/Alert";
+import UiFormAlert from "~/components/UI/Forms/FormAlert";
+
+export default {
+  name: 'LoginContent',
+  components: {
+    UiFormAlert,
+    UiCard,
+    UiAlert,
+    UiFormInput,
+    UiFormGroup,
+    UiButton
+  },
+  data() {
+    return {
+      email: '',
+      password: '',
+      errors: {
+        email: false,
+        password: false,
+        global: {
+          show: false,
+          message: () => ''
+        }
+      }
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -46,13 +115,6 @@
     flex-direction: column;
 
     &__form {
-      width: 100%;
-      background: $white;
-      box-shadow: nonScalePx(0) nonScalePx(2) nonScalePx(4) nonScalePx(0) rgba($black, 0.1);
-      border-radius: nonScalePx(4);
-      padding: nonScalePx(24);
-      display: flex;
-      flex-direction: column;
       position: relative;
 
       &_title {
@@ -71,25 +133,48 @@
         }
       }
 
-      .password-label {
+      &_fields {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        z-index: 2;
 
-        a {
-          font-family: $helvetica-bold;
-          font-size: nonScalePx(16);
+        .alert {
+          margin-bottom: nonScalePx(16);
+        }
+
+        .field {
+          margin-bottom: nonScalePx(16);
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        .password-label {
+          display: flex;
+          justify-content: space-between;
+
+          a {
+            font-family: $helvetica-bold;
+            font-size: nonScalePx(16);
+          }
         }
       }
+
+      &_buttons {
+        margin-top: nonScalePx(32);
+        width: 100%;
+      }
+    }
+
+    &__register {
+      margin-top: nonScalePx(16);
     }
 
     @media (max-width: $desktop-break-point) {
       width: pxToVwDesktop(460);
 
       &__form {
-        box-shadow: pxToVwDesktop(0) pxToVwDesktop(2) pxToVwDesktop(4) pxToVwDesktop(0) rgba($black, 0.1);
-        border-radius: pxToVwDesktop(4);
-        padding: pxToVwDesktop(24);
-
         &_title {
           margin-bottom: pxToVwDesktop(50);
         }
@@ -104,11 +189,29 @@
           }
         }
 
-        .password-label {
-          a {
-            font-size: pxToVwDesktop(16);
+        &_fields {
+          .alert {
+            margin-bottom: pxToVwDesktop(16);
+          }
+
+          .field {
+            margin-bottom: pxToVwDesktop(16);
+          }
+
+          .password-label {
+            a {
+              font-size: pxToVwDesktop(16);
+            }
           }
         }
+
+        &_buttons {
+          margin-top: pxToVwDesktop(32);
+        }
+      }
+
+      &__register {
+        margin-top: pxToVwDesktop(16);
       }
     }
   }

@@ -1,33 +1,80 @@
 /*  Helvetica Neue */
-@font-face{
+@font-face {
   font-family: "Helvetica-Neue-Bold";
-  src: url("fonts/HelveticaNeue/HelveticaNeueBold.ttf");
+  src: url("fonts/HelveticaNeue/HelveticaNeueBold.ttf") format("truetype"),
+        url("fonts/HelveticaNeue/HelveticaNeueBold.woff2") format("woff2"),
+          url("fonts/HelveticaNeue/HelveticaNeueBold.woff") format("woff");
 }
-@font-face{
+
+@font-face {
   font-family: "Helvetica-Neue";
-  src: url("fonts/HelveticaNeue/HelveticaNeueMedium.ttf");
+  src: url("fonts/HelveticaNeue/HelveticaNeueMedium.ttf") format("truetype"),
+        url("fonts/HelveticaNeue/HelveticaNeueMedium.woff2") format("woff2"),
+          url("fonts/HelveticaNeue/HelveticaNeueMedium.woff") format("woff");
 }
-@font-face{
+
+@font-face {
   font-family: "Helvetica-Neue-Regular";
-  src: url("fonts/HelveticaNeue/HelveticaNeueLight.ttf");
+  src: url("fonts/HelveticaNeue/HelveticaNeueLight.ttf") format("truetype"),
+        url("fonts/HelveticaNeue/HelveticaNeueLight.woff2") format("woff2"),
+          url("fonts/HelveticaNeue/HelveticaNeueLight.woff") format("woff");
 }
 
 /* Helvetica */
-@font-face{
+@font-face {
   font-family: "Helvetica-Regular";
-  src: url("fonts/Helvetica/HelveticaRegular.ttf");
+  src: url("fonts/Helvetica/HelveticaRegular.ttf") format("truetype"),
+        url("fonts/Helvetica/HelveticaRegular.eot") format('embedded-opentype'),
+          url("fonts/Helvetica/HelveticaRegular.woff") format("woff");
 }
-@font-face{
+
+@font-face {
   font-family: "Helvetica-Bold";
-  src: url("fonts/Helvetica/HelveticaBold.ttf");
+  src: url("fonts/Helvetica/HelveticaBold.ttf") format("truetype"),
+        url("fonts/Helvetica/HelveticaBold.eot") format('embedded-opentype'),
+          url("fonts/Helvetica/HelveticaBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("fonts/Helvetica/HelveticaMedium.ttf") format("truetype"),
+        url("fonts/Helvetica/HelveticaMedium.eot") format('embedded-opentype'),
+          url("fonts/Helvetica/HelveticaMedium.woff") format("woff");
 }
 
 /*  Georgia */
-@font-face{
+@font-face {
   font-family: "Georgia-Regular";
-  src: url("fonts/Georgia/GeorgiaRegular.ttf");
+  src: url("fonts/Georgia/GeorgiaRegular.ttf") format("truetype"),
+        url("fonts/Georgia/GeorgiaRegular.woff2") format("woff2"),
+          url("fonts/Georgia/GeorgiaRegular.woff") format("woff");
 }
-@font-face{
+
+@font-face {
   font-family: "Georgia-Bold";
-  src: url("fonts/Georgia/GeorgiaBold.ttf");
+  src: url("fonts/Georgia/GeorgiaBold.ttf") format("truetype"),
+        url("fonts/Georgia/GeorgiaBold.woff2") format("woff2"),
+          url("fonts/Georgia/GeorgiaBold.woff") format("woff");
+}
+
+/* Lato */
+@font-face {
+  font-family: "Lato";
+  src: url("fonts/Lato/LatoMedium.ttf") format("truetype"),
+        url("fonts/Lato/LatoMedium.woff2") format("woff2"),
+          url("fonts/Lato/LatoMedium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("fonts/Lato/LatoBold.ttf") format("truetype"),
+        url("fonts/Lato/LatoBold.woff2") format("woff2"),
+          url("fonts/Lato/LatoBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("fonts/Lato/LatoRegular.ttf") format("truetype"),
+        url("fonts/Lato/LatoRegular.woff2") format("woff2"),
+          url("fonts/Lato/LatoRegular.woff") format("woff");
 }

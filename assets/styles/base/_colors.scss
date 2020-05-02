@@ -12,6 +12,8 @@ $mariner: #367AD3;
 $gray-cod: #111111;
 $razzmatazz: #E00751;
 $carousel-pink: #FCEEF3;
+$gray: #999999;
+$pale-sky: #6a737c;
 
 .colors {
   &__font {
@@ -20,6 +22,12 @@ $carousel-pink: #FCEEF3;
     }
     &_black {
       color: $black;
+    }
+    &_gray {
+      color: $gray;
+    }
+    &_pale-sky {
+      color: $pale-sky;
     }
   }
   &__background {

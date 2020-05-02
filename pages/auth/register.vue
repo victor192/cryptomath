@@ -1,25 +1,25 @@
 <template>
   <section class="container-fluid">
-    <div class="auth-login">
-      <login-content/>
+    <div class="auth-register">
+      <register-content/>
     </div>
   </section>
 </template>
 
 <script>
-  import LoginContent from '~/components/Auth/Login/Content'
+  import RegisterContent from '~/components/Auth/Register/Content'
 
   export default {
     components: {
-      LoginContent
+      RegisterContent
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../assets/styles/base/grid";
 
-  .auth-login {
+  .auth-register {
     height: 100%;
     display: flex;
     justify-content: center;

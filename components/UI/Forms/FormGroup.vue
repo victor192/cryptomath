@@ -5,6 +5,10 @@
       labelFor: {
         type: String,
         default: ''
+      },
+      helpId: {
+        type: String,
+        default: ''
       }
     },
     render(h) {
@@ -17,10 +21,10 @@
           h(
             'label',
             {
+              class: 'form-group__label',
               attrs: {
                 for: this.labelFor
               },
-              class: 'form-group__label'
             },
             this.$slots.label
           ),
@@ -30,7 +34,19 @@
               class: 'form-group__input-holder'
             },
             this.$slots.input
-          )
+          ),
+          ...(this.$slots.help ? [
+            h(
+              'small',
+              {
+                class: 'form-group__help',
+                attrs: {
+                  id: this.helpId
+                }
+              },
+              this.$slots.help
+            )
+          ] : [])
         ]
       )
     }
@@ -47,9 +63,6 @@
 
   &__label {
     display: inline-block;
-    font-family: $helvetica-neue;
-    font-size: nonScalePx(16);
-    line-height: nonScalePx(16 * 1.2);
   }
 
   &__input-holder {
@@ -57,14 +70,18 @@
     margin-top: nonScalePx(8);
   }
 
-  @media (max-width: $desktop-break-point) {
-    &__label {
-      font-size: pxToVwDesktop(16);
-      line-height: pxToVwDesktop(16 * 1.2);
-    }
+  &__help {
+    display: block;
+    margin-top: nonScalePx(4);
+  }
 
+  @media (max-width: $desktop-break-point) {
     &__input-holder {
       margin-top: pxToVwDesktop(8);
+    }
+
+    &__help {
+      margin-top: pxToVwDesktop(4);
     }
   }
 }

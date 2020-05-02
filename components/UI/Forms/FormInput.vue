@@ -59,21 +59,26 @@
               }
             }
           }
+        ),
+        h(
+          'transition',
+          {
+            props: {
+              name: 'fade'
+            },
+          },
+          [
+            ...(this.isInvalid ? [h(
+              UiIcon,
+              {
+                props: {
+                  icon: ['input', 'warning']
+                }
+              }
+            )] : [])
+          ]
         )
       ]
-
-      if (this.isInvalid) {
-        children.push(
-          h(
-            UiIcon,
-            {
-              props: {
-                icon: ['input', 'warning']
-              }
-            }
-          )
-        )
-      }
 
       return h(
         'div',

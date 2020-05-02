@@ -16,7 +16,9 @@
           label-for="email"
           class="field"
         >
-          <template slot="label">{{ $t('auth.login.form.email.label') }}</template>
+          <template slot="label">
+            <span class="fonts__text-label">{{ $t('auth.login.form.email.label') }}</span>
+          </template>
           <template slot="input">
             <transition name="fade">
               <ui-form-alert v-if="errors.email">
@@ -40,7 +42,7 @@
         >
           <template slot="label">
             <div class="password-label">
-              <span>{{ $t('auth.login.form.password.label') }}</span>
+              <span class="fonts__text-label">{{ $t('auth.login.form.password.label') }}</span>
               <nuxt-link to="auth/reminder">{{ $t('auth.login.form.password.reminder') }}</nuxt-link>
             </div>
           </template>

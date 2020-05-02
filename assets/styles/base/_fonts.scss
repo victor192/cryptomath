@@ -74,6 +74,22 @@ $lato-bold: Lato-Bold;
     font-family: $helvetica-regular;
   }
 
+  &__text3 {
+    font-size: nonScalePx(16);
+    font-family: $helvetica-neue;
+  }
+
+  &__text4 {
+    font-size: nonScalePx(14);
+    font-family: $helvetica-regular;
+  }
+
+  &__text-label {
+    font-family: $helvetica-neue;
+    font-size: nonScalePx(16);
+    line-height: nonScalePx(16 * 1.2);
+  }
+
   @media (max-width: $desktop-break-point) {
     &__h4 {
       font-size: pxToVwDesktop(30);
@@ -87,6 +103,19 @@ $lato-bold: Lato-Bold;
 
     &__text2 {
       font-size: pxToVwDesktop(18);
+    }
+
+    &__text3 {
+      font-size: pxToVwDesktop(16);
+    }
+
+    &__text4 {
+      font-size: pxToVwDesktop(14);
+    }
+
+    &__text-label {
+      font-size: pxToVwDesktop(16);
+      line-height: pxToVwDesktop(16 * 1.2);
     }
   }
 }

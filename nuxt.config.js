@@ -1,3 +1,5 @@
+import webpack from 'webpack'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -29,6 +31,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/mathjax', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -39,6 +42,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/dotenv',
     [
       'nuxt-i18n',
       {
@@ -57,6 +61,12 @@ export default {
           fallbackLocale: 'en'
         }
       }
+    ],
+    [
+      '@nuxtjs/axios',
+      {
+        baseURL: process.env.API_URL
+      }
     ]
   ],
   /*
@@ -68,5 +78,11 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  /*
+  ** Environment variables
+  */
+  env: {
+    apiURL: process.env.API_URL
   }
 }

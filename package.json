@@ -13,10 +13,13 @@
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.10.3",
+    "mathjax": "^3.0.5",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.11.0"
   },
   "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",

@@ -12,6 +12,13 @@
   export default {
     components: {
       RegisterContent
+    },
+    async asyncData({ store, error }) {
+      try {
+        await store.dispatch('auth/setRegister')
+      } catch (e) {
+        error({statusCode: 500})
+      }
     }
   }
 </script>

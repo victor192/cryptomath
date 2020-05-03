@@ -85,6 +85,7 @@
             <span class="fonts__text-label">{{ $t('auth.register.form.captcha.label') }}</span>
           </template>
           <template slot="input">
+            <math-jax-typeset :math="register.captcha.math"/>
             <ui-form-input
               v-model="captcha"
               id="captcha"
@@ -103,13 +104,17 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import UiCard from "~/components/UI/Cards/Card"
   import UiFormGroup from "~/components/UI/Forms/FormGroup";
   import UiFormInput from "~/components/UI/Forms/FormInput";
+  import MathJaxTypeset from "~/components/MathJax/Typeset";
 
   export default {
     name: 'RegisterContent',
     components: {
+      MathJaxTypeset,
       UiCard,
       UiFormGroup,
       UiFormInput
@@ -127,6 +132,11 @@
           captcha: false
         }
       }
+    },
+    computed: {
+      ...mapState({
+        register: state => state.auth.register
+      }),
     }
   }
 </script>

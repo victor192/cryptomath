@@ -26,11 +26,8 @@ export default {
 @import "../../assets/styles/base/grid";
 
 .page-header {
+  width: 100%;
   height: nonScalePx(64);
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
   display: flex;
   align-items: center;
 

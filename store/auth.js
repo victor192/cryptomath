@@ -1,23 +1,34 @@
 import {Captcha} from "~/api/index"
-import {SET_REGISTER_CAPTCHA} from "~/consts/mutation-types";
+import {
+  SET_REGISTER_CAPTCHA,
+  SET_REGISTER_DATA
+} from "~/consts/mutation-types"
 
 export const state = () => ({
   register: {
     captcha: {
       token: '',
       math: ''
+    },
+    data: {
+      id: null,
+      displayName: '',
+      email: ''
     }
   }
 })
 
 export const mutations = {
   [SET_REGISTER_CAPTCHA](state, data) {
-    state.register.captcha = data
+    state.register.captcha = Object.assign(state.register.captcha, data)
+  },
+  [SET_REGISTER_DATA](state, data) {
+    state.register.data = Object.assign(state.register.data, data)
   }
 }
 
 export const actions = {
-  async setRegister({commit}) {
+  async setRegisterCaptcha({commit}) {
     try {
       const data = await Captcha.generate(this.$axios)
 
@@ -28,5 +39,8 @@ export const actions = {
     catch (error) {
       throw new Error(error)
     }
+  },
+  setRegisterData({commit}, data) {
+    commit(SET_REGISTER_DATA, data)
   }
 }

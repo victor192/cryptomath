@@ -15,6 +15,12 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        id: 'MathJax-script',
+        src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'
+      },
     ]
   },
   /*
@@ -31,7 +37,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/mathjax', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

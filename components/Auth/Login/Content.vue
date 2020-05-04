@@ -6,11 +6,13 @@
         <img src="~/assets/images/dodecahedron.png" alt="dodecahedron icon"/>
       </div>
       <div class="login-content__form_fields">
-        <ui-alert
-          v-if="errors.global.show"
-          variant="danger"
-          class="alert fonts__text2"
-        >{{ errors.global.message() }}</ui-alert>
+        <transition name="fade">
+          <ui-alert
+            v-if="errors.global.show"
+            variant="danger"
+            class="alert fonts__text2"
+          >{{ errors.global.message() }}</ui-alert>
+        </transition>
         <!-- Email -->
         <ui-form-group
           label-for="email"
@@ -62,7 +64,7 @@
             />
           </template>
         </ui-form-group>
-        <div class="form__buttons">
+        <div class="login-content__form_buttons">
           <ui-button
             :variant="['primary']"
             @click.native="login"

@@ -14,6 +14,8 @@ $razzmatazz: #E00751;
 $carousel-pink: #FCEEF3;
 $gray: #999999;
 $pale-sky: #6a737c;
+$apple-green: #dcf0e2;
+$mako: #3c4146;
 
 .colors {
   &__font {
@@ -32,6 +34,9 @@ $pale-sky: #6a737c;
     &_pale-sky {
       color: $pale-sky;
     }
+    &_mako {
+      color: $mako;
+    }
   }
   &__background {
     &_white {
@@ -42,6 +47,9 @@ $pale-sky: #6a737c;
     }
     &_shark {
       background-color: $shark;
+    }
+    &_apple-green {
+      background-color: $apple-green;
     }
   }
 }

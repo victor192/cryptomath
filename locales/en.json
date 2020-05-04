@@ -43,21 +43,54 @@
         "help": "It’s free and only takes a minute (depends on your abilities)",
         "display_name": {
           "label": "Display name",
-          "help": "This name will be visible to other users"
+          "help": "This name will be visible to other users",
+          "error": "Enter a name"
+        },
+        "alerts": {
+          "internal": "Internal error",
+          "user_already_exist": "A user with this email is already registered"
         },
         "email": {
           "label": "Email",
-          "help": "This email address will be linked to your account"
+          "help": "This email address will be linked to your account",
+          "errors": {
+            "empty": "Email email address",
+            "invalid": "Enter a valid email address"
+          }
         },
         "password": {
           "label": "Password",
-          "help": "Passwords must contain at least eight characters, including at least 1 letter and 1 number"
+          "help": "Passwords must contain at least eight characters, including at least 1 letter and 1 number",
+          "errors": {
+            "empty": "Empty password",
+            "invalid": "Enter a valid password"
+          }
         },
         "captcha": {
           "label": "Solve the problem",
           "placeholder": "Your answer",
-          "help": "In the answer, specify an integer."
+          "help": "In the answer, specify an integer.",
+          "errors": {
+            "empty": "Empty answer",
+            "invalid": "Enter an integer",
+            "wrong_answer": "Wrong answer"
+          }
+        },
+        "sign_up": "Sign up",
+        "terms": {
+          "text": "By clicking “Sign up”, you agree to our {terms_link} and {privacy_link}",
+          "terms": "terms",
+          "privacy": "privacy policy"
         }
+      },
+      "login": {
+        "text": "Already have an account? {link}",
+        "link": "Login"
+      },
+      "confirm": {
+        "title": "Successful registration",
+        "body": "Dear, {display_name}. Welcome to the CryptoMath project!",
+        "email": "Registration email sent to {email}. Open this email to finish signup."
       }
     }
   }

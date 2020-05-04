@@ -20,14 +20,9 @@
   @import "../../assets/styles/base/grid";
 
   .auth-login {
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: nonScalePx(24);
-
-    @media (max-width: $desktop-break-point) {
-      padding: pxToVwDesktop(24);
-    }
   }
 </style>

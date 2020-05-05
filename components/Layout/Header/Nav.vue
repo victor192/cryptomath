@@ -4,7 +4,14 @@
     <nuxt-link to="/games" class="header-nav__link fonts__h5">{{ $t('layout.header.links.games') }}</nuxt-link>
     <nuxt-link to="/authors" class="header-nav__link fonts__h5">{{ $t('layout.header.links.authors') }}</nuxt-link>
     <nuxt-link to="/problems" class="header-nav__link fonts__h5">{{ $t('layout.header.links.problems') }}</nuxt-link>
-    <div class="header-nav__auth">
+    <nav-profile
+      v-if="profile"
+      class="header-nav__profile"
+      :data="profile"/>
+    <div
+      v-else
+      class="header-nav__auth"
+    >
       <ui-button
         :variant="['outline', 'secondary']"
         to="/auth/login"
@@ -19,14 +26,23 @@
 </template>
 
 <script>
-import UiButton from '~/components/UI/Buttons/Button'
+  import { mapState } from 'vuex'
 
-export default {
-  name: "HeaderNav",
-  components: {
-    UiButton
+  import NavProfile from '~/components/Layout/Header/Nav/Profile'
+  import UiButton from '~/components/UI/Buttons/Button'
+
+  export default {
+    name: "HeaderNav",
+    components: {
+      NavProfile,
+      UiButton
+    },
+    computed: {
+      ...mapState({
+        profile: state => state.profile.profile
+      })
+    }
   }
-};
 </script>
 
 <style lang="scss" scoped>
@@ -48,6 +64,10 @@ export default {
     }
   }
 
+  &__profile {
+    margin-left: nonScalePx(12);
+  }
+
   &__auth {
     display: flex;
     align-items: center;
@@ -62,6 +82,10 @@ export default {
     &__link {
       margin-right: pxToVwDesktop(24);
       padding-top: pxToVwDesktop(5);
+    }
+
+    &__profile {
+      margin-left: pxToVwDesktop(12);
     }
 
     &__auth {

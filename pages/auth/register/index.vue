@@ -13,11 +13,16 @@
     components: {
       RegisterContent
     },
-    async fetch({ store, error }) {
-      try {
-        await store.dispatch('auth/setRegisterCaptcha')
-      } catch (e) {
-        error({statusCode: 500})
+    async fetch({ store, error, redirect }) {
+      if (store.getters['profile/isAuthorized']) {
+        redirect('/profile')
+      }
+      else {
+        try {
+          await store.dispatch('auth/setRegisterCaptcha')
+        } catch (e) {
+          error({statusCode: 500})
+        }
       }
     }
   }

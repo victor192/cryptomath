@@ -306,8 +306,10 @@
             password: this.password
           }
 
+          const authRegister = Auth.register(this.$axios)
+
           try {
-            const data = await Auth.register(this.$axios, payload)
+            const data = await authRegister(payload)
 
             if (data.context.status === 'error') {
               const error = data.context.error

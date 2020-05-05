@@ -1,6 +1,6 @@
 import { profile } from '~/consts/api'
 
-const get = async ($axios) => {
+const get = $axios => async () => {
   try {
     const { data } = await $axios.post(`${profile}/me`)
 

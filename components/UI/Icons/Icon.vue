@@ -18,6 +18,10 @@
       icon: {
         type: Array,
         required: true
+      },
+      fill: {
+        type: String,
+        default: 'black'
       }
     },
     methods: {
@@ -36,7 +40,8 @@
             {
               class: {
                 'icon': true,
-                'icon-sm': this.isSize('sm')
+                'icon-sm': this.isSize('sm'),
+                'icon-md': this.isSize('md')
               },
               attrs: {
                 src: require('~/assets/images/icons/' + iconPath),
@@ -63,6 +68,11 @@
       height: nonScalePx(16);
     }
 
+    &-md {
+      width: nonScalePx(20);
+      height: nonScalePx(20);
+    }
+
     @media (max-width: $desktop-break-point) {
       width: pxToVwDesktop(24);
       height: pxToVwDesktop(24);
@@ -70,6 +80,11 @@
       &-sm {
         width: pxToVwDesktop(16);
         height: pxToVwDesktop(16);
+      }
+
+      &-md {
+        width: pxToVwDesktop(20);
+        height: pxToVwDesktop(20);
       }
     }
   }

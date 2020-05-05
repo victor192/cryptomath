@@ -37,6 +37,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/client-init.js', mode: 'client' },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -72,8 +73,7 @@ export default {
       {
         baseURL: process.env.API_URL
       }
-    ],
-    'nuxt-client-init-module'
+    ]
   ],
   /*
   ** Build configuration

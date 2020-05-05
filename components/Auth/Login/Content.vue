@@ -163,8 +163,10 @@
             password: this.password
           }
 
+          const authLogin = Auth.login(this.$axios)
+
           try {
-            const data = await Auth.login(this.$axios, payload)
+            const data = await authLogin(payload)
 
             if (data.context.status === 'error') {
               const error = data.context.error

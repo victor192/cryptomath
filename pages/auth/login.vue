@@ -10,6 +10,11 @@
   import LoginContent from '~/components/Auth/Login/Content'
 
   export default {
+    fetch({store, redirect}) {
+      if (store.getters['profile/isAuthorized']) {
+        redirect('/profile')
+      }
+    },
     components: {
       LoginContent
     }

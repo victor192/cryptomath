@@ -21,10 +21,12 @@ export const mutations = {
 
 export const actions = {
   async setProfile({commit}) {
-    try {
-      const profile = await Profile.get(this.$axios)
+    const profileGet = Profile.get(this.$axios)
 
-      commit(SET_PROFILE, profile)
+    try {
+      const profile = await profileGet()
+
+      commit(SET_PROFILE, profile.data)
     } catch (error) {
       throw new Error(error)
     }

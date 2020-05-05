@@ -1,15 +1,13 @@
-export default async function ({ store, route, redirect }) {
-  if (process.client) {
-    const isAuthToken = store.getters['auth/isToken']
+export default async function ({ store, $axios, route, redirect }) {
+  const isAuthToken = store.getters['auth/isToken']
 
-    if (isAuthToken) {
-      await store.dispatch('profile/setProfile')
+  if (isAuthToken) {
+    await store.dispatch('profile/setProfile')
 
-      const isAutheficated = store.getters['profile/isAutheficated']
+    const isAuthorized = store.getters['profile/isAuthorized']
 
-      if (!isAutheficated && route.fullPath.search('profile')) {
-        //redirect('/')
-      }
+    if (!isAuthorized && route.fullPath.search('profile') > 0) {
+      redirect('/')
     }
   }
 }

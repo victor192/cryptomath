@@ -1,4 +1,5 @@
 import {
+  getJWTToken,
   setJWTToken,
   deleteJWTToken
 } from "~/tools/jwt";
@@ -43,6 +44,19 @@ export const mutations = {
 }
 
 export const actions = {
+  nuxtClientInit({ dispatch }, { store, $axios }) {
+    const token = getJWTToken()
+
+    if (token) {
+      dispatch('setToken', {
+        accessToken: token
+      })
+
+      $axios.setToken(token, 'Bearer')
+
+      store.dispatch('profile/setProfile')
+    }
+  },
   async setToken({commit}, data) {
     commit(SET_TOKEN, data.accessToken)
 
@@ -51,8 +65,10 @@ export const actions = {
     }
   },
   async setRegisterCaptcha({commit}) {
+    const captchaGenerate = Captcha.generate(this.$axios)
+
     try {
-      const data = await Captcha.generate(this.$axios)
+      const data = await captchaGenerate()
 
       if (data.context.status === 'success') {
         commit(SET_REGISTER_CAPTCHA, data.data)
@@ -67,8 +83,6 @@ export const actions = {
   },
   removeToken({commit}) {
     commit(SET_TOKEN, null)
-
-    this.$axios.setToken(false, 'Bearer')
 
     deleteJWTToken()
   },

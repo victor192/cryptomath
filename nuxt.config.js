@@ -72,7 +72,8 @@ export default {
       {
         baseURL: process.env.API_URL
       }
-    ]
+    ],
+    'nuxt-client-init-module'
   ],
   /*
   ** Build configuration
@@ -89,5 +90,8 @@ export default {
   */
   env: {
     apiURL: process.env.API_URL
+  },
+  router: {
+    middleware: ['auth'],
   }
 }

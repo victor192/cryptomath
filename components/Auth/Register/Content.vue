@@ -291,6 +291,8 @@
         return [true, null]
       },
       async submitRegister() {
+        this.globalError.show = false
+
         const [status, error] = this.validate()
 
         if (status) {

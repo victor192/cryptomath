@@ -17,7 +17,9 @@
       "form": {
         "title": "Log in",
         "alerts": {
-          "user_not_found": "Are you trying to trick us?"
+          "internal": "Internal login error",
+          "user_not_found": "User is not found",
+          "user_wrong_password": "Wrong password"
         },
         "email": {
           "label": "Email",
@@ -41,14 +43,14 @@
       "form": {
         "title": "Registration",
         "help": "It’s free and only takes a minute (depends on your abilities)",
+        "alerts": {
+          "internal": "Internal registration error",
+          "user_already_exist": "A user with this email is already registered"
+        },
         "display_name": {
           "label": "Display name",
           "help": "This name will be visible to other users",
           "error": "Enter a name"
-        },
-        "alerts": {
-          "internal": "Internal error",
-          "user_already_exist": "A user with this email is already registered"
         },
         "email": {
           "label": "Email",

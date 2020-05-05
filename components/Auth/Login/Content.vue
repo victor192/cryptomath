@@ -8,10 +8,10 @@
       <div class="login-content__form_fields">
         <transition name="fade">
           <ui-alert
-            v-if="errors.global.show"
+            v-if="globalError.show"
             variant="danger"
             class="alert fonts__text2"
-          >{{ errors.global.message() }}</ui-alert>
+          >{{ globalErrorText }}</ui-alert>
         </transition>
         <!-- Email -->
         <ui-form-group
@@ -67,7 +67,7 @@
         <div class="login-content__form_buttons">
           <ui-button
             :variant="['primary']"
-            @click.native="login"
+            @click.native="submitLogin"
           >{{ $t('auth.login.form.login') }}</ui-button>
         </div>
       </div>
@@ -88,73 +88,118 @@
 </template>
 
 <script>
-import UiCard from "~/components/UI/Cards/Card"
-import UiButton from "~/components/UI/Buttons/Button";
-import UiFormGroup from "~/components/UI/Forms/FormGroup";
-import UiFormInput from "~/components/UI/Forms/FormInput";
-import UiAlert from "~/components/UI/Alerts/Alert";
-import UiFormAlert from "~/components/UI/Forms/FormAlert";
+  import {Auth} from '~/api/index'
+  import { mapActions } from 'vuex'
 
-export default {
-  name: 'LoginContent',
-  components: {
-    UiFormAlert,
-    UiCard,
-    UiAlert,
-    UiFormInput,
-    UiFormGroup,
-    UiButton
-  },
-  data() {
-    return {
-      email: '',
-      password: '',
-      errors: {
-        email: false,
-        password: false,
-        global: {
+  import UiCard from "~/components/UI/Cards/Card"
+  import UiButton from "~/components/UI/Buttons/Button";
+  import UiFormGroup from "~/components/UI/Forms/FormGroup";
+  import UiFormInput from "~/components/UI/Forms/FormInput";
+  import UiAlert from "~/components/UI/Alerts/Alert";
+  import UiFormAlert from "~/components/UI/Forms/FormAlert";
+
+  export default {
+    name: 'LoginContent',
+    components: {
+      UiFormAlert,
+      UiCard,
+      UiAlert,
+      UiFormInput,
+      UiFormGroup,
+      UiButton
+    },
+    data() {
+      return {
+        email: '',
+        password: '',
+        errors: {
+          email: false,
+          password: false
+        },
+        globalError: {
           show: false,
-          message: () => ''
-        }
-      }
-    }
-  },
-  methods: {
-    validate() {
-      if (this.email === '') {
-        return [false, 'empty_email']
-      }
-
-      if (this.password === '') {
-        return [false, 'empty_password']
-      }
-
-      return [true, false]
-    },
-    login() {
-      const [status, error] = this.validate()
-
-      if (status) {
-
-      }
-      else {
-        switch (error) {
-          case 'empty_email':
-            this.errors.email = true
-            break;
-          case 'empty_password':
-            this.errors.password = true
-            break;
+          source: null,
+          type: null
         }
       }
     },
-    hideErrors(name) {
-      if (this.errors[name]) {
-        this.errors[name] = false
+    computed: {
+      globalErrorText() {
+        if (this.globalError.source === 'user') {
+          switch (this.globalError.type) {
+            case 'not_found':
+              return this.$t('auth.login.form.alerts.user_not_found')
+            case 'wrong_password':
+              return this.$t('auth.login.form.alerts.user_wrong_password')
+          }
+        }
+
+        return this.$t('auth.login.form.alerts.internal')
+      },
+    },
+    methods: {
+      ...mapActions({
+        setToken: 'auth/setToken'
+      }),
+      validate() {
+        if (this.email === '') {
+          return [false, 'empty_email']
+        }
+
+        if (this.password === '') {
+          return [false, 'empty_password']
+        }
+
+        return [true, false]
+      },
+      async submitLogin() {
+        this.globalError.show = false
+
+        const [status, error] = this.validate()
+
+        if (status) {
+          const payload = {
+            email: this.email,
+            password: this.password
+          }
+
+          try {
+            const data = await Auth.login(this.$axios, payload)
+
+            if (data.context.status === 'error') {
+              const error = data.context.error
+
+              this.globalError.source = error.source
+              this.globalError.type = error.type
+              this.globalError.show = true
+            }
+            else if (data.context.status === 'success') {
+              this.setToken(data.data)
+              this.$axios.setToken(data.data.accessToken, 'Bearer')
+              this.$router.push(this.localePath({name: 'profile'}))
+            }
+          } catch (error) {
+            console.error(error)
+          }
+        }
+        else {
+          switch (error) {
+            case 'empty_email':
+              this.errors.email = true
+              break;
+            case 'empty_password':
+              this.errors.password = true
+              break;
+          }
+        }
+      },
+      hideErrors(name) {
+        if (this.errors[name]) {
+          this.errors[name] = false
+        }
       }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>

@@ -20,6 +20,7 @@
 
 <script>
 import UiButton from '~/components/UI/Buttons/Button'
+
 export default {
   name: "HeaderNav",
   components: {

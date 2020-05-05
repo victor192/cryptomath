@@ -3,6 +3,7 @@
     <div class="container">
       <div class="page-header__content">
         <header-logo />
+        {{ profile }}
         <header-nav class="page-header__content_nav" />
       </div>
     </div>
@@ -10,16 +11,23 @@
 </template>
 
 <script>
-import HeaderLogo from "~/components/Layout/Header/Logo";
-import HeaderNav from "~/components/Layout/Header/Nav";
+  import { mapState } from 'vuex'
 
-export default {
-  name: "PageHeader",
-  components: {
-    HeaderLogo,
-    HeaderNav,
-  },
-};
+  import HeaderLogo from "~/components/Layout/Header/Logo";
+  import HeaderNav from "~/components/Layout/Header/Nav";
+
+  export default {
+    name: "PageHeader",
+    components: {
+      HeaderLogo,
+      HeaderNav,
+    },
+    computed: {
+      ...mapState({
+        profile: state => state.profile.profile
+      })
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

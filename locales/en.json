@@ -95,5 +95,27 @@
         "email": "Registration email sent to {email}. Open this email to finish signup."
       }
     }
+  },
+  "homepage": {
+    "content": {
+      "title": "All streams",
+      "tabs": {
+        "articles": "Articles",
+        "hubs": "Hubs",
+        "associations": "Associations"
+      },
+      "articles": {
+        "sorts": {
+          "all": "All articles",
+          "top": "Top",
+          "hot": "Hot"
+        },
+        "filters": {
+          "day": "Day",
+          "week": "Week",
+          "month": "Month"
+        }
+      }
+    }
   }
 }

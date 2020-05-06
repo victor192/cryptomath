@@ -17,19 +17,40 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      active: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data() {
+      return {
+        baseVariants: ['primary', 'secondary', 'light']
       }
     },
     methods: {
       isVariant(value) {
         return this.variant.includes(value)
       },
+      getBaseVariant() {
+        for (let variant of this.baseVariants) {
+          if (this.isVariant(variant)) {
+            return variant
+          }
+        }
+
+        return 'primary'
+      },
       getClassObject() {
-        const prefix = this.isVariant('outline') ? 'btn__outline_' : 'btn__'
+        const isOutline = this.isVariant('outline')
+        const prefix = isOutline ? 'btn__outline_' : 'btn__'
+        const baseVariant = this.getBaseVariant()
+        const variantClass = prefix + baseVariant + (this.active ? '-active' : '')
 
         return {
           'btn': true,
-          [prefix + 'primary']: this.isVariant('primary'),
-          [prefix + 'secondary']: this.isVariant('secondary')
+          'btn__outline': isOutline,
+          [variantClass]: true
         }
       },
       getAttributes() {
@@ -63,6 +84,31 @@
   @import "../../../assets/styles/base/colors";
   @import "../../../assets/styles/base/fonts";
 
+  .btn-group > .btn {
+    flex: 1 1 auto;
+  }
+
+  .btn-group > .btn:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+  }
+
+  .btn-group > .btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    border-left-width: nonScalePx(1);
+
+    @media (max-width: $desktop-break-point) {
+      border-left-width: pxToVwDesktop(1);
+    }
+  }
+
+  .btn-group > .btn:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+  }
+
   .btn {
     width: 100%;
     padding: nonScalePx(12) nonScalePx(24);
@@ -78,9 +124,25 @@
     transition: all .3s;
 
     &__outline {
-      background: transparent;
+      background: transparent !important;
 
       &_secondary {
+        border-color: $gray-oslo;
+        color: $mako;
+
+        &:hover {
+          color: $abbey;
+          background-color: $gray-athens !important;
+        }
+      }
+
+      &_secondary-active {
+        border-color: $gray-oslo;
+        color: $mako;
+        background-color: $iron !important;
+      }
+
+      &_light {
         border-color: $geyser;
         color: $geyser;
 

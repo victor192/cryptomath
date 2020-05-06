@@ -18,7 +18,7 @@
       >
       <ui-icon
         :icon="['user', 'logout']"
-        size="md"
+        size="lg"
       />
     </nuxt-link>
   </div>

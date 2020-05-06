@@ -13,7 +13,7 @@
       class="header-nav__auth"
     >
       <ui-button
-        :variant="['outline', 'secondary']"
+        :variant="['outline', 'light']"
         to="/auth/login"
         class="header-nav__auth_login"
       >{{ $t('layout.header.links.login') }}</ui-button>

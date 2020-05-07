@@ -114,6 +114,13 @@
           "day": "Day",
           "week": "Week",
           "month": "Month"
+        },
+        "article": {
+          "stats": {
+            "answers": "answers",
+            "votes": "votes"
+          },
+          "created_at": "Published {date} at {time}"
         }
       }
     }

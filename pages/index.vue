@@ -17,6 +17,16 @@
   export default {
     components: {
       HomepageContent
+    },
+    async fetch({store, error}) {
+      try {
+        await store.dispatch('articles/setArticles', {
+          limit: 10,
+          offset: 0
+        })
+      } catch (e) {
+        error({statusCode: 500})
+      }
     }
   }
 </script>

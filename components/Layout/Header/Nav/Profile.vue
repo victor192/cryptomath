@@ -8,7 +8,7 @@
       <div class="nav-profile__item_reputation fonts__text2">1</div>
       <ui-icon
         class="nav-profile__item_medal"
-        :icon="['user', 'medal']"
+        :icon="['user', 'medal-white']"
         size="md"
       />
     </nuxt-link>

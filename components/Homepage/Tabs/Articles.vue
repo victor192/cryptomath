@@ -24,18 +24,30 @@
         </ui-button>
       </ui-button-group>
     </div>
+    <div class="tab-articles__articles">
+      <homepage-tab-article
+        v-for="article in articles"
+        :key="article.id"
+        :data="article"
+        class="tab-articles__articles_article"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import UiButtonGroup from "~/components/UI/Buttons/ButtonGroup";
   import UiButton from "~/components/UI/Buttons/Button";
+  import HomepageTabArticle from "~/components/Homepage/Tabs/Articles/Article";
 
   export default {
     name: 'HomepageTabArticles',
     components: {
       UiButton,
-      UiButtonGroup
+      UiButtonGroup,
+      HomepageTabArticle
     },
     data() {
       return {
@@ -74,6 +86,9 @@
       }
     },
     computed: {
+      ...mapState({
+        articles: state => state.articles.articles
+      }),
       activeSort: {
         get() {
           return this.activeSortProxy
@@ -112,6 +127,7 @@
 
 <style lang="scss" scoped>
   @import "../../../assets/styles/base/grid";
+  @import "../../../assets/styles/base/colors";
 
   .tab-articles {
     margin-top: nonScalePx(24);
@@ -123,8 +139,40 @@
       justify-content: space-between;
     }
 
+    &__articles {
+      float: none;
+      display: flex;
+      flex-direction: column;
+      margin-top: nonScalePx(12);
+      border-top-style: solid;
+      border-top-width: nonScalePx(1);
+      border-top-color: $iron;
+
+      &_article {
+        overflow: hidden;
+        border-bottom-style: solid;
+        border-bottom-width: nonScalePx(1);
+        border-bottom-color: $iron;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+
     @media (max-width: $desktop-break-point) {
       margin-top: pxToVwDesktop(24);
+
+      &__articles {
+        margin-top: pxToVwDesktop(24);
+        border-top-width: pxToVwDesktop(1);
+        margin-left: pxToVwDesktop(-24) !important; //temp
+        margin-right: pxToVwDesktop(-24) !important; //temp
+
+        &_article {
+          border-bottom-width: pxToVwDesktop(1);
+        }
+      }
     }
   }
 </style>

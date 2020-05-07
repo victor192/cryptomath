@@ -7,6 +7,7 @@ $downlake: #0b2843;
 $alto: #dfdfdf;
 $wild-sand: #F5F5F5;
 $dusty-gray: #959595;
+$danube: #569CD2;
 $lochmara: #0077cc;
 $mariner: #367AD3;
 $gray-cod: #111111;
@@ -21,6 +22,12 @@ $iron: #e4e6e8;
 $rolling-stone: #6f7577;
 $gray-oslo: #848d95;
 $abbey: #535a60;
+$fern: #5eba7d;
+$green-chateau: #48a868;
+$persian-red: #d1383d;
+$bali-hai: #7e93a6;
+$astral: #39739d;
+$black-squeeze: #E1ECF4;
 
 .colors {
   &__font {
@@ -41,6 +48,12 @@ $abbey: #535a60;
     }
     &_mako {
       color: $mako;
+    }
+    &_persian-red {
+      color: $persian-red;
+    }
+    &_gray-oslo {
+      color: $gray-oslo;
     }
   }
   &__background {

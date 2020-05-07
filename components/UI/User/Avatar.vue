@@ -35,6 +35,7 @@
   @import "../../../assets/styles/base/colors";
 
   .user-avatar {
+    width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;

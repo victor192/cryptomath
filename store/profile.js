@@ -26,7 +26,9 @@ export const actions = {
     try {
       const profile = await profileGet()
 
-      commit(SET_PROFILE, profile.data)
+      if (profile.context.status === 'success') {
+        commit(SET_PROFILE, profile.data)
+      }
     } catch (error) {
       throw new Error(error)
     }

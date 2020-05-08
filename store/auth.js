@@ -57,11 +57,11 @@ export const actions = {
       store.dispatch('profile/setProfile')
     }
   },
-  async setToken({commit}, data) {
-    commit(SET_TOKEN, data.accessToken)
+  async setToken({commit}, { accessToken, expiresIn }) {
+    commit(SET_TOKEN, accessToken)
 
-    if (data.expiresIn) {
-      await setJWTToken(data)
+    if (expiresIn) {
+      await setJWTToken({ accessToken, expiresIn })
     }
   },
   async setRegisterCaptcha({commit}) {
@@ -70,7 +70,7 @@ export const actions = {
     try {
       const data = await captchaGenerate()
 
-      if (data.context.status === 'success') {
+      if (data.context.success) {
         commit(SET_REGISTER_CAPTCHA, data.data)
       }
     }
@@ -85,5 +85,5 @@ export const actions = {
     commit(SET_TOKEN, null)
 
     deleteJWTToken()
-  },
+  }
 }

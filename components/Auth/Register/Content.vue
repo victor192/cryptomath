@@ -311,7 +311,7 @@
           try {
             const data = await authRegister(payload)
 
-            if (data.context.status === 'error') {
+            if (!data.context.success) {
               const error = data.context.error
 
               if (error.source === 'token') {
@@ -330,7 +330,7 @@
                 this.globalError.show = true
               }
             }
-            else if (data.context.status === 'success') {
+            else {
               this.setRegisterData(data.data)
               this.$router.push(this.localePath({name: 'auth-register-confirm'}))
             }

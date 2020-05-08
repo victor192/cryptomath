@@ -5,7 +5,7 @@
         <homepage-content/>
       </div>
       <div class="homepage__sidebar">
-        33354
+        <homepage-stats/>
       </div>
     </div>
   </div>
@@ -13,9 +13,11 @@
 
 <script>
   import HomepageContent from '~/components/Homepage/Content'
+  import HomepageStats from "~/components/Homepage/Stats"
 
   export default {
     components: {
+      HomepageStats,
       HomepageContent
     },
     async fetch({store, error}) {
@@ -52,17 +54,18 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      background: red;
     }
 
     &__sidebar {
       width: nonScalePx(350);
+      margin-left: nonScalePx(24);
       display: flex;
       flex-direction: column;
     }
 
     @media (max-width: $desktop-break-point) {
       &__sidebar {
+        margin-left: pxToVwDesktop(24);
         width: pxToVwDesktop(350);
       }
     }

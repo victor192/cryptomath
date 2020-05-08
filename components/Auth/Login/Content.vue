@@ -168,14 +168,14 @@
           try {
             const data = await authLogin(payload)
 
-            if (data.context.status === 'error') {
+            if (!data.context.success) {
               const error = data.context.error
 
               this.globalError.source = error.source
               this.globalError.type = error.type
               this.globalError.show = true
             }
-            else if (data.context.status === 'success') {
+            else {
               this.setToken(data.data)
               this.$axios.setToken(data.data.accessToken, 'Bearer')
               this.$router.push(this.localePath({name: 'profile'}))

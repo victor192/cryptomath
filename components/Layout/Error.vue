@@ -9,6 +9,7 @@
       alt="empty set"
     >
     <h1 class="error-content__code colors__font_shark">{{ error.statusCode }}</h1>
+    <h5 class="fonts__h5 colors__font_pale-sky">{{ $t('errors.text') }}</h5>
   </ui-card>
 </template>
 

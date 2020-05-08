@@ -123,6 +123,18 @@
           "created_at": "Published {date} at {time}"
         }
       }
+    },
+    "stats": {
+      "title": "General stats",
+      "articles": "Articles",
+      "problems": "Problems",
+      "authors": "Authors",
+      "hubs": "Hubs",
+      "tags": "Tags",
+      "games": "Games"
     }
+  },
+  "errors": {
+    "text": "Do math or go home"
   }
 }

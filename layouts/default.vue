@@ -2,13 +2,19 @@
   <div class="default-layout">
     <page-header/>
     <nuxt />
+    <page-footer/>
   </div>
 </template>
 
 <script>
   import PageHeader from "~/components/Layout/Header";
+  import PageFooter from "~/components/Layout/Footer";
+
   export default {
-    components: {PageHeader}
+    components: {
+      PageFooter,
+      PageHeader
+    }
   }
 </script>
 

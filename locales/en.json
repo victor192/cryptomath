@@ -1,4 +1,18 @@
 {
+  "hubs": {
+    "mathematics": {
+      "title": "Mathematics",
+      "description": "Everything related to mathematics"
+    },
+    "programming": {
+      "title": "Programming",
+      "description": "The art of creating computer programs"
+    },
+    "blockchain": {
+      "title": "Blockchain",
+      "description": "Overlay computer network"
+    }
+  },
   "layout": {
     "header": {
       "project": "CryptoMath",
@@ -10,6 +24,28 @@
         "login": "Log in",
         "register": "Sign up"
       }
+    },
+    "footer": {
+      "general": {
+        "title": "Crypto Math",
+        "articles": "Articles",
+        "problems": "Problems",
+        "authors": "Authors",
+        "games": "Games"
+      },
+      "services": {
+        "title": "Services",
+        "hubs": "Hubs",
+        "tags": "Tags",
+        "search": "Search"
+      },
+      "useful_links": {
+        "title": "Useful links",
+        "about": "About",
+        "terms": "Terms of service",
+        "contact_us": "Contact us"
+      },
+      "languages": "Languages"
     }
   },
   "auth": {
@@ -122,16 +158,37 @@
           },
           "created_at": "Published {date} at {time}"
         }
+      },
+      "hubs": {
+        "table": {
+          "name": "Name",
+          "tags": "Tags",
+          "articles": "Articles"
+        }
       }
     },
     "stats": {
       "title": "General stats",
       "articles": "Articles",
       "problems": "Problems",
-      "authors": "Authors",
+      "users": "Users",
       "hubs": "Hubs",
       "tags": "Tags",
       "games": "Games"
+    },
+    "problems": {
+      "title": "Open problems",
+      "header": {
+        "name": "Name",
+        "reward": "Reward"
+      }
+    },
+    "tags": {
+      "title": "Related tags",
+      "header": {
+        "name": "Name",
+        "articles": "Articles"
+      }
     }
   },
   "errors": {

@@ -2,7 +2,7 @@
   <div class="header-nav colors__font_white">
     <nuxt-link to="/articles" class="header-nav__link fonts__h5">{{ $t('layout.header.links.articles') }}</nuxt-link>
     <nuxt-link to="/games" class="header-nav__link fonts__h5">{{ $t('layout.header.links.games') }}</nuxt-link>
-    <nuxt-link to="/authors" class="header-nav__link fonts__h5">{{ $t('layout.header.links.authors') }}</nuxt-link>
+    <nuxt-link to="/users" class="header-nav__link fonts__h5">{{ $t('layout.header.links.authors') }}</nuxt-link>
     <nuxt-link to="/problems" class="header-nav__link fonts__h5">{{ $t('layout.header.links.problems') }}</nuxt-link>
     <nav-profile
       v-if="profile"

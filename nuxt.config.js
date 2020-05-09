@@ -56,7 +56,8 @@ export default {
           {
             code: 'en',
             iso: 'en-US',
-            file: 'en.json'
+            file: 'en.json',
+            name: 'English'
           },
         ],
         lazy: true,

@@ -29,7 +29,7 @@
               variant="hub"
               class="categorization__hubs_hub"
               :to="hubLink(hub)"
-            >{{ hub.name }}</ui-badge>
+            >{{ getHubTitle(hub.id) }}</ui-badge>
           </div>
           <div class="categorization__hubs categorization__tags fonts__text2">
             <ui-badge
@@ -77,6 +77,9 @@
 
 <script>
   import {checkNested} from "~/tools/object"
+
+  import HubsMixin from "~/mixins/Hubs"
+  import TagsMixin from "~/mixins/Tags"
   import ArticleTitle from "~/components/Homepage/Tabs/Articles/Article/Title";
   import ArticleTime from "~/components/Homepage/Tabs/Articles/Article/Time"
   import UiBadge from "~/components/UI/Badges/Badge";
@@ -85,6 +88,7 @@
 
   export default {
     name: 'HomepageTabArticle',
+    mixins: [HubsMixin, TagsMixin],
     components: {
       ArticleTitle,
       ArticleTime,
@@ -154,14 +158,6 @@
         }
 
         return false
-      }
-    },
-    methods: {
-      hubLink(hub) {
-        return this.localePath({name: 'hubs-id', params: {id: hub.id}})
-      },
-      tagLink(tag) {
-        return this.localePath({name: 'tags-id', params: {id: tag.id}})
       }
     }
   }

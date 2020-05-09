@@ -9,6 +9,7 @@ $georgia-bold: Georgia-Bold;
 $lato: Lato;
 $lato-regular: Lato-Regular;
 $lato-bold: Lato-Bold;
+$alabaster: #f7f7f7;
 
 .fonts {
   &__helvetica-neue {
@@ -72,11 +73,19 @@ $lato-bold: Lato-Bold;
   &__text1 {
     font-size: nonScalePx(22);
     font-family: $helvetica-regular;
+
+    &_bold {
+      font-weight: 600;
+    }
   }
 
   &__text2 {
     font-size: nonScalePx(18);
     font-family: $helvetica-regular;
+
+    &_bold {
+      font-family: $helvetica-bold;
+    }
   }
 
   &__text3 {

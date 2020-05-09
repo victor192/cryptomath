@@ -2,7 +2,7 @@
   import UiImageWrapper from "~/components/Ui/Icons/ImageWrapper"
 
   export default {
-    name: 'UiIconWarning',
+    name: 'UiIcon',
     components: {
       UiImageWrapper
     },
@@ -42,7 +42,8 @@
                 'icon': true,
                 'icon-sm': this.isSize('sm'),
                 'icon-md': this.isSize('md'),
-                'icon-lg': this.isSize('lg')
+                'icon-lg': this.isSize('lg'),
+                'icon-5x': this.isSize('5x')
               },
               attrs: {
                 src: require('~/assets/images/icons/' + iconPath),
@@ -77,6 +78,11 @@
       height: nonScalePx(24);
     }
 
+    &-5x {
+      width: nonScalePx(64);
+      height: nonScalePx(64);
+    }
+
     @media (max-width: $desktop-break-point) {
       &-sm {
         width: pxToVwDesktop(16);
@@ -91,6 +97,11 @@
       &-lg {
         width: pxToVwDesktop(24);
         height: pxToVwDesktop(24);
+      }
+
+      &-5x {
+        width: pxToVwDesktop(64);
+        height: pxToVwDesktop(64);
       }
     }
   }

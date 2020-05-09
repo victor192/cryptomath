@@ -166,8 +166,8 @@
       &__articles {
         margin-top: pxToVwDesktop(24);
         border-top-width: pxToVwDesktop(1);
-        margin-left: pxToVwDesktop(-24) !important; //temp
-        margin-right: pxToVwDesktop(-24) !important; //temp
+        margin-left: pxToVwDesktop(-24) !important;
+        margin-right: pxToVwDesktop(-24) !important;
 
         &_article {
           border-bottom-width: pxToVwDesktop(1);

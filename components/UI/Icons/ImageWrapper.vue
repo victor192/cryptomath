@@ -15,6 +15,8 @@
 
 <style lang="scss" scoped>
   .image-wrapper {
+    width: max-content;
+    height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;

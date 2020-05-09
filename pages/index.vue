@@ -6,6 +6,9 @@
       </div>
       <div class="homepage__sidebar">
         <homepage-stats/>
+        <homepage-problems/>
+        <homepage-tags/>
+        <homepage-advertise/>
       </div>
     </div>
   </div>
@@ -14,11 +17,17 @@
 <script>
   import HomepageContent from '~/components/Homepage/Content'
   import HomepageStats from "~/components/Homepage/Stats"
+  import HomepageProblems from "~/components/Homepage/Problems"
+  import HomepageTags from "~/components/Homepage/Tags"
+  import HomepageAdvertise from "~/components/Homepage/Advertise"
 
   export default {
     components: {
       HomepageStats,
-      HomepageContent
+      HomepageContent,
+      HomepageProblems,
+      HomepageTags,
+      HomepageAdvertise
     },
     async fetch({store, error}) {
       try {
@@ -26,6 +35,16 @@
           limit: 10,
           offset: 0
         })
+        await store.dispatch('hubs/setHubs', {
+          limit: 10,
+          offset: 0
+        })
+        await store.dispatch('funds/setFunds', {
+          limit: 10,
+          offset: 0
+        })
+        await store.dispatch('stats/setGeneralStats')
+        await store.dispatch('stats/setTagsStats')
       } catch (e) {
         error({statusCode: 500})
       }
@@ -47,7 +66,7 @@
   }
 
   .homepage {
-    height: 100vh;
+    height: 100%;
     display: flex;
 
     &__content {

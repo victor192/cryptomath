@@ -23,28 +23,28 @@
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/base/grid";
+  @import "../../assets/styles/base/grid";
 
-.page-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-
-  &__content {
-    display: flex;
-    justify-content: space-between;
+  .page-header {
     width: 100%;
-    height: nonScalePx(64);
+    display: flex;
+    align-items: center;
 
-    &_nav {
-      margin-left: auto;
-    }
-  }
-
-  @media (max-width: $desktop-break-point) {
     &__content {
-      height: pxToVwDesktop(64);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: nonScalePx(64);
+
+      &_nav {
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: $desktop-break-point) {
+      &__content {
+        height: pxToVwDesktop(64);
+      }
     }
   }
-}
 </style>

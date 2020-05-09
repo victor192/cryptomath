@@ -1,6 +1,6 @@
 <template>
-  <ui-card-block>
-    <span slot="header" class="fonts__text1 colors__font_pale-sky">{{ $t('homepage.stats.title') }}</span>
+  <ui-card-block class="stats-content">
+    <span slot="header" class="fonts__text1 fonts__text1_bold colors__font_pale-sky">{{ $t('homepage.stats.title') }}</span>
     <template slot="body">
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-icon
@@ -11,7 +11,7 @@
           :to="localePath('/articles')"
           class="stats__text"
         >{{ $t('homepage.stats.articles') }}</nuxt-link>
-        <span class="stats__count">3</span>
+        <span class="stats__count">{{ stats.articles }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-icon
@@ -26,14 +26,14 @@
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-icon
-          :icon="['stats', 'editor']"
+          :icon="['stats', 'user']"
           size="lg"
         />
         <nuxt-link
           :to="localePath('/users')"
           class="stats__text"
-        >{{ $t('homepage.stats.authors') }}</nuxt-link>
-        <span class="stats__count">2</span>
+        >{{ $t('homepage.stats.users') }}</nuxt-link>
+        <span class="stats__count">{{ stats.users }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-icon
@@ -44,7 +44,7 @@
           :to="localePath('/hubs')"
           class="stats__text"
         >{{ $t('homepage.stats.hubs') }}</nuxt-link>
-        <span class="stats__count">2</span>
+        <span class="stats__count">{{ stats.hubs }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-icon
@@ -55,7 +55,7 @@
           :to="localePath('/tags')"
           class="stats__text"
         >{{ $t('homepage.stats.tags') }}</nuxt-link>
-        <span class="stats__count">3</span>
+        <span class="stats__count">{{ stats.tags }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-icon
@@ -73,6 +73,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import UiCardBlock from "~/components/UI/Cards/CardBlock";
   import UiIcon from "~/components/UI/Icons/Icon"
 
@@ -81,6 +83,11 @@
     components: {
       UiCardBlock,
       UiIcon
+    },
+    computed: {
+      ...mapState({
+        stats: state => state.stats.general
+      })
     }
   }
 </script>
@@ -88,6 +95,14 @@
 <style lang="scss" scoped>
   @import "../../assets/styles/base/grid";
   @import "../../assets/styles/base/fonts";
+
+  .stats-content {
+    margin-bottom: nonScalePx(16);
+
+    @media (max-width: $desktop-break-point) {
+      margin-bottom: pxToVwDesktop(16);
+    }
+  }
 
   .stats {
     display: flex;

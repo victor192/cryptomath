@@ -28,6 +28,10 @@ $persian-red: #d1383d;
 $bali-hai: #7e93a6;
 $astral: #39739d;
 $black-squeeze: #E1ECF4;
+$trout: #505c66;
+$alabaster: #f7f7f7;
+$tundora: #444444;
+$silver-sand: #bbc0c4;
 
 .colors {
   &__font {
@@ -54,6 +58,15 @@ $black-squeeze: #E1ECF4;
     }
     &_gray-oslo {
       color: $gray-oslo;
+    }
+    &_trout {
+      color: $trout;
+    }
+    &_downriver {
+      color: $downriver;
+    }
+    &_silver-sand {
+      color: $silver-sand;
     }
   }
   &__background {

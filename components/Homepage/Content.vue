@@ -22,12 +22,14 @@
 <script>
   import HomepageTabArticles from '~/components/Homepage/Tabs/Articles'
   import HomepageTabHubs from '~/components/Homepage/Tabs/Hubs'
+  import HomepageTabAssociations from '~/components/Homepage/Tabs/Associations'
 
   export default {
     name: 'HomepageContent',
     components: {
       'homepage-tab-articles': HomepageTabArticles,
-      'homepage-tab-hubs': HomepageTabHubs
+      'homepage-tab-hubs': HomepageTabHubs,
+      'homepage-tab-associations': HomepageTabAssociations
     },
     data() {
       return {
@@ -78,7 +80,6 @@
   @import "../../assets/styles/base/colors";
 
   .homepage-content {
-    height: 100%;
     background: $white;
     border-style: solid;
     border-width: nonScalePx(1);

@@ -34,7 +34,7 @@
     },
     computed: {
       ...mapState({
-        tags: state => state.stats.tags.filter(tag => checkNested(tag, ['id', 'name', 'articles']))
+        tags: state => state.tags.tags.filter(tag => checkNested(tag, ['id', 'name', 'articles']))
       })
     },
     methods: {

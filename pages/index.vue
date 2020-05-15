@@ -39,12 +39,15 @@
           limit: 10,
           offset: 0
         })
+        await store.dispatch('tags/setTags', {
+          limit: 10,
+          offset: 0
+        })
         await store.dispatch('funds/setFunds', {
           limit: 10,
           offset: 0
         })
         await store.dispatch('stats/setGeneralStats')
-        await store.dispatch('stats/setTagsStats')
       } catch (e) {
         error({statusCode: 500})
       }

@@ -6,7 +6,7 @@ const all = $axios => async (limit, offset) => {
       limit: limit || 10,
       offset: offset || 0
     }
-    const {data} = await $axios.get(`${tags}/all`, payload)
+    const {data} = await $axios.post(`${tags}/all`, payload)
 
     return data
   } catch (error) {

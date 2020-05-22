@@ -6,7 +6,7 @@
         :class="{'article__stats_item-answered': isAnswered}"
       >
         <span class="fonts__text2">
-          <strong>{{ data.stats.answers }}</strong>
+          <strong>{{ data.answers }}</strong>
         </span>
         <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.answers') }}</span>
       </div>
@@ -14,7 +14,7 @@
         <span
           class="fonts__text2"
           :class="{'colors__font_persian-red': isNegativeVotes}"
-        >{{ data.stats.votes }}</span>
+        >{{ data.votes }}</span>
         <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.votes') }}</span>
       </div>
     </div>
@@ -102,10 +102,8 @@
         default: () => ({
           id: 0,
           title: '',
-          stats: {
-            answers: 0,
-            votes: 0
-          },
+          answers: 0,
+          votes: 0,
           hubs: [],
           tags: [],
           createdAt: '2020-04-25T11:30:30',
@@ -118,13 +116,8 @@
           'id',
           'title',
           'createdAt',
-          [
-            'stats',
-            [
-              'answers',
-              'votes'
-            ]
-          ],
+          'answers',
+          'votes',
           [
             'author',
             [
@@ -139,10 +132,10 @@
     },
     computed: {
       isAnswered() {
-        return this.data.stats.answers > 0
+        return this.data.answers > 0
       },
       isNegativeVotes() {
-        return this.data.stats.votes < 0
+        return this.data.votes < 0
       },
       userLink() {
         return this.localePath({name: 'users-id', params: {id: this.data.author.id}})

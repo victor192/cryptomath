@@ -29,7 +29,7 @@
   import { mapState } from 'vuex'
   import {checkNested} from "~/tools/object"
 
-  import FundsMixin from "~/mixins/Funds"
+  import FundsMixin from "~/mixins/funds"
 
   export default {
     name: 'HomepageTabAssociations',

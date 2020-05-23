@@ -11,7 +11,7 @@
         :key="hub.id"
         class="tab-hubs__hubs_row"
       >
-        <ui-icon :icon="hubIcon(hub.id)" size="5x"/>
+        <ui-flat-icon :icon="hubIcon(hub.id)" size="5x"/>
         <div class="title">
           <nuxt-link
             :to="hubLink(hub)"
@@ -39,16 +39,16 @@
   import { mapState } from 'vuex'
   import {checkNested} from "~/tools/object"
 
-  import HubsMixin from "~/mixins/Hubs"
-  import TagsMixin from "~/mixins/Tags"
-  import UiIcon from "~/components/UI/Icons/Icon"
+  import HubsMixin from "~/mixins/hubs"
+  import TagsMixin from "~/mixins/tags"
+  import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
   import UiBadge from "~/components/UI/Badges/Badge"
 
   export default {
     name: 'HomepageTabHubs',
     mixins: [HubsMixin, TagsMixin],
     components: {
-      UiIcon,
+      UiFlatIcon,
       UiBadge
     },
     computed: {

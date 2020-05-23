@@ -1,4 +1,6 @@
 <script>
+  import UiLink from "~/components/Ui/Links/Link"
+
   export default {
     name: 'UiButton',
     props: {
@@ -52,26 +54,23 @@
           'btn__outline': isOutline,
           [variantClass]: true
         }
-      },
-      getAttributes() {
-        const attributes = {}
-
-        if (this.to) {
-          attributes.to = this.to
-          attributes.role = 'button'
-        }
-        else if (this.submit) {
-          attributes.type = 'submit'
-        }
-
-        return attributes
       }
     },
     render(h) {
-      const tag = this.to ? 'nuxt-link' : 'button'
+      const tag = this.to ? UiLink : 'button'
       const dataObject = {
         class: this.getClassObject(),
-        attrs: this.getAttributes()
+        ...(this.submit && {
+          attrs: {
+            type: 'submit'
+          }
+        }),
+        ...(this.to && {
+          props: {
+            to: this.to,
+            role: 'button'
+          }
+        })
       }
 
       return h(tag, dataObject, this.$slots.default)

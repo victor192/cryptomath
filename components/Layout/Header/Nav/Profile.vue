@@ -6,9 +6,9 @@
     >
       <ui-user-avatar :hash="data.hash"/>
       <div class="nav-profile__item_reputation fonts__text2">1</div>
-      <ui-icon
+      <ui-flat-icon
         class="nav-profile__item_medal"
-        :icon="['user', 'medal-white']"
+        :icon="['user', 'medal']"
         size="md"
       />
     </nuxt-link>
@@ -16,7 +16,7 @@
       class="nav-profile__item"
       :to="localePath('/auth/logout')"
       >
-      <ui-icon
+      <ui-flat-icon
         :icon="['user', 'logout']"
         size="lg"
       />
@@ -26,13 +26,13 @@
 
 <script>
   import UiUserAvatar from '~/components/UI/User/Avatar'
-  import UiIcon from "~/components/Ui/Icons/Icon"
+  import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
 
   export default {
     name: 'NavProfile',
     components: {
       UiUserAvatar,
-      UiIcon
+      UiFlatIcon
     },
     props: {
       data: {

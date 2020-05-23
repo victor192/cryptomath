@@ -3,9 +3,10 @@
     <span slot="header" class="fonts__text1 fonts__text1_bold colors__font_pale-sky">{{ $t('homepage.stats.title') }}</span>
     <template slot="body">
       <div class="stats fonts__text2 colors__font_pale-sky">
-        <ui-icon
+        <ui-flat-icon
           :icon="['stats', 'writing']"
           size="lg"
+          fill="#6a737c"
         />
         <nuxt-link
           :to="localePath('/articles')"
@@ -14,9 +15,10 @@
         <span class="stats__count">{{ stats.articles }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
-        <ui-icon
+        <ui-flat-icon
           :icon="['stats', 'keys']"
           size="lg"
+          fill="#6a737c"
         />
         <nuxt-link
           :to="localePath('/problems')"
@@ -25,9 +27,10 @@
         <span class="stats__count">10</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
-        <ui-icon
+        <ui-flat-icon
           :icon="['stats', 'user']"
           size="lg"
+          fill="#6a737c"
         />
         <nuxt-link
           :to="localePath('/users')"
@@ -36,9 +39,10 @@
         <span class="stats__count">{{ stats.users }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
-        <ui-icon
+        <ui-flat-icon
           :icon="['stats', 'block']"
           size="lg"
+          fill="#6a737c"
         />
         <nuxt-link
           :to="localePath('/hubs')"
@@ -47,26 +51,16 @@
         <span class="stats__count">{{ stats.hubs }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
-        <ui-icon
+        <ui-flat-icon
           :icon="['stats', 'tag']"
           size="lg"
+          fill="#6a737c"
         />
         <nuxt-link
           :to="localePath('/tags')"
           class="stats__text"
         >{{ $t('homepage.stats.tags') }}</nuxt-link>
         <span class="stats__count">{{ stats.tags }}</span>
-      </div>
-      <div class="stats fonts__text2 colors__font_pale-sky">
-        <ui-icon
-          :icon="['stats', 'infinity']"
-          size="lg"
-        />
-        <nuxt-link
-          :to="localePath('/games')"
-          class="stats__text"
-        >{{ $t('homepage.stats.games') }}</nuxt-link>
-        <span class="stats__count">5</span>
       </div>
     </template>
   </ui-card-block>
@@ -76,13 +70,13 @@
   import { mapState } from 'vuex'
 
   import UiCardBlock from "~/components/UI/Cards/CardBlock";
-  import UiIcon from "~/components/UI/Icons/Icon"
+  import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
 
   export default {
     name: 'HomepageStats',
     components: {
       UiCardBlock,
-      UiIcon
+      UiFlatIcon
     },
     computed: {
       ...mapState({

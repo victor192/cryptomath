@@ -1,11 +1,8 @@
 <script>
-  import UiIcon from "~/components/Ui/Icons/Icon"
+  import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
 
   export default {
     name: 'UiFormInput',
-    components: {
-      UiIcon
-    },
     props: {
       type: {
         type: String,
@@ -69,7 +66,7 @@
           },
           [
             ...(this.isInvalid ? [h(
-              UiIcon,
+              UiFlatIcon,
               {
                 props: {
                   icon: ['input', 'warning']

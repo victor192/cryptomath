@@ -58,9 +58,10 @@
               >{{ data.author.displayName}}</nuxt-link>
               <div class="flairs">
                 <div class="flairs__reputation fonts__text2 colors__font_gray-oslo">1</div>
-                <ui-icon
-                  :icon="['user', 'medal-gray']"
+                <ui-flat-icon
+                  :icon="['user', 'medal']"
                   size="sm"
+                  fill="#6a737c"
                 />
               </div>
             </div>
@@ -78,13 +79,13 @@
 <script>
   import {checkNested} from "~/tools/object"
 
-  import HubsMixin from "~/mixins/Hubs"
-  import TagsMixin from "~/mixins/Tags"
+  import HubsMixin from "~/mixins/hubs"
+  import TagsMixin from "~/mixins/tags"
   import ArticleTitle from "~/components/Homepage/Tabs/Articles/Article/Title";
   import ArticleTime from "~/components/Homepage/Tabs/Articles/Article/Time"
   import UiBadge from "~/components/UI/Badges/Badge";
   import UiUserAvatar from '~/components/UI/User/Avatar'
-  import UiIcon from "~/components/Ui/Icons/Icon"
+  import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
 
   export default {
     name: 'HomepageTabArticle',
@@ -94,7 +95,7 @@
       ArticleTime,
       UiBadge,
       UiUserAvatar,
-      UiIcon
+      UiFlatIcon
     },
     props: {
       data: {

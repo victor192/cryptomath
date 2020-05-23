@@ -5,6 +5,7 @@
         <div class="page-footer__content_pyramid">
           <img src="~/assets/images/pyramid.svg" alt="pyramid icon"/>
         </div>
+        <!--  General -->
         <div class="page-footer__content_item">
           <h5 class="caption fonts__h5 colors__font_silver-sand">{{ $t('layout.footer.general.title') }}</h5>
           <nuxt-link
@@ -19,11 +20,8 @@
             class="link fonts__text1 fonts__text1_bold"
             :to="localePath('/users')"
           >{{ $t('layout.footer.general.authors') }}</nuxt-link>
-          <nuxt-link
-            class="link fonts__text1 fonts__text1_bold"
-            :to="localePath('/games')"
-          >{{ $t('layout.footer.general.games') }}</nuxt-link>
         </div>
+        <!--  Services -->
         <div class="page-footer__content_item">
           <h5 class="caption fonts__h5 colors__font_silver-sand">{{ $t('layout.footer.services.title') }}</h5>
           <nuxt-link
@@ -36,6 +34,7 @@
           >{{ $t('layout.footer.services.tags') }}</nuxt-link>
           <div class="link fonts__text1 fonts__text1_bold">{{ $t('layout.footer.services.search') }}</div>
         </div>
+        <!--  Useful links  -->
         <div class="page-footer__content_item">
           <h5 class="caption fonts__h5 colors__font_silver-sand">{{ $t('layout.footer.useful_links.title') }}</h5>
           <div class="link fonts__text1 fonts__text1_bold">{{ $t('layout.footer.useful_links.about') }}</div>
@@ -46,6 +45,7 @@
           >{{ $t('layout.footer.useful_links.terms') }}</a>
           <div class="link fonts__text1 fonts__text1_bold">{{ $t('layout.footer.useful_links.contact_us') }}</div>
         </div>
+        <!--  Languages  -->
         <div class="page-footer__content_item">
           <h5 class="caption fonts__h5 colors__font_silver-sand">{{ $t('layout.footer.languages') }}</h5>
           <nuxt-link
@@ -55,14 +55,68 @@
             class="link fonts__text1 fonts__text1_bold"
           >{{ locale.name }}</nuxt-link>
         </div>
+        <!--  Social  -->
+        <div class="page-footer__content_item">
+          <h5 class="caption fonts__h5 colors__font_silver-sand">{{ $t('layout.footer.social') }}</h5>
+          <div class="social">
+            <a
+              href="https://twitter.com/mathandcrypto"
+              target="_blank"
+              class="social__link"
+            >
+              <ui-flat-icon
+                :icon="['social', 'twitter']"
+                size="2x"
+                fill="#bbc0c4"
+              />
+            </a>
+            <a
+              href="https://telegram.me/mathcrypto"
+              target="_blank"
+              class="social__link"
+            >
+              <ui-flat-icon
+                :icon="['social', 'telegram']"
+                size="2x"
+                fill="#bbc0c4"
+              />
+            </a>
+            <a
+              href="https://www.facebook.com/mathcrypto"
+              target="_blank"
+              class="social__link"
+            >
+              <ui-flat-icon
+                :icon="['social', 'facebook']"
+                size="2x"
+                fill="#bbc0c4"
+              />
+            </a>
+            <a
+              href="https://github.com/mathandcrypto"
+              target="_blank"
+              class="social__link"
+            >
+              <ui-flat-icon
+                :icon="['social', 'github']"
+                size="2x"
+                fill="#bbc0c4"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import UiFlatIcon from "~/components/UI/Icons/FlatIcon";
   export default {
-    name: 'PageFooter'
+    name: 'PageFooter',
+    components: {
+      UiFlatIcon
+    }
   }
 </script>
 
@@ -95,7 +149,7 @@
       }
 
       &_item {
-        flex: 1 0 auto;
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
 
@@ -114,6 +168,20 @@
 
           &:last-child {
             margin-bottom: 0;
+          }
+        }
+
+        .social {
+          display: inline-flex;
+          flex-wrap: wrap;
+          z-index: 2;
+
+          &__link {
+            margin-right: nonScalePx(14);
+
+            &:last-child {
+              margin-right: 0;
+            }
           }
         }
       }
@@ -140,6 +208,12 @@
 
           .link {
             margin-bottom: pxToVwDesktop(15);
+          }
+
+          .social {
+            &__link {
+              margin-right: pxToVwDesktop(14);
+            }
           }
         }
       }

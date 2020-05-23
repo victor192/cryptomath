@@ -18,7 +18,7 @@
       "project": "CryptoMath",
       "links": {
         "articles": "Articles",
-        "games": "Games",
+        "hubs": "Hubs",
         "authors": "Authors",
         "problems": "Problems",
         "login": "Log in",
@@ -30,8 +30,7 @@
         "title": "Crypto Math",
         "articles": "Articles",
         "problems": "Problems",
-        "authors": "Authors",
-        "games": "Games"
+        "authors": "Authors"
       },
       "services": {
         "title": "Services",
@@ -45,6 +44,7 @@
         "terms": "Terms of service",
         "contact_us": "Contact us"
       },
+      "social": "Social",
       "languages": "Languages"
     }
   },

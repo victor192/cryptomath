@@ -1,11 +1,8 @@
 <script>
-  import UiIcon from "~/components/Ui/Icons/Icon"
+  import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
 
   export default {
     name: 'UiFormAlert',
-    components: {
-      UiIcon
-    },
     render(h) {
       return h(
         'div',
@@ -14,7 +11,7 @@
         },
         [
           h(
-            UiIcon,
+            UiFlatIcon,
             {
               props: {
                 icon: ['input', 'warning']

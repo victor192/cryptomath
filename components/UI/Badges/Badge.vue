@@ -1,4 +1,6 @@
 <script>
+  import UiLink from "~/components/Ui/Links/Link"
+
   export default {
     name: 'UiBadge',
     props: {
@@ -9,7 +11,7 @@
       to: {
         type: [String, Object],
         default: null
-      },
+      }
     },
     methods: {
       isVariant(value) {
@@ -21,22 +23,17 @@
           'badge__hub': this.isVariant('hub'),
           'badge__tag': this.isVariant('tag')
         }
-      },
-      getAttributes() {
-        const attributes = {}
-
-        if (this.to) {
-          attributes.to = this.to
-        }
-
-        return attributes
       }
     },
     render(h) {
-      const tag = this.to ? 'nuxt-link' : 'span'
+      const tag = this.to ? UiLink : 'span'
       const dataObject = {
         class: this.getClassObject(),
-        attrs: this.getAttributes()
+        ...(this.to && {
+          props: {
+            to: this.to
+          }
+        })
       }
 
       return h(tag, dataObject, this.$slots.default)

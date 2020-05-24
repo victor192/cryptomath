@@ -154,12 +154,16 @@
         "article": {
           "stats": {
             "answers": "answers",
-            "votes": "votes"
+            "votes": "votes",
+            "funds": "funded"
           },
           "created_at": "Published {date} at {time}"
         }
       },
       "hubs": {
+        "search": {
+          "placeholder": "Search hub"
+        },
         "table": {
           "name": "Name",
           "tags": "Tags",

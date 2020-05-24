@@ -3,6 +3,9 @@ import * as socialFacebook from "./social/facebook"
 import * as socialTelegram from "./social/telegram"
 import * as socialGithub from "./social/github"
 import * as inputWarning from "./input/warning"
+import * as inputSearch from "./input/search"
+import * as inputClose from "./input/close"
+import * as inputCircleNotch from "./input/circleNotch"
 import * as statsBlock from "./stats/block"
 import * as statsKeys from "./stats/keys"
 import * as statsTag from "./stats/tag"
@@ -19,7 +22,10 @@ const instances = {
     github: socialGithub
   },
   input: {
-    warning: inputWarning
+    warning: inputWarning,
+    search: inputSearch,
+    close: inputClose,
+    circleNotch: inputCircleNotch
   },
   stats: {
     block: statsBlock,

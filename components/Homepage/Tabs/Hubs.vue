@@ -1,5 +1,13 @@
 <template>
   <div class="tab-hubs">
+    <ui-search-input
+      v-model="search.query"
+      @onSearchClosed="closeSearch"
+      @onSearchSubmit="startSearch"
+      :placeholder="$t('homepage.content.hubs.search.placeholder')"
+      class="tab-hubs__search"
+      :loading="search.loading"
+    />
     <div class="tab-hubs__hubs">
       <div class="tab-hubs__hubs_head fonts__text3 colors__font_gray">
         <span>{{ $t('homepage.content.hubs.table.name') }}</span>
@@ -47,13 +55,23 @@
   import TagsMixin from "~/mixins/tags"
   import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
   import UiBadge from "~/components/UI/Badges/Badge"
+  import UiSearchInput from "../../UI/Forms/SearchInput";
 
   export default {
     name: 'HomepageTabHubs',
     mixins: [HubsMixin, TagsMixin],
     components: {
+      UiSearchInput,
       UiFlatIcon,
       UiBadge
+    },
+    data() {
+      return {
+        search: {
+          query: '',
+          loading: false
+        }
+      }
     },
     computed: {
       ...mapState({
@@ -73,6 +91,12 @@
     methods: {
       getTags(tags) {
         return tags.filter(t => checkNested, ['id', 'name'])
+      },
+      closeSearch() {
+        this.search.query = ''
+      },
+      startSearch() {
+        this.search.loading = true
       }
     }
   }
@@ -86,6 +110,10 @@
     margin-top: nonScalePx(24);
     display: flex;
     flex-direction: column;
+
+    &__search {
+      margin-bottom: nonScalePx(24);
+    }
 
     &__hubs {
       display: flex;

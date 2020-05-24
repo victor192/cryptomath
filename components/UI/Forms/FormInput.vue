@@ -101,15 +101,14 @@
 .form-input {
   display: flex;
   align-items: center;
+  height: nonScalePx(48);
   width: 100%;
   background: $white;
   border-radius: nonScalePx(4);
   border-style: solid;
   border-color: $alto;
   border-width: nonScalePx(1);
-  padding-top: nonScalePx(10);
   padding-right: nonScalePx(16);
-  padding-bottom: nonScalePx(10);
   padding-left: nonScalePx(24);
   transition: border .3s;
 
@@ -130,7 +129,7 @@
     color: $gray-cod;
     font-family: $helvetica-regular;
     font-size: nonScalePx(18);
-    line-height: nonScalePx(18 * 1.5);
+    line-height: nonScalePx(24);
 
     &::placeholder {
       color: $dusty-gray;
@@ -138,16 +137,15 @@
   }
 
   @media (max-width: $desktop-break-point) {
+    height: pxToVwDesktop(48);
     border-radius: pxToVwDesktop(4);
     border-width: pxToVwDesktop(1);
-    padding-top: pxToVwDesktop(10);
     padding-right: pxToVwDesktop(16);
-    padding-bottom: pxToVwDesktop(10);
     padding-left: pxToVwDesktop(24);
 
     &__input {
       font-size: pxToVwDesktop(18);
-      line-height: pxToVwDesktop(18 * 1.5);
+      line-height: pxToVwDesktop(24);
     }
   }
 }

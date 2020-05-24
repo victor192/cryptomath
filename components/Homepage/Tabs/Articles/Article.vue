@@ -17,6 +17,12 @@
         >{{ data.votes }}</span>
         <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.votes') }}</span>
       </div>
+      <div class="article__stats_item article__stats_item-funded colors__font_pale-sky">
+        <span class="fonts__text3">
+          <strong>0.2$</strong>
+        </span>
+        <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.funds') }}</span>
+      </div>
     </div>
     <div class="article__content">
       <article-title :title="data.title"/>
@@ -68,10 +74,6 @@
           </div>
         </div>
       </div>
-      <div
-        v-if="fundsText"
-        class="article__content_funds fonts__text3 colors__font_pale-sky"
-      >{{ fundsText }}</div>
     </div>
   </div>
 </template>
@@ -172,14 +174,6 @@
       display: flex;
       flex-direction: column;
 
-      &_item-answered {
-        border-style: solid;
-        border-width: nonScalePx(1);
-        border-radius: nonScalePx(3);
-        border-color: $fern;
-        color: $green-chateau;
-      }
-
       &_item {
         width: 100%;
         height: nonScalePx(52);
@@ -189,6 +183,18 @@
         align-items: center;
         padding: nonScalePx(7);
         margin-bottom: nonScalePx(10);
+
+        &-answered {
+          border-style: solid;
+          border-width: nonScalePx(1);
+          border-radius: nonScalePx(3);
+          border-color: $fern;
+          color: $green-chateau;
+        }
+
+        &-funded {
+          color: #da670b;
+        }
       }
     }
 
@@ -257,10 +263,6 @@
           }
         }
       }
-
-      &_funds {
-        margin-top: nonScalePx(5);
-      }
     }
 
     @media (max-width: $desktop-break-point) {
@@ -319,10 +321,6 @@
               }
             }
           }
-        }
-
-        &_funds {
-          margin-top: pxToVwDesktop(5);
         }
       }
     }

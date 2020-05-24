@@ -181,8 +181,6 @@
 
             .flat-icon-wrapper {
               svg {
-                transition: fill .3s;
-
                 &:hover {
                   fill: white;
                 }

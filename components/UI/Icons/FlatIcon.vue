@@ -1,6 +1,5 @@
 <script>
-  import {DOMParser, XMLSerializer} from 'xmldom'
-  import {getIconObject} from "~/assets/icons"
+  import {getIconObject} from "~/assets/icons";
 
   export default {
     name: 'UiFlatIcon',
@@ -28,6 +27,10 @@
       fill: {
         type: [String, Object],
         default: null
+      },
+      spin: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {
@@ -52,6 +55,10 @@
             break
         }
 
+        if (this.spin) {
+          classes.push('flat-icon-spin')
+        }
+
         return classes
       }
     },
@@ -62,21 +69,15 @@
         const width = this.width || iconObject.width
         const height = this.height || iconObject.height
         const fill = this.fill || iconObject.fill
-        const dom = iconObject.dom(width, height, fill)
-        const parser = new DOMParser()
-        const serializer = new XMLSerializer()
-        const doc = parser.parseFromString(dom, 'application/xml')
         const classes = this.getIconClasses(this.size)
-
-        doc.documentElement.setAttribute('role', 'img')
-        doc.documentElement.setAttribute('class', classes.join(' '))
+        const dom = iconObject.dom(width, height, fill, classes.join(' '))
 
         return h(
           'span',
           {
             class: 'flat-icon-wrapper',
             domProps: {
-              innerHTML: serializer.serializeToString(doc)
+              innerHTML: dom
             }
           }
         )
@@ -102,11 +103,12 @@
   @import "../../../assets/styles/base/grid";
 
   .flat-icon {
-    width: max-content;
+    width: auto;
     height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: fill .3s;
 
     &-sm {
       width: nonScalePx(16);
@@ -131,6 +133,10 @@
     &-5x {
       width: nonScalePx(64);
       height: nonScalePx(64);
+    }
+
+    &-spin {
+      animation: spin 1s linear infinite;
     }
 
     @media (max-width: $desktop-break-point) {

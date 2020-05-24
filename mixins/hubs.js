@@ -23,17 +23,23 @@ export default {
 
       return locale ? locale.description : ''
     },
-    hubIcon(id) {
+    hubIconSrc(id) {
+      const path = '/images/hubs'
+      let name = 'mathematics'
+
       switch (id) {
         case 1:
-          return ['hubs', 'mathematics']
+          name = 'mathematics'
+          break
         case 2:
-          return ['hubs', 'coding']
+          name = 'programming'
+          break
         case 3:
-          return ['hubs', 'blockchain']
+          name = 'blockchain'
+          break
       }
 
-      return ['hubs', 'mathematics']
+      return path + '/' + name + '.svg'
     },
     hubLink(hub) {
       return this.localePath({name: 'hubs-id', params: {id: hub.id}})

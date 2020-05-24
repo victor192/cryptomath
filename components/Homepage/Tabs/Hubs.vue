@@ -11,7 +11,11 @@
         :key="hub.id"
         class="tab-hubs__hubs_row"
       >
-        <ui-flat-icon :icon="hubIcon(hub.id)" size="5x"/>
+        <img
+          :src="hubIconSrc(hub.id)"
+          :alt="hub.name"
+          class="logo"
+        />
         <div class="title">
           <nuxt-link
             :to="hubLink(hub)"
@@ -108,6 +112,11 @@
         grid-template-rows: 1fr;
         margin-bottom: nonScalePx(20);
 
+        .logo {
+          width: nonScalePx(64);
+          height: nonScalePx(64);
+        }
+
         .title {
           display: flex;
           flex-direction: column;
@@ -155,6 +164,11 @@
 
         &_row {
           margin-bottom: pxToVwDesktop(20);
+
+          .logo {
+            width: pxToVwDesktop(64);
+            height: pxToVwDesktop(64);
+          }
 
           .title {
             &__link {

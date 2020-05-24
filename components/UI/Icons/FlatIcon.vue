@@ -1,5 +1,5 @@
 <script>
-  const btoa = require('btoa')
+  import {DOMParser, XMLSerializer} from 'xmldom'
   import {getIconObject} from "~/assets/icons"
 
   export default {
@@ -31,8 +31,28 @@
       }
     },
     methods: {
-      isSize(value) {
-        return this.size === value
+      getIconClasses(size) {
+        const classes = ['flat-icon']
+
+        switch (size) {
+          case 'sm':
+            classes.push('flat-icon-sm')
+            break
+          case 'md':
+            classes.push('flat-icon-md')
+            break
+          case 'lg':
+            classes.push('flat-icon-lg')
+            break
+          case '2x':
+            classes.push('flat-icon-2x')
+            break
+          case '5x':
+            classes.push('flat-icon-5x')
+            break
+        }
+
+        return classes
       }
     },
     render(h) {
@@ -42,32 +62,23 @@
         const width = this.width || iconObject.width
         const height = this.height || iconObject.height
         const fill = this.fill || iconObject.fill
-        const raw = 'data:image/svg+xml;base64,' + btoa(iconObject.dom(width, height, fill))
+        const dom = iconObject.dom(width, height, fill)
+        const parser = new DOMParser()
+        const serializer = new XMLSerializer()
+        const doc = parser.parseFromString(dom, 'application/xml')
+        const classes = this.getIconClasses(this.size)
+
+        doc.documentElement.setAttribute('role', 'img')
+        doc.documentElement.setAttribute('class', classes.join(' '))
 
         return h(
           'span',
           {
-            class: 'icon-wrapper',
-          },
-          [
-            h(
-              'img',
-              {
-                class: {
-                  'icon': true,
-                  'icon-sm': this.isSize('sm'),
-                  'icon-md': this.isSize('md'),
-                  'icon-lg': this.isSize('lg'),
-                  'icon-2x': this.isSize('2x'),
-                  'icon-5x': this.isSize('5x')
-                },
-                attrs: {
-                  src: raw,
-                  alt: this.alt
-                }
-              },
-            )
-          ]
+            class: 'flat-icon-wrapper',
+            domProps: {
+              innerHTML: serializer.serializeToString(doc)
+            }
+          }
         )
       }
       else {
@@ -78,18 +89,24 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../../assets/styles/base/grid";
-
-  .icon-wrapper {
+  .flat-icon-wrapper {
     width: max-content;
     height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+</style>
 
-  .icon {
-    overflow: hidden;
+<style lang="scss">
+  @import "../../../assets/styles/base/grid";
+
+  .flat-icon {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &-sm {
       width: nonScalePx(16);

@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.10.3",
-    "btoa": "^1.2.1",
     "date-fns": "^2.13.0",
     "mathjax": "^3.0.5",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.11.0",
-    "svg-identicon": "^1.0.1"
+    "svg-identicon": "^1.0.1",
+    "xmldom": "^0.3.0"
   },
   "devDependencies": {
     "@nuxtjs/dotenv": "^1.4.1",

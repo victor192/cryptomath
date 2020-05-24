@@ -120,7 +120,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "../../assets/styles/base/grid";
   @import "../../assets/styles/base/colors";
 
@@ -178,6 +178,16 @@
 
           &__link {
             margin-right: nonScalePx(14);
+
+            .flat-icon-wrapper {
+              svg {
+                transition: fill .3s;
+
+                &:hover {
+                  fill: white;
+                }
+              }
+            }
 
             &:last-child {
               margin-right: 0;

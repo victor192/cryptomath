@@ -23,11 +23,17 @@ export const mutations = {
 }
 
 export const actions = {
-  async setArticles({ commit }, { limit, offset}) {
+  async setArticles({ state, commit }, { filters, sorts, limit, offset, search}) {
     const articlesAll = Articles.all(this.$axios)
 
     try {
-      const data = await articlesAll(limit, offset)
+      const data = await articlesAll(
+        filters,
+        sorts,
+        limit || state.limit,
+        offset || state.offset,
+        search
+      )
 
       if (data.context.success) {
         commit(SET_ARTICLES, data.data)

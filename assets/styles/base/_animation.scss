@@ -6,6 +6,18 @@
   opacity: 0;
 }
 
+.fade-list-enter-active, .fade-list-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-list-enter-active {
+  transition-delay: .5s;
+}
+
+.fade-list-enter, .fade-list-leave-to {
+  opacity: 0;
+}
+
 .component-fade-enter-active, .component-fade-leave-active {
   transition: opacity .3s ease;
 }

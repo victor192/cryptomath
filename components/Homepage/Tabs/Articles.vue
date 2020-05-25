@@ -25,18 +25,21 @@
       </ui-button-group>
     </div>
     <div class="tab-articles__articles">
-      <homepage-tab-article
-        v-for="article in articles"
-        :key="article.id"
-        :data="article"
-        class="tab-articles__articles_article"
-      />
+      <transition-group name="fade-list">
+        <homepage-tab-article
+          v-for="article in articles"
+          :key="article.id"
+          :data="article"
+          class="tab-articles__articles_article"
+        />
+      </transition-group>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
+  import DatesMixin from "~/mixins/dates"
 
   import UiButtonGroup from "~/components/UI/Buttons/ButtonGroup";
   import UiButton from "~/components/UI/Buttons/Button";
@@ -44,6 +47,7 @@
 
   export default {
     name: 'HomepageTabArticles',
+    mixins: [DatesMixin],
     components: {
       UiButton,
       UiButtonGroup,
@@ -54,14 +58,23 @@
         sorts: [
           {
             type: 'all',
+            data: [],
             title: this.$t('homepage.content.articles.sorts.all')
           },
           {
             type: 'top',
+            data: [{
+              field: 'votes',
+              direction: 'desc'
+            }],
             title: this.$t('homepage.content.articles.sorts.top')
           },
           {
             type: 'hot',
+            data: [{
+              field: 'answers',
+              direction: 'desc'
+            }],
             title: this.$t('homepage.content.articles.sorts.hot')
           }
         ],
@@ -71,14 +84,34 @@
         filters: [
           {
             type: 'day',
+            data: [{
+              field: 'createdAt',
+              value: {
+                equals: this.getNowDate()
+              }
+            }],
             title: this.$t('homepage.content.articles.filters.day')
           },
           {
             type: 'week',
+            data: [{
+              field: 'createdAt',
+              value: {
+                start: this.getWeekAgoDate(),
+                from: this.getNowDate()
+              }
+            }],
             title: this.$t('homepage.content.articles.filters.week')
           },
           {
             type: 'month',
+            data: [{
+              field: 'createdAt',
+              value: {
+                start: this.getMonthAgoDate(),
+                from: this.getNowDate()
+              }
+            }],
             title: this.$t('homepage.content.articles.filters.month')
           }
         ],
@@ -93,20 +126,31 @@
         get() {
           return this.activeSortProxy
         },
-        set (value) {
+        async set (value) {
           this.activeSortProxy = value
+          await this.fetchArticles()
         }
       },
       activeFilter: {
         get() {
           return this.activeFilterProxy
         },
-        set (value) {
+        async set (value) {
           this.activeFilterProxy = value
+          await this.fetchArticles()
         }
       }
     },
     methods: {
+      ...mapActions({
+        setArticles: 'articles/setArticles'
+      }),
+      async fetchArticles() {
+        await this.setArticles({
+          ...(this.activeFilter && {filters: this.activeFilter.data}),
+          sorts: this.activeSort.data
+        })
+      },
       setSort(sort) {
         this.activeSort = sort
       },
@@ -120,7 +164,8 @@
         else {
           this.activeFilter = filter
         }
-      }
+      },
+
     }
   }
 </script>

@@ -24,16 +24,26 @@
         </ui-button>
       </ui-button-group>
     </div>
-    <div class="tab-articles__articles">
-      <transition-group name="fade-list">
-        <homepage-tab-article
-          v-for="article in articles"
-          :key="article.id"
-          :data="article"
-          class="tab-articles__articles_article"
-        />
-      </transition-group>
-    </div>
+    <transition-group
+      name="fade-out-in"
+      tag="div"
+      class="tab-articles__articles"
+    >
+      <homepage-tab-article
+        v-for="article in articles"
+        :key="article.id"
+        :data="article"
+        class="tab-articles__articles_article"
+      />
+    </transition-group>
+    <ui-button
+      v-if="isArticles"
+      :to="localePath('/articles')"
+      :variant="['outline', 'secondary']"
+      class="tab-articles__explore"
+    >
+      {{ $t('homepage.content.articles.explore', {count: articlesTotal}) }}
+    </ui-button>
   </div>
 </template>
 
@@ -120,8 +130,12 @@
     },
     computed: {
       ...mapState({
-        articles: state => state.articles.articles
+        articles: state => state.articles.articles,
+        articlesTotal: state => state.articles.context.total
       }),
+      isArticles() {
+        return this.articlesTotal > 0
+      },
       activeSort: {
         get() {
           return this.activeSortProxy
@@ -146,10 +160,14 @@
         setArticles: 'articles/setArticles'
       }),
       async fetchArticles() {
-        await this.setArticles({
-          ...(this.activeFilter && {filters: this.activeFilter.data}),
-          sorts: this.activeSort.data
-        })
+        try {
+          await this.setArticles({
+            ...(this.activeFilter && {filters: this.activeFilter.data}),
+            sorts: this.activeSort.data
+          })
+        } catch (e) {
+          console.error(e.message)
+        }
       },
       setSort(sort) {
         this.activeSort = sort
@@ -205,6 +223,11 @@
       }
     }
 
+    &__explore {
+      width: nonScalePx(250);
+      align-self: center;
+    }
+
     @media (max-width: $desktop-break-point) {
       margin-top: pxToVwDesktop(24);
 
@@ -217,6 +240,10 @@
         &_article {
           border-bottom-width: pxToVwDesktop(1);
         }
+      }
+
+      &__explore {
+        width: pxToVwDesktop(250);
       }
     }
   }

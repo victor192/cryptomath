@@ -49,7 +49,10 @@
         })
         await store.dispatch('stats/setGeneralStats')
       } catch (e) {
-        error({statusCode: 500})
+        error({
+          statusCode: 500,
+          message: e.message
+        })
       }
     }
   }

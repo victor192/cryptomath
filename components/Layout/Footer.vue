@@ -38,11 +38,11 @@
         <div class="page-footer__content_item">
           <h5 class="caption fonts__h5 colors__font_silver-sand">{{ $t('layout.footer.useful_links.title') }}</h5>
           <div class="link fonts__text1 fonts__text1_bold">{{ $t('layout.footer.useful_links.about') }}</div>
-          <a
-            href="https://blockchair.com/terms"
+          <nuxt-link
+            :to="localePath('/terms')"
             target="_blank"
             class="link fonts__text1 fonts__text1_bold"
-          >{{ $t('layout.footer.useful_links.terms') }}</a>
+          >{{ $t('layout.footer.useful_links.terms') }}</nuxt-link>
           <div class="link fonts__text1 fonts__text1_bold">{{ $t('layout.footer.useful_links.contact_us') }}</div>
         </div>
         <!--  Languages  -->

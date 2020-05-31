@@ -23,11 +23,17 @@ export const mutations = {
 }
 
 export const actions = {
-  async setHubs({ commit }, { limit, offset}) {
+  async setHubs({ commit }, { filters, sorts, limit, offset, search}) {
     const hubsAll = Hubs.all(this.$axios)
 
     try {
-      const data = await hubsAll(limit, offset)
+      const data = await hubsAll(
+        filters || null,
+        sorts || null,
+        limit || state.limit,
+        offset || state.offset,
+        search || false
+      )
 
       if (data.context.success) {
         commit(SET_HUBS, data.data)

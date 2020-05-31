@@ -6,15 +6,17 @@
   opacity: 0;
 }
 
-.fade-list-enter-active, .fade-list-leave-active {
+.fade-out-in-enter-active,
+.fade-out-in-leave-active {
   transition: opacity .5s;
 }
 
-.fade-list-enter-active {
+.fade-out-in-enter-active {
   transition-delay: .5s;
 }
 
-.fade-list-enter, .fade-list-leave-to {
+.fade-out-in-enter,
+.fade-out-in-leave-to {
   opacity: 0;
 }
 

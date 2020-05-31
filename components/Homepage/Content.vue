@@ -80,6 +80,7 @@
   @import "../../assets/styles/base/colors";
 
   .homepage-content {
+    height: 100%;
     background: $white;
     border-style: solid;
     border-width: nonScalePx(1);
@@ -123,6 +124,7 @@
         cursor: pointer;
         font-family: $helvetica-bold;
         text-transform: uppercase;
+        transition: color .3s ease-out;
 
         &:hover {
           @extend .homepage-content__tabs_tab-active;

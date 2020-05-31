@@ -145,8 +145,16 @@
             tag="span"
             class="fonts__text4 colors__font_pale-sky"
             >
-            <a href="https://blockchair.com/terms" target="_blank" slot="terms_link">{{ $t('auth.register.form.terms.terms') }}</a>
-            <a href="https://blockchair.com/privacy" target="_blank" slot="privacy_link">{{ $t('auth.register.form.terms.privacy') }}</a>
+            <nuxt-link
+              :to="localePath('terms')"
+              target="_blank"
+              slot="terms_link"
+            >{{ $t('auth.register.form.terms.terms') }}</nuxt-link>
+            <nuxt-link
+              :to="localePath('privacy')"
+              target="_blank"
+              slot="privacy_link"
+            >{{ $t('auth.register.form.terms.privacy') }}</nuxt-link>
           </i18n>
         </div>
       </div>

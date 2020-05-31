@@ -28,11 +28,11 @@ export const actions = {
 
     try {
       const data = await articlesAll(
-        filters,
-        sorts,
+        filters || null,
+        sorts || null,
         limit || state.limit,
         offset || state.offset,
-        search
+        search || false
       )
 
       if (data.context.success) {

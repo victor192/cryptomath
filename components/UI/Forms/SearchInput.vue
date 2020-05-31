@@ -15,6 +15,10 @@
       loading: {
         type: Boolean,
         default: false
+      },
+      isCompliance: {
+        Boolean: Boolean,
+        default: false
       }
     },
     data() {
@@ -36,6 +40,9 @@
 
         if (this.isTyping) {
           this.$emit('onSearchSubmit', this.value)
+        }
+        else if (this.isCompliance) {
+          this.$emit('onSearchClosed')
         }
       },
       onClosed() {
@@ -125,7 +132,7 @@
       )
       const children = [
         input,
-        ...(this.isTyping ? [close] : []),
+        ...((this.isTyping || this.isCompliance) ? [close] : []),
         ...(this.loading ? [spinner] : [search])
       ]
 

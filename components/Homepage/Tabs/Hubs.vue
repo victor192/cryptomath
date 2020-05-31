@@ -7,6 +7,7 @@
       :placeholder="$t('homepage.content.hubs.search.placeholder')"
       class="tab-hubs__search"
       :loading="search.loading"
+      :is-compliance="search.isCompliance"
     />
     <div class="tab-hubs__hubs">
       <div class="tab-hubs__hubs_head fonts__text3 colors__font_gray">
@@ -44,23 +45,33 @@
         <span class="cell-right fonts__text1 fonts__text1_bold colors__font_downriver">{{ hub.articles }}</span>
       </div>
     </div>
+    <ui-button
+      v-if="isHubs"
+      :to="localePath('/hubs')"
+      :variant="['outline', 'secondary']"
+      class="tab-hubs__explore"
+    >
+      {{ $t('homepage.content.hubs.explore', {count: hubsTotal}) }}
+    </ui-button>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   import {checkNested} from "~/tools/object"
 
   import HubsMixin from "~/mixins/hubs"
   import TagsMixin from "~/mixins/tags"
   import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
   import UiBadge from "~/components/UI/Badges/Badge"
-  import UiSearchInput from "../../UI/Forms/SearchInput";
+  import UiSearchInput from "~/components/UI/Forms/SearchInput";
+  import UiButton from "~/components/UI/Buttons/Button";
 
   export default {
     name: 'HomepageTabHubs',
     mixins: [HubsMixin, TagsMixin],
     components: {
+      UiButton,
       UiSearchInput,
       UiFlatIcon,
       UiBadge
@@ -69,7 +80,8 @@
       return {
         search: {
           query: '',
-          loading: false
+          loading: false,
+          isCompliance: false
         }
       }
     },
@@ -85,18 +97,49 @@
               'total'
             ]
           ]
-        ]))
-      })
+        ])),
+        hubsTotal: state => state.hubs.context.total
+      }),
+      isHubs() {
+        return this.hubsTotal > 0
+      }
     },
     methods: {
+      ...mapActions({
+        setHubs: 'hubs/setHubs'
+      }),
       getTags(tags) {
         return tags.filter(t => checkNested, ['id', 'name'])
       },
-      closeSearch() {
-        this.search.query = ''
+      setSearchLoading(isCompliance) {
+        this.search.isCompliance = isCompliance
+
+        setTimeout(() => {
+          this.search.loading = false
+        }, 100)
       },
-      startSearch() {
+      async closeSearch() {
+        this.search.query = ''
         this.search.loading = true
+
+        try {
+          await this.setHubs({})
+
+          this.setSearchLoading(false)
+        } catch (e) {
+          console.error(e.message)
+        }
+      },
+      async startSearch() {
+        this.search.loading = true
+
+        try {
+          await this.setHubs({search: this.search.query})
+
+          this.setSearchLoading(true)
+        } catch(e) {
+          console.error(e.message)
+        }
       }
     }
   }
@@ -180,6 +223,11 @@
       }
     }
 
+    &__explore {
+      width: nonScalePx(250);
+      align-self: center;
+    }
+
     @media (max-width: $desktop-break-point) {
       margin-top: pxToVwDesktop(24);
 
@@ -216,6 +264,10 @@
             }
           }
         }
+      }
+
+      &__explore {
+        width: pxToVwDesktop(250);
       }
     }
   }

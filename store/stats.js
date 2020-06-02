@@ -1,10 +1,10 @@
 import {Stats} from "~/api/index"
 import {
-  SET_GENERAL_STATS
+  SET_ALL_STATS
 } from "~/consts/mutation-types"
 
 export const state = () => ({
-  general: {
+  all: {
     articles: 0,
     users: 0,
     organizations: 0,
@@ -14,20 +14,20 @@ export const state = () => ({
 })
 
 export const mutations = {
-  [SET_GENERAL_STATS](state, data) {
-    state.general = Object.assign(state.general, data)
+  [SET_ALL_STATS](state, data) {
+    state.all = Object.assign(state.all, data)
   },
 }
 
 export const actions = {
-  async setGeneralStats({commit}) {
-    const statsGeneral = Stats.general(this.$axios)
+  async setAllStats({commit}) {
+    const statsAll = Stats.all(this.$axios)
 
     try {
-      const data = await statsGeneral()
+      const data = await statsAll()
 
       if (data.context.success) {
-        commit(SET_GENERAL_STATS, data.data)
+        commit(SET_ALL_STATS, data.data)
       }
     } catch (error) {
       throw new Error(error)

@@ -64,8 +64,8 @@
   import TagsMixin from "~/mixins/tags"
   import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
   import UiBadge from "~/components/UI/Badges/Badge"
-  import UiSearchInput from "~/components/UI/Forms/SearchInput";
-  import UiButton from "~/components/UI/Buttons/Button";
+  import UiSearchInput from "~/components/UI/Forms/SearchInput"
+  import UiButton from "~/components/UI/Buttons/Button"
 
   export default {
     name: 'HomepageTabHubs',
@@ -232,6 +232,10 @@
 
     @media (max-width: $desktop-break-point) {
       margin-top: pxToVwDesktop(24);
+
+      &__search {
+        margin-bottom: pxToVwDesktop(24);
+      }
 
       &__hubs {
         &_head {

@@ -30,7 +30,8 @@
         "title": "Crypto Math",
         "articles": "Articles",
         "problems": "Problems",
-        "authors": "Authors"
+        "authors": "Authors",
+        "organizations": "Organizations"
       },
       "services": {
         "title": "Services",
@@ -173,9 +174,13 @@
         "explore": "Explore more {count} hubs"
       },
       "organizations": {
+        "search": {
+          "placeholder": "Search organization"
+        },
         "table": {
           "users": "Users"
-        }
+        },
+        "explore": "Explore more {count} organizations"
       }
     },
     "stats": {

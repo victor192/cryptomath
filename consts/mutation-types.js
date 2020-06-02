@@ -6,7 +6,7 @@ export const SET_PROFILE = 'SET_PROFILE'
 export const SET_ARTICLES = 'SET_ARTICLES'
 export const SET_ARTICLES_CONTEXT = 'SET_ARTICLES_CONTEXT'
 
-export const SET_GENERAL_STATS = 'SET_GENERAL_STATS'
+export const SET_ALL_STATS = 'SET_ALL_STATS'
 
 export const SET_HUBS = 'SET_HUBS'
 export const SET_HUBS_CONTEXT = 'SET_HUBS_CONTEXT'

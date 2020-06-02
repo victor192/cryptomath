@@ -106,25 +106,20 @@
       &_tab-active {
         position: relative;
         color: $black;
-
-        &::before {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          width: 100%;
-          height: nonScalePx(2);
-          background: $black;
-        }
+        border-bottom-color: $black !important;
       }
 
       &_tab {
         padding-top: nonScalePx(20);
         padding-bottom: nonScalePx(20);
         margin-right: nonScalePx(20);
+        border-bottom-style: solid;
+        border-bottom-color: transparent;
+        border-bottom-width: nonScalePx(2);
         cursor: pointer;
         font-family: $helvetica-bold;
         text-transform: uppercase;
-        transition: color .3s ease-out;
+        transition: all .3s ease-out;
 
         &:hover {
           @extend .homepage-content__tabs_tab-active;
@@ -143,16 +138,11 @@
       &__tabs {
         border-bottom-width: pxToVwDesktop(1);
 
-        &_tab-active {
-          &::before {
-            height: pxToVwDesktop(2);
-          }
-        }
-
         &_tab {
           padding-top: pxToVwDesktop(20);
           padding-bottom: pxToVwDesktop(20);
           margin-right: pxToVwDesktop(20);
+          border-bottom-width: pxToVwDesktop(2);
         }
       }
     }

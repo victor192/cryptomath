@@ -20,6 +20,10 @@
             class="link fonts__text1 fonts__text1_bold"
             :to="localePath('/users')"
           >{{ $t('layout.footer.general.authors') }}</nuxt-link>
+          <nuxt-link
+            class="link fonts__text1 fonts__text1_bold"
+            :to="localePath('/organizations')"
+          >{{ $t('layout.footer.general.organizations') }}</nuxt-link>
         </div>
         <!--  Services -->
         <div class="page-footer__content_item">

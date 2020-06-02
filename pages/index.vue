@@ -47,7 +47,7 @@
           limit: 10,
           offset: 0
         })
-        await store.dispatch('stats/setGeneralStats')
+        await store.dispatch('stats/setAllStats')
       } catch (e) {
         error({
           statusCode: 500,

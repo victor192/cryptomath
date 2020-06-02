@@ -92,7 +92,7 @@
     },
     computed: {
       ...mapState({
-        stats: state => state.stats.general
+        stats: state => state.stats.all
       })
     }
   }

@@ -1,4 +1,4 @@
-import all from '~/api/funds/all'
+import all from '~/api/organizations/all'
 
 const Funds = {
   all: all

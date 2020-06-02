@@ -22,14 +22,14 @@
 <script>
   import HomepageTabArticles from '~/components/Homepage/Tabs/Articles'
   import HomepageTabHubs from '~/components/Homepage/Tabs/Hubs'
-  import HomepageTabAssociations from '~/components/Homepage/Tabs/Associations'
+  import HomepageTabOrganizations from '~/components/Homepage/Tabs/Organizations'
 
   export default {
     name: 'HomepageContent',
     components: {
       'homepage-tab-articles': HomepageTabArticles,
       'homepage-tab-hubs': HomepageTabHubs,
-      'homepage-tab-associations': HomepageTabAssociations
+      'homepage-tab-organizations': HomepageTabOrganizations
     },
     data() {
       return {
@@ -45,9 +45,9 @@
             title: this.$t('homepage.content.tabs.hubs')
           },
           {
-            name: 'associations',
-            component: 'homepage-tab-associations',
-            title: this.$t('homepage.content.tabs.associations')
+            name: 'organizations',
+            component: 'homepage-tab-organizations',
+            title: this.$t('homepage.content.tabs.organizations')
           }
         ],
         activeTabProxy: {

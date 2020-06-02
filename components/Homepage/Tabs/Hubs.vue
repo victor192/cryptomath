@@ -21,7 +21,7 @@
         class="tab-hubs__hubs_row"
       >
         <img
-          :src="hubIconSrc(hub.id)"
+          :src="hub.logo"
           :alt="hub.name"
           class="logo"
         />
@@ -29,8 +29,8 @@
           <nuxt-link
             :to="hubLink(hub)"
             class="title__link fonts__text1 fonts__text1_bold"
-          >{{ getHubTitle(hub.id) }}</nuxt-link>
-          <span class="title__description fonts__text2 colors__font_pale-sky">{{ getHubDescription(hub.id) }}</span>
+          >{{ getHubTitle(hub) }}</nuxt-link>
+          <span class="title__description fonts__text2 colors__font_pale-sky">{{ getHubDescription(hub) }}</span>
           <div class="title__tags fonts__text2">
             <ui-badge
               v-for="tag in getTags(hub.tags.data)"
@@ -90,6 +90,8 @@
         hubs: state => state.hubs.hubs.filter(h => checkNested(h, [
           'id',
           'name',
+          'description',
+          'logo',
           [
             'tags',
             [

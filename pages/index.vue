@@ -43,7 +43,7 @@
           limit: 10,
           offset: 0
         })
-        await store.dispatch('funds/setFunds', {
+        await store.dispatch('organizations/setOrganizations', {
           limit: 10,
           offset: 0
         })

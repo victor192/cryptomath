@@ -1,25 +1,31 @@
 <template>
-  <div class="tab-associations">
-    <div class="tab-associations__funds">
-      <div class="tab-associations__funds_head fonts__text3 colors__font_gray">
+  <div class="tab-organizations">
+    <div class="tab-organizations__organizations">
+      <div class="tab-organizations__organizations_head fonts__text3 colors__font_gray">
         <span>{{ $t('homepage.content.hubs.table.name') }}</span>
+        <span class="cell-right">{{ $t('homepage.content.organizations.table.users') }}</span>
         <span class="cell-right">{{ $t('homepage.content.hubs.table.articles') }}</span>
       </div>
       <div
-        v-for="fund in funds"
-        :key="fund.id"
-        class="tab-associations__funds_row"
+        v-for="organization in organizations"
+        :key="organization.id"
+        class="tab-organizations__organizations_row"
       >
-        <img :src="fundLogoSrc(fund.id)" :alt="fund.description" class="logo"/>
+        <img
+          :src="organization.logo"
+          :alt="organization.description"
+          class="logo"
+        />
         <div class="title">
           <a
-            :href="fund.url"
+            :href="organization.url"
             target="_blank"
             class="title__link fonts__text1 fonts__text1_bold"
-          >{{ fund.title }}</a>
-          <span class="title__description fonts__text2 colors__font_pale-sky">{{ fund.description }}</span>
+          >{{ organization.title }}</a>
+          <span class="title__description fonts__text2 colors__font_pale-sky">{{ organization.description }}</span>
         </div>
-        <span class="cell-right fonts__text1 fonts__text1_bold colors__font_downriver">{{ fund.articles }}</span>
+        <span class="cell-right fonts__text1 fonts__text1_bold colors__font_downriver">{{ organization.users }}</span>
+        <span class="cell-right fonts__text1 fonts__text1_bold colors__font_downriver">{{ organization.articles }}</span>
       </div>
     </div>
   </div>
@@ -29,18 +35,20 @@
   import { mapState } from 'vuex'
   import {checkNested} from "~/tools/object"
 
-  import FundsMixin from "~/mixins/funds"
+  import OrganizationsMixin from "~/mixins/organizations"
 
   export default {
-    name: 'HomepageTabAssociations',
-    mixins: [FundsMixin],
+    name: 'HomepageTabOrganizations',
+    mixins: [OrganizationsMixin],
     computed: {
       ...mapState({
-        funds: state => state.funds.funds.filter(h => checkNested(h, [
+        organizations: state => state.organizations.organizations.filter(h => checkNested(h, [
           'id',
           'title',
           'description',
           'url',
+          'logo',
+          'users',
           'articles'
         ]))
       })
@@ -52,12 +60,12 @@
   @import "../../../assets/styles/base/grid";
   @import "../../../assets/styles/base/colors";
 
-  .tab-associations {
+  .tab-organizations {
     margin-top: nonScalePx(24);
     display: flex;
     flex-direction: column;
 
-    &__funds {
+    &__organizations {
       display: flex;
       flex-direction: column;
 
@@ -67,7 +75,7 @@
 
       &_head {
         display: grid;
-        grid-template-columns: 4fr 1fr;
+        grid-template-columns: 4fr 1fr 1fr;
         grid-template-rows: 1fr;
         border-bottom-style: solid;
         border-bottom-width: nonScalePx(1);
@@ -78,7 +86,7 @@
 
       &_row {
         display: grid;
-        grid-template-columns: 0.6fr 3.4fr 1fr;
+        grid-template-columns: .9fr 3.1fr 1fr 1fr;
         grid-template-rows: 1fr;
         margin-bottom: nonScalePx(20);
 

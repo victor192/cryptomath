@@ -10,6 +10,7 @@ import * as statsBlock from "./stats/block"
 import * as statsKeys from "./stats/keys"
 import * as statsTag from "./stats/tag"
 import * as statsUser from "./stats/user"
+import * as statsTeam from "./stats/team"
 import * as statsWriting from "./stats/writing"
 import * as userLogout from "./user/logout"
 import * as userMedal from "./user/medal"
@@ -32,6 +33,7 @@ const instances = {
     keys: statsKeys,
     tag: statsTag,
     user: statsUser,
+    team: statsTeam,
     writing: statsWriting
   },
   user: {

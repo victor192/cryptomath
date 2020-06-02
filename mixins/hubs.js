@@ -13,33 +13,15 @@ export default {
 
       return false
     },
-    getHubTitle(id) {
-      const locale = this.getHubLocale(id)
+    getHubTitle(hub) {
+      const locale = this.getHubLocale(hub.id)
 
-      return locale ? locale.title : ''
+      return locale ? locale.title : hub.name
     },
-    getHubDescription(id) {
-      const locale = this.getHubLocale(id)
+    getHubDescription(hub) {
+      const locale = this.getHubLocale(hub.id)
 
-      return locale ? locale.description : ''
-    },
-    hubIconSrc(id) {
-      const path = '/images/hubs'
-      let name = 'mathematics'
-
-      switch (id) {
-        case 1:
-          name = 'mathematics'
-          break
-        case 2:
-          name = 'programming'
-          break
-        case 3:
-          name = 'blockchain'
-          break
-      }
-
-      return path + '/' + name + '.svg'
+      return locale ? locale.description : hub.description
     },
     hubLink(hub) {
       return this.localePath({name: 'hubs-id', params: {id: hub.id}})

@@ -21,7 +21,7 @@
         <span class="fonts__text3">
           <strong>0.2$</strong>
         </span>
-        <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.funds') }}</span>
+        <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.funded') }}</span>
       </div>
     </div>
     <div class="article__content">
@@ -35,7 +35,7 @@
               variant="hub"
               class="categorization__hubs_hub"
               :to="hubLink(hub)"
-            >{{ getHubTitle(hub.id) }}</ui-badge>
+            >{{ getHubTitle(hub) }}</ui-badge>
           </div>
           <div class="categorization__hubs categorization__tags fonts__text2">
             <ui-badge
@@ -142,18 +142,6 @@
       },
       userLink() {
         return this.localePath({name: 'users-id', params: {id: this.data.author.id}})
-      },
-      fundsText() {
-        switch(this.data.id) {
-          case 1:
-            return '0.0000245 BTC is funded'
-          case 2:
-            return '4.82768 USDT is funded'
-          case 3:
-            return '2 GRAM is funded'
-        }
-
-        return false
       }
     }
   }

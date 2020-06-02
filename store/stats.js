@@ -7,6 +7,7 @@ export const state = () => ({
   general: {
     articles: 0,
     users: 0,
+    organizations: 0,
     hubs: 0,
     tags: 0
   }

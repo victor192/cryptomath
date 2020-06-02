@@ -40,6 +40,18 @@
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-flat-icon
+          :icon="['stats', 'team']"
+          size="lg"
+          fill="#6a737c"
+        />
+        <nuxt-link
+          :to="localePath('/organizations')"
+          class="stats__text"
+        >{{ $t('homepage.stats.organizations') }}</nuxt-link>
+        <span class="stats__count">{{ stats.organizations }}</span>
+      </div>
+      <div class="stats fonts__text2 colors__font_pale-sky">
+        <ui-flat-icon
           :icon="['stats', 'block']"
           size="lg"
           fill="#6a737c"

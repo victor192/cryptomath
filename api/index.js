@@ -1,11 +1,11 @@
 import Captcha from '~/api/captcha/index'
-import Auth from "~/api/auth/index";
-import Profile from "~/api/profile/index";
+import Auth from "~/api/auth/index"
+import Profile from "~/api/profile/index"
 import Articles from "~/api/articles/index"
 import Hubs from "~/api/hubs/index"
 import Tags from "~/api/tags"
 import Stats from "~/api/stats/index"
-import Funds from "~/api/funds";
+import Organizations from "~/api/organizations"
 
 export {
   Captcha,
@@ -15,5 +15,5 @@ export {
   Hubs,
   Tags,
   Stats,
-  Funds
+  Organizations
 }

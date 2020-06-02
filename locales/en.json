@@ -138,7 +138,7 @@
       "tabs": {
         "articles": "Articles",
         "hubs": "Hubs",
-        "associations": "Associations"
+        "organizations": "Organizations"
       },
       "articles": {
         "sorts": {
@@ -155,7 +155,7 @@
           "stats": {
             "answers": "answers",
             "votes": "votes",
-            "funds": "funded"
+            "funded": "funded"
           },
           "created_at": "Published {date} at {time}"
         },
@@ -171,6 +171,11 @@
           "articles": "Articles"
         },
         "explore": "Explore more {count} hubs"
+      },
+      "organizations": {
+        "table": {
+          "users": "Users"
+        }
       }
     },
     "stats": {
@@ -178,9 +183,9 @@
       "articles": "Articles",
       "problems": "Problems",
       "users": "Users",
+      "organizations": "Organizations",
       "hubs": "Hubs",
-      "tags": "Tags",
-      "games": "Games"
+      "tags": "Tags"
     },
     "problems": {
       "title": "Open problems",

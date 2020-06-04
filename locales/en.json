@@ -207,6 +207,11 @@
       }
     }
   },
+  "articles": {
+    "content": {
+      "title": "All articles"
+    }
+  },
   "errors": {
     "text": "Do math or go home"
   }

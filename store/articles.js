@@ -23,7 +23,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async setArticles({ state, commit }, { filters, sorts, limit, offset, search}) {
+  async setArticles({ state, commit }, { filters, sorts, limit, offset, search, extended}) {
     const articlesAll = Articles.all(this.$axios)
 
     try {
@@ -32,7 +32,8 @@ export const actions = {
         sorts || null,
         limit || state.limit,
         offset || state.offset,
-        search || false
+        search || false,
+        extended || false
       )
 
       if (data.context.success) {

@@ -1,4 +1,3 @@
-import webpack from 'webpack'
 require('dotenv').config()
 
 export default {
@@ -80,6 +79,13 @@ export default {
   ** Build configuration
   */
   build: {
+    postcss: {
+      preset: {
+        autoprefixer: {
+          grid: true
+        }
+      }
+    },
     /*
     ** You can extend webpack config here
     */

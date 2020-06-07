@@ -209,7 +209,15 @@
   },
   "articles": {
     "content": {
-      "title": "All articles"
+      "title": "All articles",
+      "actionbar": {
+        "total": "{total} articles",
+        "actions": {
+          "new": "Newest",
+          "active": "Active",
+          "unaswered": "Unanswered"
+        }
+      }
     }
   },
   "errors": {

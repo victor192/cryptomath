@@ -73,7 +73,7 @@
               this.focused = true
             },
             blur: () => {
-              setTimeout(() => this.focused = false, 200)
+              setTimeout(() => this.focused = false, 100)
             },
             keyup: this.onSubmit
           }

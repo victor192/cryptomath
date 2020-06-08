@@ -7,11 +7,6 @@
         default: false
       }
     },
-    methods: {
-      isAlign(value) {
-        return this.align === value
-      }
-    },
     render(h) {
       return h(
         'div',

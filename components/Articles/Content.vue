@@ -1,5 +1,5 @@
 <template>
-  <div class="articles-content">
+  <div class="content articles-content">
     <div class="articles-content__title">
       <h4 class="fonts__h4 colors__font_shark">
         {{ $t("articles.content.title") }}
@@ -27,11 +27,6 @@ export default {
 
 .articles-content {
   height: 100%;
-  background: $white;
-  border-style: solid;
-  border-width: nonScalePx(1);
-  border-color: $iron;
-  padding: nonScalePx(24);
   display: flex;
   flex-direction: column;
 
@@ -46,9 +41,6 @@ export default {
   }
 
   @media (max-width: $desktop-break-point) {
-    border-width: pxToVwDesktop(1);
-    padding: pxToVwDesktop(24);
-
     &__actionbar {
       margin-top: pxToVwDesktop(24);
     }

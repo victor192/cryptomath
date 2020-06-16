@@ -1,19 +1,21 @@
 <template>
-  <div class="container about-container">
-    About page
+  <div class="container py-5">
+    <div class="about">
+      <about-content />
+    </div>
   </div>
 </template>
 
+<script>
+import AboutContent from "~/components/About/Content"
+export default {
+  components: { AboutContent },
+}
+</script>
+
 <style lang="scss" scoped>
-@import "../assets/styles/base/grid";
-
-.about-container {
-  padding-top: nonScalePx(50);
-  padding-bottom: nonScalePx(50);
-
-  @media (max-width: $desktop-break-point) {
-    padding-top: pxToVwDesktop(50);
-    padding-bottom: pxToVwDesktop(50);
-  }
+.about {
+  height: 100%;
+  display: flex;
 }
 </style>

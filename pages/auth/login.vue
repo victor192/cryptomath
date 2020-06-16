@@ -22,8 +22,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/base/grid";
-
 .auth-login {
   height: 100vh;
   display: flex;

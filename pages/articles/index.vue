@@ -1,5 +1,5 @@
 <template>
-  <div class="container articles-container">
+  <div class="container py-5">
     <div class="articles">
       <div class="articles__content">
         <articles-content />
@@ -38,16 +38,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/styles/base/grid";
 
-.articles-container {
-  padding-top: nonScalePx(50);
-  padding-bottom: nonScalePx(50);
-
-  @media (max-width: $desktop-break-point) {
-    padding-top: pxToVwDesktop(50);
-    padding-bottom: pxToVwDesktop(50);
-  }
-}
-
 .articles {
   height: 100%;
   display: flex;
@@ -63,6 +53,13 @@ export default {
     margin-left: nonScalePx(24);
     display: flex;
     flex-direction: column;
+  }
+
+  @media (max-width: $desktop-break-point) {
+    &__filters {
+      width: pxToVwDesktop(300);
+      margin-left: pxToVwDesktop(24);
+    }
   }
 }
 </style>

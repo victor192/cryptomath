@@ -1,0 +1,12 @@
+.content {
+  background: $white;
+  border-style: solid;
+  border-width: nonScalePx(1);
+  border-color: $iron;
+  padding: nonScalePx(24);
+
+  @media (max-width: $desktop-break-point) {
+    border-width: pxToVwDesktop(1);
+    padding: pxToVwDesktop(24);
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage-content">
+  <div class="content homepage-content">
     <div class="homepage-content__title">
       <h4 class="fonts__h4 colors__font_shark">
         {{ $t("homepage.content.title") }}
@@ -86,11 +86,6 @@ export default {
 
 .homepage-content {
   height: 100%;
-  background: $white;
-  border-style: solid;
-  border-width: nonScalePx(1);
-  border-color: $iron;
-  padding: nonScalePx(24);
   display: flex;
   flex-direction: column;
 
@@ -133,9 +128,6 @@ export default {
   }
 
   @media (max-width: $desktop-break-point) {
-    border-width: pxToVwDesktop(1);
-    padding: pxToVwDesktop(24);
-
     &__title {
       height: pxToVwDesktop(90);
     }

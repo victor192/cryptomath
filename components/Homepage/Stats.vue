@@ -3,12 +3,14 @@
     <span
       slot="header"
       class="fonts__text1 fonts__text1_bold colors__font_pale-sky"
-    >{{ $t("homepage.stats.title") }}</span>
+    >
+      {{ $t("homepage.stats.title") }}
+    </span>
     <template slot="body">
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-flat-icon :icon="['stats', 'writing']" size="lg" fill="#6a737c" />
         <nuxt-link :to="localePath('/articles')" class="stats__text">
-          $t("homepage.stats.articles") }}
+          {{ $t("homepage.stats.articles") }}
         </nuxt-link>
         <span class="stats__count">{{ stats.articles }}</span>
       </div>

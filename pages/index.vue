@@ -1,5 +1,5 @@
 <template>
-  <div class="container homepage-container">
+  <div class="container py-5">
     <div class="homepage">
       <div class="homepage__content">
         <homepage-content />
@@ -60,16 +60,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/base/grid";
-
-.homepage-container {
-  padding-top: nonScalePx(50);
-  padding-bottom: nonScalePx(50);
-
-  @media (max-width: $desktop-break-point) {
-    padding-top: pxToVwDesktop(50);
-    padding-bottom: pxToVwDesktop(50);
-  }
-}
 
 .homepage {
   height: 100%;

@@ -33,7 +33,6 @@ export default {
 
   &__title {
     margin-left: nonScalePx(16);
-    margin-top: nonScalePx(5);
   }
 
   @media (max-width: $desktop-break-point) {
@@ -44,7 +43,6 @@ export default {
 
     &__title {
       margin-left: pxToVwDesktop(16);
-      margin-top: pxToVwDesktop(5);
     }
   }
 }

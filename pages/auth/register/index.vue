@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid auth-register-container">
+  <section class="container-fluid py-5">
     <div class="auth-register">
       <register-content />
     </div>
@@ -28,16 +28,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/base/grid";
-
-.auth-register-container {
-  padding: nonScalePx(50);
-
-  @media (max-width: $desktop-break-point) {
-    padding: pxToVwDesktop(50);
-  }
-}
-
 .auth-register {
   height: 100%;
   display: flex;

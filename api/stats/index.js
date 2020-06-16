@@ -1,7 +1,7 @@
-import all from '~/api/stats/all'
+import all from "~/api/stats/all"
 
 const Stats = {
-  all: all
+  all: all,
 }
 
 export default Stats

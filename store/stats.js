@@ -1,7 +1,5 @@
-import {Stats} from "~/api/index"
-import {
-  SET_ALL_STATS
-} from "~/consts/mutation-types"
+import { Stats } from "~/api/index"
+import { SET_ALL_STATS } from "~/consts/mutation-types"
 
 export const state = () => ({
   all: {
@@ -9,8 +7,8 @@ export const state = () => ({
     users: 0,
     organizations: 0,
     hubs: 0,
-    tags: 0
-  }
+    tags: 0,
+  },
 })
 
 export const mutations = {
@@ -20,7 +18,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async setAllStats({commit}) {
+  async setAllStats({ commit }) {
     const statsAll = Stats.all(this.$axios)
 
     try {
@@ -32,6 +30,5 @@ export const actions = {
     } catch (error) {
       throw new Error(error)
     }
-  }
+  },
 }
-

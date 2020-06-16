@@ -1,13 +1,13 @@
 <template>
-  <ui-card-block
-    variant="default"
-    class="problems-content"
-  >
-    <span slot="header" class="fonts__text1 fonts__text1_bold colors__font_trout">{{ $t('homepage.problems.title') }}</span>
+  <ui-card-block variant="default" class="problems-content">
+    <span
+      slot="header"
+      class="fonts__text1 fonts__text1_bold colors__font_trout"
+    >{{ $t("homepage.problems.title") }}</span>
     <template slot="body">
       <div class="problems-header fonts__text3 colors__font_trout">
-        <span>{{ $t('homepage.problems.header.name') }}</span>
-        <span>{{ $t('homepage.problems.header.reward') }}</span>
+        <span>{{ $t("homepage.problems.header.name") }}</span>
+        <span>{{ $t("homepage.problems.header.reward") }}</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">Bitcoin scalability problem</span>
@@ -42,64 +42,64 @@
 </template>
 
 <script>
-  import UiCardBlock from "~/components/UI/Cards/CardBlock";
+import UiCardBlock from "~/components/UI/Cards/CardBlock"
 
-  export default {
-    name: 'HomepageProblems',
-    components: {
-      UiCardBlock
-    }
-  }
+export default {
+  name: "HomepageProblems",
+  components: {
+    UiCardBlock,
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-  @import "../../assets/styles/base/grid";
+@import "../../assets/styles/base/grid";
 
-  .problems-content {
-    margin-bottom: nonScalePx(16);
+.problems-content {
+  margin-bottom: nonScalePx(16);
 
-    @media (max-width: $desktop-break-point) {
-      margin-bottom: pxToVwDesktop(16);
-    }
+  @media (max-width: $desktop-break-point) {
+    margin-bottom: pxToVwDesktop(16);
+  }
+}
+
+.problems-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: nonScalePx(8);
+
+  @media (max-width: $desktop-break-point) {
+    margin-bottom: pxToVwDesktop(8);
+  }
+}
+
+.problems-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: nonScalePx(10);
+
+  &:last-child {
+    margin-bottom: 0;
   }
 
-  .problems-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: nonScalePx(8);
-
-    @media (max-width: $desktop-break-point) {
-      margin-bottom: pxToVwDesktop(8);
-    }
+  &__title {
+    font-weight: 700;
+    white-space: normal;
+    word-break: break-word;
   }
 
-  .problems-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: nonScalePx(10);
+  &__reward {
+    min-width: nonScalePx(90);
+  }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &__title {
-      font-weight: 700;
-      white-space: normal;
-      word-break: break-word;
-    }
+  @media (max-width: $desktop-break-point) {
+    margin-bottom: pxToVwDesktop(10);
 
     &__reward {
-      min-width: nonScalePx(90);
-    }
-
-    @media (max-width: $desktop-break-point) {
-      margin-bottom: pxToVwDesktop(10);
-
-      &__reward {
-        text-align: right;
-        min-width: pxToVwDesktop(90);
-      }
+      text-align: right;
+      min-width: pxToVwDesktop(90);
     }
   }
+}
 </style>

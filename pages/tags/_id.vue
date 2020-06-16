@@ -1,3 +1,3 @@
 <template>
-  <span>Tag page</span>
+  <span>Tag page. This page is under construction.</span>
 </template>

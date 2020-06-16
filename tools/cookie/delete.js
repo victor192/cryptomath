@@ -1,8 +1,8 @@
-import set from '~/tools/cookie/set'
+import set from "~/tools/cookie/set"
 
-const _delete = async name => {
-  set(name, '', {
-    'max-age': -1,
+const _delete = async (name) => {
+  set(name, "", {
+    "max-age": -1,
   })
 }
 

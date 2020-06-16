@@ -1,7 +1,7 @@
-import get from '~/api/profile/get'
+import get from "~/api/profile/get"
 
 const Profile = {
-  get: get
+  get: get,
 }
 
 export default Profile

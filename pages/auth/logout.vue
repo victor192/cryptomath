@@ -1,13 +1,13 @@
 <script>
-  export default {
-    fetch({ store, $axios, route}) {
-      store.dispatch('auth/removeToken')
+export default {
+  fetch({ store, $axios }) {
+    store.dispatch("auth/removeToken")
 
-      $axios.setToken(false, 'Bearer')
+    $axios.setToken(false, "Bearer")
 
-      if (process.browser) {
-        location.reload()
-      }
+    if (process.browser) {
+      location.reload()
     }
-  }
+  },
+}
 </script>

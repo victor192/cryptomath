@@ -1,3 +1,3 @@
 <template>
-  <span>Organization page</span>
+  <span>Organization page. This page is under construction.</span>
 </template>

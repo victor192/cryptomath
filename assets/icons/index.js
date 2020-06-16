@@ -20,13 +20,13 @@ const instances = {
     twitter: socialTwitter,
     facebook: socialFacebook,
     telegram: socialTelegram,
-    github: socialGithub
+    github: socialGithub,
   },
   input: {
     warning: inputWarning,
     search: inputSearch,
     close: inputClose,
-    circleNotch: inputCircleNotch
+    circleNotch: inputCircleNotch,
   },
   stats: {
     block: statsBlock,
@@ -34,12 +34,12 @@ const instances = {
     tag: statsTag,
     user: statsUser,
     team: statsTeam,
-    writing: statsWriting
+    writing: statsWriting,
   },
   user: {
     logout: userLogout,
-    medal: userMedal
-  }
+    medal: userMedal,
+  },
 }
 
 export const getIconObject = (icon) => {
@@ -48,8 +48,7 @@ export const getIconObject = (icon) => {
   for (let name of icon) {
     if (iconObject[name]) {
       iconObject = iconObject[name]
-    }
-    else {
+    } else {
       return false
     }
   }

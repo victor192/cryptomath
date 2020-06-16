@@ -3,29 +3,37 @@
     <div class="article__stats">
       <div
         class="article__stats_item colors__font_pale-sky"
-        :class="{'article__stats_item-answered': isAnswered}"
+        :class="{ 'article__stats_item-answered': isAnswered }"
       >
         <span class="fonts__text2">
           <strong>{{ data.answers }}</strong>
         </span>
-        <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.answers') }}</span>
+        <span class="fonts__text4">{{
+          $t("homepage.content.articles.article.stats.answers")
+        }}</span>
       </div>
       <div class="article__stats_item colors__font_pale-sky">
         <span
           class="fonts__text2"
-          :class="{'colors__font_persian-red': isNegativeVotes}"
+          :class="{ 'colors__font_persian-red': isNegativeVotes }"
         >{{ data.votes }}</span>
-        <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.votes') }}</span>
+        <span class="fonts__text4">{{
+          $t("homepage.content.articles.article.stats.votes")
+        }}</span>
       </div>
-      <div class="article__stats_item article__stats_item-funded colors__font_pale-sky">
+      <div
+        class="article__stats_item article__stats_item-funded colors__font_pale-sky"
+      >
         <span class="fonts__text3">
           <strong>0.2$</strong>
         </span>
-        <span class="fonts__text4">{{ $t('homepage.content.articles.article.stats.funded') }}</span>
+        <span class="fonts__text4">{{
+          $t("homepage.content.articles.article.stats.funded")
+        }}</span>
       </div>
     </div>
     <div class="article__content">
-      <article-title :title="data.title"/>
+      <article-title :title="data.title" />
       <div class="article__content_info">
         <div class="categorization">
           <div class="categorization__hubs fonts__text2">
@@ -35,7 +43,9 @@
               variant="hub"
               class="categorization__hubs_hub"
               :to="hubLink(hub)"
-            >{{ getHubTitle(hub) }}</ui-badge>
+            >
+              {{ getHubTitle(hub) }}
+            </ui-badge>
           </div>
           <div class="categorization__hubs categorization__tags fonts__text2">
             <ui-badge
@@ -44,26 +54,29 @@
               variant="tag"
               class="categorization__hubs_hub"
               :to="tagLink(tag)"
-            >{{ tag.name }}</ui-badge>
+            >
+              {{ tag.name }}
+            </ui-badge>
           </div>
         </div>
         <div class="author">
           <div class="author__action-time fonts__text2 colors__font_gray-oslo">
-            <article-time :date-string="data.createdAt"/>
+            <article-time :date-string="data.createdAt" />
           </div>
           <div class="author__user">
             <nuxt-link :to="userLink">
-              <ui-user-avatar
-                :hash="data.author.hash"
-              />
+              <ui-user-avatar :hash="data.author.hash" />
             </nuxt-link>
             <div class="author__user_details">
-              <nuxt-link
-                :to="userLink"
-                class="fonts__text2"
-              >{{ data.author.displayName}}</nuxt-link>
+              <nuxt-link :to="userLink" class="fonts__text2">
+                {{ data.author.displayName }}
+              </nuxt-link>
               <div class="flairs">
-                <div class="flairs__reputation fonts__text2 colors__font_gray-oslo">1</div>
+                <div
+                  class="flairs__reputation fonts__text2 colors__font_gray-oslo"
+                >
+                  1
+                </div>
                 <ui-flat-icon
                   :icon="['user', 'medal']"
                   size="sm"
@@ -79,232 +92,229 @@
 </template>
 
 <script>
-  import {checkNested} from "~/tools/object"
+import { checkNested } from "~/tools/object"
 
-  import HubsMixin from "~/mixins/hubs"
-  import TagsMixin from "~/mixins/tags"
-  import ArticleTitle from "~/components/Homepage/Tabs/Articles/Article/Title";
-  import ArticleTime from "~/components/Homepage/Tabs/Articles/Article/Time"
-  import UiBadge from "~/components/UI/Badges/Badge";
-  import UiUserAvatar from '~/components/UI/User/Avatar'
-  import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
+import HubsMixin from "~/mixins/hubs"
+import TagsMixin from "~/mixins/tags"
+import ArticleTitle from "~/components/Homepage/Tabs/Articles/Article/Title"
+import ArticleTime from "~/components/Homepage/Tabs/Articles/Article/Time"
+import UiBadge from "~/components/UI/Badges/Badge"
+import UiUserAvatar from "~/components/UI/User/Avatar"
+import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
 
-  export default {
-    name: 'HomepageTabArticle',
-    mixins: [HubsMixin, TagsMixin],
-    components: {
-      ArticleTitle,
-      ArticleTime,
-      UiBadge,
-      UiUserAvatar,
-      UiFlatIcon
+export default {
+  name: "HomepageTabArticle",
+  components: {
+    ArticleTitle,
+    ArticleTime,
+    UiBadge,
+    UiUserAvatar,
+    UiFlatIcon,
+  },
+  mixins: [HubsMixin, TagsMixin],
+  props: {
+    data: {
+      type: Object,
+      default: () => ({
+        id: 0,
+        title: "",
+        answers: 0,
+        votes: 0,
+        hubs: [],
+        tags: [],
+        createdAt: "2020-04-25T11:30:30",
+        author: {
+          hash: "23c6b4ac5756c0adfc5ecdc4a15b9d83",
+          displayName: "",
+        },
+      }),
+      validator: (value) =>
+        checkNested(value, [
+          "id",
+          "title",
+          "createdAt",
+          "answers",
+          "votes",
+          ["author", ["hash", "displayName"]],
+          "hubs",
+          "tags",
+        ]),
     },
-    props: {
-      data: {
-        type: Object,
-        default: () => ({
-          id: 0,
-          title: '',
-          answers: 0,
-          votes: 0,
-          hubs: [],
-          tags: [],
-          createdAt: '2020-04-25T11:30:30',
-          author: {
-            hash: '23c6b4ac5756c0adfc5ecdc4a15b9d83',
-            displayName: ''
-          }
-        }),
-        validator: value => checkNested(value, [
-          'id',
-          'title',
-          'createdAt',
-          'answers',
-          'votes',
-          [
-            'author',
-            [
-              'hash',
-              'displayName'
-            ]
-          ],
-          'hubs',
-          'tags'
-        ])
-      }
+  },
+  computed: {
+    isAnswered() {
+      return this.data.answers > 0
     },
-    computed: {
-      isAnswered() {
-        return this.data.answers > 0
-      },
-      isNegativeVotes() {
-        return this.data.votes < 0
-      },
-      userLink() {
-        return this.localePath({name: 'users-id', params: {id: this.data.author.id}})
-      }
-    }
-  }
+    isNegativeVotes() {
+      return this.data.votes < 0
+    },
+    userLink() {
+      return this.localePath({
+        name: "users-id",
+        params: { id: this.data.author.id },
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-  @import "../../../../assets/styles/base/grid";
-  @import "../../../../assets/styles/base/colors";
-  @import "../../../../assets/styles/base/fonts";
+@import "../../../../assets/styles/base/grid";
+@import "../../../../assets/styles/base/colors";
+@import "../../../../assets/styles/base/fonts";
 
-  .article {
+.article {
+  display: flex;
+  padding: nonScalePx(12) nonScalePx(24);
+
+  &__stats {
+    width: nonScalePx(68);
+    margin-right: nonScalePx(16);
     display: flex;
-    padding: nonScalePx(12) nonScalePx(24);
+    flex-direction: column;
 
-    &__stats {
-      width: nonScalePx(68);
-      margin-right: nonScalePx(16);
+    &_item {
+      width: 100%;
+      height: nonScalePx(52);
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: nonScalePx(7);
+      margin-bottom: nonScalePx(10);
 
-      &_item {
-        width: 100%;
-        height: nonScalePx(52);
+      &-answered {
+        border-style: solid;
+        border-width: nonScalePx(1);
+        border-radius: nonScalePx(3);
+        border-color: $fern;
+        color: $green-chateau;
+      }
+
+      &-funded {
+        color: #da670b;
+      }
+    }
+  }
+
+  &__content {
+    flex: 1 auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+
+    &_info {
+      margin-top: nonScalePx(15);
+      display: flex;
+
+      .categorization {
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding: nonScalePx(7);
-        margin-bottom: nonScalePx(10);
 
-        &-answered {
-          border-style: solid;
-          border-width: nonScalePx(1);
-          border-radius: nonScalePx(3);
-          border-color: $fern;
-          color: $green-chateau;
+        &__hubs {
+          display: flex;
+          flex-wrap: wrap;
+
+          &_hub {
+            margin-right: nonScalePx(6);
+            margin-bottom: nonScalePx(6);
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
         }
 
-        &-funded {
-          color: #da670b;
+        &__tags {
+          margin-top: nonScalePx(6) !important;
         }
+      }
+
+      .author {
+        width: nonScalePx(230);
+        display: flex;
+        flex-direction: column;
+
+        &__action-time {
+          margin-bottom: nonScalePx(5);
+        }
+
+        &__user {
+          display: flex;
+
+          &_details {
+            margin-top: nonScalePx(4);
+            margin-left: nonScalePx(6);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .flairs {
+              display: flex;
+
+              &__reputation {
+                font-family: $helvetica-bold;
+                margin-right: nonScalePx(5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: $desktop-break-point) {
+    padding: pxToVwDesktop(12) pxToVwDesktop(24);
+
+    &__stats {
+      width: pxToVwDesktop(68);
+      margin-right: pxToVwDesktop(16);
+
+      &_item-answered {
+        border-width: pxToVwDesktop(1);
+        border-radius: pxToVwDesktop(3);
+      }
+
+      &_item {
+        height: pxToVwDesktop(52);
+        padding: pxToVwDesktop(7);
+        margin-bottom: pxToVwDesktop(10);
       }
     }
 
     &__content {
-      flex: 1 auto;
-      width: auto;
-      display: flex;
-      flex-direction: column;
-
       &_info {
-        margin-top: nonScalePx(15);
-        display: flex;
+        margin-top: pxToVwDesktop(15);
 
         .categorization {
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-
           &__hubs {
-            display: flex;
-            flex-wrap: wrap;
-
             &_hub {
-              margin-right: nonScalePx(6);
-              margin-bottom: nonScalePx(6);
-
-              &:last-child {
-                margin-right: 0;
-              }
+              margin-right: pxToVwDesktop(6);
+              margin-bottom: pxToVwDesktop(6);
             }
           }
 
           &__tags {
-            margin-top: nonScalePx(6) !important;
+            margin-top: pxToVwDesktop(6) !important;
           }
         }
 
         .author {
-          width: nonScalePx(230);
-          display: flex;
-          flex-direction: column;
+          width: pxToVwDesktop(230);
 
           &__action-time {
-            margin-bottom: nonScalePx(5);
+            margin-bottom: pxToVwDesktop(5);
           }
 
           &__user {
-            display: flex;
-
             &_details {
-              margin-top: nonScalePx(4);
-              margin-left: nonScalePx(6);
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
+              margin-top: pxToVwDesktop(4);
+              margin-left: pxToVwDesktop(6);
 
               .flairs {
-                display: flex;
-
                 &__reputation {
-                  font-family: $helvetica-bold;
-                  margin-right: nonScalePx(5);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    @media (max-width: $desktop-break-point) {
-      padding: pxToVwDesktop(12) pxToVwDesktop(24);
-
-      &__stats {
-        width: pxToVwDesktop(68);
-        margin-right: pxToVwDesktop(16);
-
-        &_item-answered {
-          border-width: pxToVwDesktop(1);
-          border-radius: pxToVwDesktop(3);
-        }
-
-        &_item {
-          height: pxToVwDesktop(52);
-          padding: pxToVwDesktop(7);
-          margin-bottom: pxToVwDesktop(10);
-        }
-      }
-
-      &__content {
-        &_info {
-          margin-top: pxToVwDesktop(15);
-
-          .categorization {
-            &__hubs {
-              &_hub {
-                margin-right: pxToVwDesktop(6);
-                margin-bottom: pxToVwDesktop(6);
-              }
-            }
-
-            &__tags {
-              margin-top: pxToVwDesktop(6) !important;
-            }
-          }
-
-          .author {
-            width: pxToVwDesktop(230);
-
-            &__action-time {
-              margin-bottom: pxToVwDesktop(5);
-            }
-
-            &__user {
-              &_details {
-                margin-top: pxToVwDesktop(4);
-                margin-left: pxToVwDesktop(6);
-
-                .flairs {
-                  &__reputation {
-                    margin-right: pxToVwDesktop(5);
-                  }
+                  margin-right: pxToVwDesktop(5);
                 }
               }
             }
@@ -313,4 +323,5 @@
       }
     }
   }
+}
 </style>

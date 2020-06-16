@@ -6,12 +6,12 @@ import {
   REMOVE_FILTER,
   CLEAR_FILTERS,
   ADD_FILTER,
-  EDIT_FILTER
-} from "~/consts/mutation-types";
+  EDIT_FILTER,
+} from "~/consts/mutation-types"
 
 export const state = () => ({
   sorts: [],
-  filters: []
+  filters: [],
 })
 
 export const mutations = {
@@ -38,54 +38,56 @@ export const mutations = {
   },
   [EDIT_FILTER](state, data) {
     state.filters.splice(data.index, 1, data.value)
-  }
+  },
 }
 
 export const actions = {
-  addSort({state, commit}, value) {
-    const sortIndex = state.sorts.findIndex(s => s['field'] === value['field'])
+  addSort({ state, commit }, value) {
+    const sortIndex = state.sorts.findIndex(
+      (s) => s["field"] === value["field"]
+    )
 
     if (sortIndex !== -1) {
       commit(EDIT_SORT, {
         index: sortIndex,
-        value
+        value,
       })
-    }
-    else {
+    } else {
       commit(ADD_SORT, value)
     }
   },
-  removeSort({state, commit}, field) {
-    const sortIndex = state.sorts.findIndex(s => s['field'] === field)
+  removeSort({ state, commit }, field) {
+    const sortIndex = state.sorts.findIndex((s) => s["field"] === field)
 
     if (sortIndex !== -1) {
       commit(REMOVE_SORT, sortIndex)
     }
   },
-  clearSorts({commit}) {
+  clearSorts({ commit }) {
     commit(CLEAR_SORTS)
   },
-  addFilter({state, commit}, value) {
-    const filterIndex = state.filters.findIndex(s => s['field'] === value['field'])
+  addFilter({ state, commit }, value) {
+    const filterIndex = state.filters.findIndex(
+      (s) => s["field"] === value["field"]
+    )
 
     if (filterIndex !== -1) {
       commit(EDIT_FILTER, {
         index: filterIndex,
-        value
+        value,
       })
-    }
-    else {
+    } else {
       commit(ADD_FILTER, value)
     }
   },
-  removeFilter({state, commit}, field) {
-    const filterIndex = state.filters.findIndex(s => s['field'] === field)
+  removeFilter({ state, commit }, field) {
+    const filterIndex = state.filters.findIndex((s) => s["field"] === field)
 
     if (filterIndex !== -1) {
       commit(REMOVE_FILTER, filterIndex)
     }
   },
-  clearFilters({commit}) {
+  clearFilters({ commit }) {
     commit(CLEAR_FILTERS)
   },
 }

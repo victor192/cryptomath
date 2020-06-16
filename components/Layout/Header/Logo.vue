@@ -1,7 +1,9 @@
 <template>
   <div class="header-logo" @click="goToHomepage">
-    <img src="~/assets/images/logo.svg" alt="logo image" />
-    <h4 class="header-logo__title fonts__h4 colors__font_white">{{ $t('layout.header.project') }}</h4>
+    <img src="~/assets/images/logo.svg" alt="logo image" >
+    <h4 class="header-logo__title fonts__h4 colors__font_white">
+      {{ $t("layout.header.project") }}
+    </h4>
   </div>
 </template>
 

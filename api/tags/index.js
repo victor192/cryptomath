@@ -1,7 +1,7 @@
-import all from '~/api/tags/all'
+import all from "~/api/tags/all"
 
 const Tags = {
-  all: all
+  all: all,
 }
 
 export default Tags

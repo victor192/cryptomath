@@ -1,48 +1,47 @@
 <template>
   <section class="container-fluid auth-register-container">
     <div class="auth-register">
-      <register-content/>
+      <register-content />
     </div>
   </section>
 </template>
 
 <script>
-  import RegisterContent from '~/components/Auth/Register/Content'
+import RegisterContent from "~/components/Auth/Register/Content"
 
-  export default {
-    components: {
-      RegisterContent
-    },
-    async fetch({ store, error, redirect }) {
-      if (store.getters['profile/isAuthorized']) {
-        redirect('/profile')
-      }
-      else {
-        try {
-          await store.dispatch('auth/setRegisterCaptcha')
-        } catch (e) {
-          error({statusCode: 500})
-        }
+export default {
+  components: {
+    RegisterContent,
+  },
+  async fetch({ store, error, redirect }) {
+    if (store.getters["profile/isAuthorized"]) {
+      redirect("/profile")
+    } else {
+      try {
+        await store.dispatch("auth/setRegisterCaptcha")
+      } catch (e) {
+        error({ statusCode: 500 })
       }
     }
-  }
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-  @import "../../../assets/styles/base/grid";
+@import "../../../assets/styles/base/grid";
 
-  .auth-register-container {
-    padding: nonScalePx(50);
+.auth-register-container {
+  padding: nonScalePx(50);
 
-    @media (max-width: $desktop-break-point) {
-      padding: pxToVwDesktop(50);
-    }
+  @media (max-width: $desktop-break-point) {
+    padding: pxToVwDesktop(50);
   }
+}
 
-  .auth-register {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.auth-register {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

@@ -1,8 +1,8 @@
-import { captcha } from '~/consts/api'
+import { captcha } from "~/consts/api"
 
-const generate = $axios => async () => {
+const generate = ($axios) => async () => {
   try {
-    const {data} = await $axios.get(`${captcha}/generate`)
+    const { data } = await $axios.get(`${captcha}/generate`)
 
     return data
   } catch (error) {

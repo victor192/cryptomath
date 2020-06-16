@@ -1,7 +1,7 @@
-import all from '~/api/articles/all'
+import all from "~/api/articles/all"
 
 const Articles = {
-  all: all
+  all: all,
 }
 
 export default Articles

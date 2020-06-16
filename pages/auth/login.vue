@@ -1,33 +1,33 @@
 <template>
   <section class="container-fluid">
     <div class="auth-login">
-      <login-content/>
+      <login-content />
     </div>
   </section>
 </template>
 
 <script>
-  import LoginContent from '~/components/Auth/Login/Content'
+import LoginContent from "~/components/Auth/Login/Content"
 
-  export default {
-    fetch({store, redirect}) {
-      if (store.getters['profile/isAuthorized']) {
-        redirect('/profile')
-      }
-    },
-    components: {
-      LoginContent
+export default {
+  components: {
+    LoginContent,
+  },
+  fetch({ store, redirect }) {
+    if (store.getters["profile/isAuthorized"]) {
+      redirect("/profile")
     }
-  }
+  },
+}
 </script>
 
 <style lang="scss">
-  @import "../../assets/styles/base/grid";
+@import "../../assets/styles/base/grid";
 
-  .auth-login {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.auth-login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

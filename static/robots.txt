@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /articles
+Disallow: /hubs
+Disallow: /tags
+Disallow: /users
+Disallow: /organizations
+Disallow: /problems
+Disallow: /auth/login
+Disallow: /auth/register
+Disallow: /auth/register/confirm
+Disallow: /auth/logout
+Disallow: /profile

@@ -1,56 +1,58 @@
 <script>
-  export default {
-    name: 'UiFormGroup',
-    props: {
-      labelFor: {
-        type: String,
-        default: ''
-      },
-      helpId: {
-        type: String,
-        default: ''
-      }
+export default {
+  name: "UiFormGroup",
+  props: {
+    labelFor: {
+      type: String,
+      default: "",
     },
-    render(h) {
-      return h(
-        'div',
-        {
-          class: 'form-group'
-        },
-        [
-          h(
-            'label',
-            {
-              class: 'form-group__label',
-              attrs: {
-                for: this.labelFor
-              },
+    helpId: {
+      type: String,
+      default: "",
+    },
+  },
+  render(h) {
+    return h(
+      "div",
+      {
+        class: "form-group",
+      },
+      [
+        h(
+          "label",
+          {
+            class: "form-group__label",
+            attrs: {
+              for: this.labelFor,
             },
-            this.$slots.label
-          ),
-          h(
-            'div',
-            {
-              class: 'form-group__input-holder'
-            },
-            this.$slots.input
-          ),
-          ...(this.$slots.help ? [
-            h(
-              'small',
-              {
-                class: 'form-group__help',
-                attrs: {
-                  id: this.helpId
-                }
-              },
-              this.$slots.help
-            )
-          ] : [])
-        ]
-      )
-    }
-  }
+          },
+          this.$slots.label
+        ),
+        h(
+          "div",
+          {
+            class: "form-group__input-holder",
+          },
+          this.$slots.input
+        ),
+        ...(this.$slots.help
+          ? [
+              h(
+                "small",
+                {
+                  class: "form-group__help",
+                  attrs: {
+                    id: this.helpId,
+                  },
+                },
+                this.$slots.help
+              ),
+            ]
+          : []),
+      ]
+    )
+  },
+}
 </script>
 
 <style lang="scss" scoped>

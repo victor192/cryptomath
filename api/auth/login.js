@@ -1,8 +1,8 @@
-import { auth } from '~/consts/api'
+import { auth } from "~/consts/api"
 
-const login = $axios => async (payload) => {
+const login = ($axios) => async (payload) => {
   try {
-    const {data} = await $axios.post(`${auth}/login`, payload)
+    const { data } = await $axios.post(`${auth}/login`, payload)
 
     return data
   } catch (error) {

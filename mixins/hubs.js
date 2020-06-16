@@ -4,11 +4,11 @@ export default {
     getHubLocale(id) {
       switch (id) {
         case 1:
-          return this.$t('hubs.mathematics')
+          return this.$t("hubs.mathematics")
         case 2:
-          return this.$t('hubs.programming')
+          return this.$t("hubs.programming")
         case 3:
-          return this.$t('hubs.blockchain')
+          return this.$t("hubs.blockchain")
       }
 
       return false
@@ -24,7 +24,10 @@ export default {
       return locale ? locale.description : hub.description
     },
     hubLink(hub) {
-      return this.localePath({name: 'hubs-id', params: {id: hub.id}})
-    }
-  }
+      return this.localePath({
+        name: "hubs-id",
+        params: { id: hub.id },
+      })
+    },
+  },
 }

@@ -1,96 +1,94 @@
 <script>
-  import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
+import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
 
-  export default {
-    name: 'UiFormInput',
-    props: {
-      type: {
-        type: String,
-        default: 'text'
-      },
-      placeholder: {
-        type: String,
-        default: ''
-      },
-      isInvalid: {
-        type: Boolean,
-        default: false
-      },
-      value: {
-        type: String,
-        default: ''
-      }
+export default {
+  name: "UiFormInput",
+  props: {
+    type: {
+      type: String,
+      default: "text",
     },
-    data() {
-      return {
-        focused: false,
-        active: false
-      }
+    placeholder: {
+      type: String,
+      default: "",
     },
-    render(h) {
-      const children = [
-        h(
-          'input',
-          {
-            class: 'form-input__input',
-            domProps: {
-              type: this.type,
-              value: this.value,
-              placeholder: this.placeholder
-            },
-            on: {
-              input: (event) => {
-                this.$emit('input', event.target.value)
-              },
-              mouseover: () => {
-                this.active = true
-              },
-              mouseout: () => {
-                this.active = false
-              },
-              focus: () => {
-                this.focused = true
-              },
-              blur: () => {
-                this.focused = false
-              }
-            }
-          }
-        ),
-        h(
-          'transition',
-          {
-            props: {
-              name: 'fade'
-            },
-          },
-          [
-            ...(this.isInvalid ? [h(
-              UiFlatIcon,
-              {
-                props: {
-                  icon: ['input', 'warning']
-                }
-              }
-            )] : [])
-          ]
-        )
-      ]
-
-      return h(
-        'div',
-        {
-          class: {
-            'form-input': true,
-            'form-input-invalid': this.isInvalid,
-            'form-input-active': this.active,
-            'form-input-focus': this.focused
-          }
-        },
-        children
-      )
+    isInvalid: {
+      type: Boolean,
+      default: false,
+    },
+    value: {
+      type: String,
+      default: "",
+    },
+  },
+  data() {
+    return {
+      focused: false,
+      active: false,
     }
-  }
+  },
+  render(h) {
+    const children = [
+      h("input", {
+        class: "form-input__input",
+        domProps: {
+          type: this.type,
+          value: this.value,
+          placeholder: this.placeholder,
+        },
+        on: {
+          input: (event) => {
+            this.$emit("input", event.target.value)
+          },
+          mouseover: () => {
+            this.active = true
+          },
+          mouseout: () => {
+            this.active = false
+          },
+          focus: () => {
+            this.focused = true
+          },
+          blur: () => {
+            this.focused = false
+          },
+        },
+      }),
+      h(
+        "transition",
+        {
+          props: {
+            name: "fade",
+          },
+        },
+        [
+          ...(this.isInvalid
+            ? [
+                h(UiFlatIcon, {
+                  props: {
+                    icon: ["input", "warning"],
+                  },
+                }),
+              ]
+            : []),
+        ]
+      ),
+    ]
+
+    return h(
+      "div",
+      {
+        class: {
+          "form-input": true,
+          "form-input-invalid": this.isInvalid,
+          "form-input-active": this.active,
+          "form-input-focus": this.focused,
+        },
+      },
+      children
+    )
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -110,7 +108,7 @@
   border-width: nonScalePx(1);
   padding-right: nonScalePx(16);
   padding-left: nonScalePx(24);
-  transition: border .3s;
+  transition: border 0.3s;
 
   &-invalid {
     border-color: $razzmatazz;

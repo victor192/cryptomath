@@ -1,7 +1,7 @@
-import generate from '~/api/captcha/generate'
+import generate from "~/api/captcha/generate"
 
 const Captcha = {
-  generate: generate
+  generate: generate,
 }
 
 export default Captcha

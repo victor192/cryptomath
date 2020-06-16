@@ -10,41 +10,41 @@
 </template>
 
 <script>
-  import HeaderLogo from "~/components/Layout/Header/Logo";
-  import HeaderNav from "~/components/Layout/Header/Nav";
+import HeaderLogo from "~/components/Layout/Header/Logo"
+import HeaderNav from "~/components/Layout/Header/Nav"
 
-  export default {
-    name: "PageHeader",
-    components: {
-      HeaderLogo,
-      HeaderNav,
-    }
-  }
+export default {
+  name: "PageHeader",
+  components: {
+    HeaderLogo,
+    HeaderNav,
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-  @import "../../assets/styles/base/grid";
+@import "../../assets/styles/base/grid";
 
-  .page-header {
-    width: 100%;
+.page-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &__content {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: nonScalePx(64);
 
-    &__content {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: nonScalePx(64);
-
-      &_nav {
-        margin-left: auto;
-      }
-    }
-
-    @media (max-width: $desktop-break-point) {
-      &__content {
-        height: pxToVwDesktop(64);
-      }
+    &_nav {
+      margin-left: auto;
     }
   }
+
+  @media (max-width: $desktop-break-point) {
+    &__content {
+      height: pxToVwDesktop(64);
+    }
+  }
+}
 </style>

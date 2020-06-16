@@ -1,23 +1,23 @@
 <script>
-  export default {
-    name: 'UiButtonGroup',
-    render(h) {
-      return h(
-        'div',
-        {
-          class: 'btn-group',
-          attrs: {
-            role: 'group'
-          }
+export default {
+  name: "UiButtonGroup",
+  render(h) {
+    return h(
+      "div",
+      {
+        class: "btn-group",
+        attrs: {
+          role: "group",
         },
-        this.$slots.default
-      )
-    }
-  }
+      },
+      this.$slots.default
+    )
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-  .btn-group {
-    display: inline-flex;
-  }
+.btn-group {
+  display: inline-flex;
+}
 </style>

@@ -4,11 +4,13 @@ export const checkNested = (obj, objStructure) => {
       const nestedKey = key[0]
       const nestedStructure = key[1]
 
-      if (!obj.hasOwnProperty(nestedKey) || !checkNested(obj[nestedKey], nestedStructure)) {
+      if (
+        !obj.hasOwnProperty(nestedKey) ||
+        !checkNested(obj[nestedKey], nestedStructure)
+      ) {
         return false
       }
-    }
-    else if (!obj.hasOwnProperty(key)) {
+    } else if (!obj.hasOwnProperty(key)) {
       return false
     }
   }

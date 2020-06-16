@@ -1,3 +1,3 @@
 <template>
-  <span>User page</span>
+  <span>User page. This page is under construction.</span>
 </template>

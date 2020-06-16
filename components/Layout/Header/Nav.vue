@@ -1,48 +1,51 @@
 <template>
   <div class="header-nav colors__font_white">
-    <nuxt-link to="/articles" class="header-nav__link fonts__h5">{{ $t('layout.header.links.articles') }}</nuxt-link>
-    <nuxt-link to="/hubs" class="header-nav__link fonts__h5">{{ $t('layout.header.links.hubs') }}</nuxt-link>
-    <nuxt-link to="/users" class="header-nav__link fonts__h5">{{ $t('layout.header.links.authors') }}</nuxt-link>
-    <nuxt-link to="/problems" class="header-nav__link fonts__h5">{{ $t('layout.header.links.problems') }}</nuxt-link>
-    <nav-profile
-      v-if="profile"
-      class="header-nav__profile"
-      :data="profile"/>
-    <div
-      v-else
-      class="header-nav__auth"
-    >
+    <nuxt-link :to="localePath('/articles')" class="header-nav__link fonts__h5">
+      {{ $t("layout.header.links.articles") }}
+    </nuxt-link>
+    <nuxt-link :to="localePath('/hubs')" class="header-nav__link fonts__h5">
+      {{ $t("layout.header.links.hubs") }}
+    </nuxt-link>
+    <nuxt-link :to="localePath('/users')" class="header-nav__link fonts__h5">
+      {{ $t("layout.header.links.authors") }}
+    </nuxt-link>
+    <nuxt-link :to="localePath('/problems')" class="header-nav__link fonts__h5">
+      {{ $t("layout.header.links.problems") }}
+    </nuxt-link>
+    <nav-profile v-if="profile" class="header-nav__profile" :data="profile" />
+    <div v-else class="header-nav__auth">
       <ui-button
         :variant="['outline', 'light']"
         to="/auth/login"
         class="header-nav__auth_login"
-      >{{ $t('layout.header.links.login') }}</ui-button>
-      <ui-button
-        :variant="['primary']"
-        to="/auth/register"
-      >{{ $t('layout.header.links.register') }}</ui-button>
+      >
+        {{ $t("layout.header.links.login") }}
+      </ui-button>
+      <ui-button :variant="['primary']" to="/auth/register">
+        {{ $t("layout.header.links.register") }}
+      </ui-button>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+import { mapState } from "vuex"
 
-  import NavProfile from '~/components/Layout/Header/Nav/Profile'
-  import UiButton from '~/components/UI/Buttons/Button'
+import NavProfile from "~/components/Layout/Header/Nav/Profile"
+import UiButton from "~/components/UI/Buttons/Button"
 
-  export default {
-    name: "HeaderNav",
-    components: {
-      NavProfile,
-      UiButton
-    },
-    computed: {
-      ...mapState({
-        profile: state => state.profile.profile
-      })
-    }
-  }
+export default {
+  name: "HeaderNav",
+  components: {
+    NavProfile,
+    UiButton,
+  },
+  computed: {
+    ...mapState({
+      profile: (state) => state.profile.profile,
+    }),
+  },
+}
 </script>
 
 <style lang="scss" scoped>

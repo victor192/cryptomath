@@ -1,16 +1,14 @@
-import {Profile} from "~/api/index"
-import {
-  SET_PROFILE
-} from "~/consts/mutation-types"
+import { Profile } from "~/api/index"
+import { SET_PROFILE } from "~/consts/mutation-types"
 
 export const state = () => ({
-  profile: false
+  profile: false,
 })
 
 export const getters = {
   isAuthorized(state) {
     return !!state.profile
-  }
+  },
 }
 
 export const mutations = {
@@ -20,7 +18,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async setProfile({commit}) {
+  async setProfile({ commit }) {
     const profileGet = Profile.get(this.$axios)
 
     try {
@@ -32,5 +30,5 @@ export const actions = {
     } catch (error) {
       throw new Error(error)
     }
-  }
+  },
 }

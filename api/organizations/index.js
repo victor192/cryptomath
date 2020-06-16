@@ -1,7 +1,7 @@
-import all from '~/api/organizations/all'
+import all from "~/api/organizations/all"
 
 const Funds = {
-  all: all
+  all: all,
 }
 
 export default Funds

@@ -1,8 +1,8 @@
-import { auth } from '~/consts/api'
+import { auth } from "~/consts/api"
 
-const register = $axios => async (payload) => {
+const register = ($axios) => async (payload) => {
   try {
-    const {data} = await $axios.post(`${auth}/register`, payload)
+    const { data } = await $axios.post(`${auth}/register`, payload)
 
     return data
   } catch (error) {

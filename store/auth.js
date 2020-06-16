@@ -1,34 +1,30 @@
-import {
-  getJWTToken,
-  setJWTToken,
-  deleteJWTToken
-} from "~/tools/jwt";
-import {Captcha} from "~/api/index"
+import { getJWTToken, setJWTToken, deleteJWTToken } from "~/tools/jwt"
+import { Captcha } from "~/api/index"
 import {
   SET_TOKEN,
   SET_REGISTER_CAPTCHA,
-  SET_REGISTER_DATA
+  SET_REGISTER_DATA,
 } from "~/consts/mutation-types"
 
 export const state = () => ({
   token: null,
   register: {
     captcha: {
-      token: '',
-      math: ''
+      token: "",
+      math: "",
     },
     data: {
       id: null,
-      displayName: '',
-      email: ''
-    }
-  }
+      displayName: "",
+      email: "",
+    },
+  },
 })
 
 export const getters = {
   isToken(state) {
     return !!state.token
-  }
+  },
 }
 
 export const mutations = {
@@ -40,7 +36,7 @@ export const mutations = {
   },
   [SET_REGISTER_DATA](state, data) {
     state.register.data = Object.assign(state.register.data, data)
-  }
+  },
 }
 
 export const actions = {
@@ -48,23 +44,23 @@ export const actions = {
     const token = getJWTToken()
 
     if (token) {
-      dispatch('setToken', {
-        accessToken: token
+      dispatch("setToken", {
+        accessToken: token,
       })
 
-      $axios.setToken(token, 'Bearer')
+      $axios.setToken(token, "Bearer")
 
-      store.dispatch('profile/setProfile')
+      store.dispatch("profile/setProfile")
     }
   },
-  async setToken({commit}, { accessToken, expiresIn }) {
+  async setToken({ commit }, { accessToken, expiresIn }) {
     commit(SET_TOKEN, accessToken)
 
     if (expiresIn) {
       await setJWTToken({ accessToken, expiresIn })
     }
   },
-  async setRegisterCaptcha({commit}) {
+  async setRegisterCaptcha({ commit }) {
     const captchaGenerate = Captcha.generate(this.$axios)
 
     try {
@@ -73,17 +69,16 @@ export const actions = {
       if (data.context.success) {
         commit(SET_REGISTER_CAPTCHA, data.data)
       }
-    }
-    catch (error) {
+    } catch (error) {
       throw new Error(error)
     }
   },
-  setRegisterData({commit}, data) {
+  setRegisterData({ commit }, data) {
     commit(SET_REGISTER_DATA, data)
   },
-  removeToken({commit}) {
+  removeToken({ commit }) {
     commit(SET_TOKEN, null)
 
     deleteJWTToken()
-  }
+  },
 }

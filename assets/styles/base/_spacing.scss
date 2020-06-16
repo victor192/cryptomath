@@ -9,13 +9,57 @@ $spacers: (
 );
 
 @each $size, $value in $spacers {
-  .py-#{$size} {
+  //  Padding spacing
+  //  Vertical
+  .pt-#{$size} {
     padding-top: nonScalePx($value);
-    padding-bottom: nonScalePx($value);
 
     @media (max-width: $desktop-break-point) {
       padding-top: pxToVwDesktop($value);
+    }
+  }
+
+  .pb-#{$size} {
+    padding-bottom: nonScalePx($value);
+
+    @media (max-width: $desktop-break-point) {
       padding-bottom: pxToVwDesktop($value);
+    }
+  }
+
+  .py-#{$size} {
+    @extend .pt-#{$size};
+    @extend .pb-#{$size};
+  }
+
+  //  Horizontal
+  .pl-#{$size} {
+    padding-left: nonScalePx($value);
+
+    @media (max-width: $desktop-break-point) {
+      padding-left: pxToVwDesktop($value);
+    }
+  }
+
+  .pr-#{$size} {
+    padding-right: nonScalePx($value);
+
+    @media (max-width: $desktop-break-point) {
+      padding-right: pxToVwDesktop($value);
+    }
+  }
+
+  .px-#{$size} {
+    @extend .pl-#{$size};
+    @extend .pr-#{$size};
+  }
+
+  //  Margin spacing
+  .mt-#{$size} {
+    margin-top: nonScalePx($value);
+
+    @media (max-width: $desktop-break-point) {
+      margin-top: pxToVwDesktop($value);
     }
   }
 }

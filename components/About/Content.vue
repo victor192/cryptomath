@@ -1,7 +1,7 @@
 <template>
   <div class="content about-content">
     <div class="about-content__octahedron">
-      <img src="~/assets/images/octahedron.svg" alt="octahedron icon">
+      <img src="~/assets/images/octahedron.svg" alt="octahedron icon" />
     </div>
     <h4 class="fonts__h4 colors__font_shark">
       The CryptoMath project
@@ -38,17 +38,13 @@
         projects
       </nuxt-link>
       and find solutions to
-      <nuxt-link :to="localePath('/problems')">
-        problems
-      </nuxt-link>. Each
+      <nuxt-link :to="localePath('/problems')"> problems </nuxt-link>. Each
       article or problem can be classified by multiple
       <nuxt-link :to="localePath('/hubs')">
         hubs
       </nuxt-link>
       and
-      <nuxt-link :to="localePath('/tags')">
-        tags
-      </nuxt-link>.
+      <nuxt-link :to="localePath('/tags')"> tags </nuxt-link>.
     </p>
     <p class="about-content__text fonts__text1 mt-3">
       Our goal is to remove barriers to the dissemination of knowledge. We aim
@@ -75,6 +71,28 @@
       <span>MACGBHo8xTPvY1RfYV68X7DeQ52gADEi6C</span>
       <span>ADA</span>
       <span>Ae2tdPwUPEZMrpkWM2HukR8xKBvwTZMZPvRaFVDzpjwjLooV4KirMgpbxHD</span>
+    </div>
+    <p class="about-content__text fonts__text1 mt-3">
+      If you want to offer cooperation or invest to the project, please contact
+      us &lt;<a href="mailto:info@cryptomath.xyz">info@cryptomath.xyz</a>&gt;.
+      Of course, you can use contacts below.
+    </p>
+    <h4 class="fonts__h5 colors__font_shark mt-4">
+      Our contacts
+    </h4>
+    <div class="about-content__contacts fonts__text1 mt-3">
+      <div class="about-content__contacts_item">
+        Email: <a href="mailto:info@cryptomath.xyz">info@cryptomath.xyz</a>
+      </div>
+      <div class="about-content__contacts_item">
+        Twitter: <a href="https://twitter.com/mathandcrypto">@mathandcrypto</a>
+      </div>
+      <div class="about-content__contacts_item">
+        Facebook: <a href="https://www.facebook.com/mathcrypto">mathcrypto</a>
+      </div>
+      <div class="about-content__contacts_item">
+        Telegram chat: <a href="https://telegram.me/mathcrypto">CryptoMath</a>
+      </div>
     </div>
   </div>
 </template>
@@ -117,7 +135,18 @@ export default {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: nonScalePx(8);
+    gap: nonScalePx(14);
+  }
+
+  &__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &_item {
+      flex-grow: 1;
+      margin-bottom: nonScalePx(10);
+    }
   }
 
   @media (max-width: $desktop-break-point) {
@@ -139,7 +168,13 @@ export default {
     }
 
     &__donates {
-      gap: pxToVwDesktop(8);
+      gap: pxToVwDesktop(14);
+    }
+
+    &__contacts {
+      &_item {
+        margin-bottom: pxToVwDesktop(10);
+      }
     }
   }
 }

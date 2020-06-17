@@ -51,6 +51,7 @@
   },
   "auth": {
     "login": {
+      "title": "Log in",
       "form": {
         "title": "Log in",
         "alerts": {
@@ -77,6 +78,7 @@
       }
     },
     "register": {
+      "title": "Sign up",
       "form": {
         "title": "Registration",
         "help": "It’s free and only takes a minute (depends on your abilities)",
@@ -208,6 +210,7 @@
     }
   },
   "articles": {
+    "title": "Articles",
     "content": {
       "title": "All articles",
       "actionbar": {
@@ -219,6 +222,9 @@
         }
       }
     }
+  },
+  "about": {
+    "title": "About"
   },
   "errors": {
     "text": "Do math or go home"

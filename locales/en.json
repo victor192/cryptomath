@@ -52,6 +52,7 @@
   "auth": {
     "login": {
       "title": "Log in",
+      "description": "",
       "form": {
         "title": "Log in",
         "alerts": {
@@ -79,6 +80,7 @@
     },
     "register": {
       "title": "Sign up",
+      "description": "",
       "form": {
         "title": "Registration",
         "help": "It’s free and only takes a minute (depends on your abilities)",
@@ -211,6 +213,7 @@
   },
   "articles": {
     "title": "Articles",
+    "description": "",
     "content": {
       "title": "All articles",
       "actionbar": {
@@ -224,7 +227,8 @@
     }
   },
   "about": {
-    "title": "About"
+    "title": "About",
+    "description": ""
   },
   "errors": {
     "text": "Do math or go home"

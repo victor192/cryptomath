@@ -3,15 +3,18 @@
     <page-header />
     <nuxt />
     <page-footer />
+    <footer-banner />
   </div>
 </template>
 
 <script>
 import PageHeader from "~/components/Layout/Header"
 import PageFooter from "~/components/Layout/Footer"
+import FooterBanner from "~/components/Layout/Footer/Banner"
 
 export default {
   components: {
+    FooterBanner,
     PageFooter,
     PageHeader,
   },

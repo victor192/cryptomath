@@ -13,7 +13,13 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || "",
+        content:
+          "CryptoMath is a system of publishing articles related to mathematics and blockchain with the possibility of funding the author using cryptocurrencies. We also support a Q&A service with a reward for the solution.",
+      },
+      {
+        name: "keywords",
+        content:
+          "blockchain, bitcoin, mathematics, math, researches, scientific articles, cryptography, articles, questions, answers, math problems, programming",
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],

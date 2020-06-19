@@ -10,7 +10,7 @@ $spacers: (
 
 @each $size, $value in $spacers {
   //  Padding spacing
-  //  Vertical
+  //  Vertical padding
   .pt-#{$size} {
     padding-top: nonScalePx($value);
 
@@ -32,7 +32,7 @@ $spacers: (
     @extend .pb-#{$size};
   }
 
-  //  Horizontal
+  //  Horizontal padding
   .pl-#{$size} {
     padding-left: nonScalePx($value);
 
@@ -49,9 +49,20 @@ $spacers: (
     }
   }
 
+  // Mixed padding
   .px-#{$size} {
     @extend .pl-#{$size};
     @extend .pr-#{$size};
+  }
+
+  .py-#{$size} {
+    @extend .pt-#{$size};
+    @extend .pb-#{$size};
+  }
+
+  .p-#{$size} {
+    @extend .px-#{$size};
+    @extend .py-#{$size};
   }
 
   //  Margin spacing

@@ -100,7 +100,7 @@ import ArticleTitle from "~/components/Homepage/Tabs/Articles/Article/Title"
 import ArticleTime from "~/components/Homepage/Tabs/Articles/Article/Time"
 import UiBadge from "~/components/UI/Badges/Badge"
 import UiUserAvatar from "~/components/UI/User/Avatar"
-import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
+import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
 
 export default {
   name: "HomepageTabArticle",

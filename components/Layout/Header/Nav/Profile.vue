@@ -19,7 +19,7 @@
 
 <script>
 import UiUserAvatar from "~/components/UI/User/Avatar"
-import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
+import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
 
 export default {
   name: "NavProfile",

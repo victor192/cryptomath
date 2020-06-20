@@ -1,5 +1,5 @@
 <script>
-import UiLink from "~/components/Ui/Links/Link"
+import UiLink from "~/components/UI/Links/Link"
 
 export default {
   name: "UiButton",

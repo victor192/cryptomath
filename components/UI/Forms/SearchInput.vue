@@ -1,5 +1,5 @@
 <script>
-import UiFlatIcon from "~/components/Ui/Icons/FlatIcon"
+import UiFlatIcon from "~/components/UI/Icons/FlatIcon"
 
 export default {
   name: "UiSearchInput",

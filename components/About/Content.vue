@@ -135,7 +135,7 @@ export default {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: nonScalePx(14);
+    grid-gap: nonScalePx(14);
   }
 
   &__contacts {
@@ -168,7 +168,7 @@ export default {
     }
 
     &__donates {
-      gap: pxToVwDesktop(14);
+      grid-gap: pxToVwDesktop(14);
     }
 
     &__contacts {

@@ -9,9 +9,9 @@
       <span>{{ $t("homepage.tags.header.name") }}</span>
       <span>{{ $t("homepage.tags.header.articles") }}</span>
     </div>
-    <div v-for="tag in tags" :key="tag.id" class="tags-item fonts__text2">
+    <div v-for="tag in tags" :key="tag.id" class="tags-item">
       <ui-badge variant="tag" :to="tagLink(tag)">
-        {{ tag.name }}
+        <span class="fonts__text2">{{ tag.name }}</span>
       </ui-badge>
       <span class="fonts__text2_bold colors__font_pale-sky">{{
         tag.articles

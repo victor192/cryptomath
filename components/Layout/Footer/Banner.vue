@@ -25,6 +25,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 
   a {
     color: inherit;

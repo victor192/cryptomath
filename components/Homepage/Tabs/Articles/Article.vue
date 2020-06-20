@@ -36,7 +36,7 @@
       <article-title :title="data.title" />
       <div class="article__content_info">
         <div class="categorization">
-          <div class="categorization__hubs fonts__text2">
+          <div class="categorization__hubs">
             <ui-badge
               v-for="hub in data.hubs"
               :key="hub.id"
@@ -44,10 +44,10 @@
               class="categorization__hubs_hub"
               :to="hubLink(hub)"
             >
-              {{ getHubTitle(hub) }}
+              <span class="fonts__text2">{{ getHubTitle(hub) }}</span>
             </ui-badge>
           </div>
-          <div class="categorization__hubs categorization__tags fonts__text2">
+          <div class="categorization__hubs categorization__tags">
             <ui-badge
               v-for="tag in data.tags"
               :key="tag.id"
@@ -55,7 +55,7 @@
               class="categorization__hubs_hub"
               :to="tagLink(tag)"
             >
-              {{ tag.name }}
+              <span class="fonts__text2">{{ tag.name }}</span>
             </ui-badge>
           </div>
         </div>

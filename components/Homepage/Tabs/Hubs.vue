@@ -31,7 +31,7 @@
           <span class="title__description fonts__text2 colors__font_pale-sky">{{
             getHubDescription(hub)
           }}</span>
-          <div class="title__tags fonts__text2">
+          <div class="title__tags">
             <ui-badge
               v-for="tag in getTags(hub.tags.data)"
               :key="tag.id"
@@ -39,7 +39,7 @@
               variant="tag"
               class="title__tags_tag"
             >
-              {{ tag.name }}
+              <span class="fonts__text2">{{ tag.name }}</span>
             </ui-badge>
           </div>
         </div>

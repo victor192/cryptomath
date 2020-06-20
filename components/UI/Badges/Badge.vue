@@ -46,10 +46,10 @@ export default {
 @import "../../../assets/styles/base/colors";
 
 .badge {
-  display: inline-block;
-  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   white-space: nowrap;
-  vertical-align: baseline;
   border-style: solid;
   border-width: nonScalePx(1);
   border-radius: nonScalePx(3);
@@ -80,6 +80,8 @@ export default {
   }
 
   @media (max-width: $desktop-break-point) {
+    border-width: pxToVwDesktop(1);
+    border-radius: pxToVwDesktop(3);
     padding: pxToVwDesktop(4) pxToVwDesktop(6);
   }
 }

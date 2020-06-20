@@ -25,6 +25,7 @@ export default {
 @import "../assets/styles/base/colors";
 
 .default-layout {
+  min-height: 100vh;
   background-color: $white;
   background-image: url(../assets/images/bg.png);
   background-position: top left;
@@ -32,7 +33,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex: 1 0 auto;
   margin: 0;
 }

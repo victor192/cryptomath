@@ -61,16 +61,26 @@
       You can donate any amount to the following addresses:
     </p>
     <div class="about-content__donates fonts__text1 mt-3">
-      <span>BTC</span>
-      <span>3PzngoyNNwvmwSZiDepdk7NvwXKfeLWWjW</span>
-      <span>ETH</span>
-      <span>0xd6C01d0Ff1f0F207aD883ECB6647B62C3C8c2E48</span>
-      <span>BCH</span>
-      <span>bitcoincash:qqs5y32mm2a9nvmxqvlss68xu5vkqxj0y5kuv8x0w6</span>
-      <span>LTC</span>
-      <span>MACGBHo8xTPvY1RfYV68X7DeQ52gADEi6C</span>
-      <span>ADA</span>
-      <span>Ae2tdPwUPEZMrpkWM2HukR8xKBvwTZMZPvRaFVDzpjwjLooV4KirMgpbxHD</span>
+      <div class="about-content__donates_item">
+        <span>BTC</span>
+        <span>3PzngoyNNwvmwSZiDepdk7NvwXKfeLWWjW</span>
+      </div>
+      <div class="about-content__donates_item">
+        <span>ETH</span>
+        <span>0xd6C01d0Ff1f0F207aD883ECB6647B62C3C8c2E48</span>
+      </div>
+      <div class="about-content__donates_item">
+        <span>BCH</span>
+        <span>bitcoincash:qqs5y32mm2a9nvmxqvlss68xu5vkqxj0y5kuv8x0w6</span>
+      </div>
+      <div class="about-content__donates_item">
+        <span>LTC</span>
+        <span>MACGBHo8xTPvY1RfYV68X7DeQ52gADEi6C</span>
+      </div>
+      <div class="about-content__donates_item">
+        <span>ADA</span>
+        <span>Ae2tdPwUPEZMrpkWM2HukR8xKBvwTZMZPvRaFVDzpjwjLooV4KirMgpbxHD</span>
+      </div>
     </div>
     <p class="about-content__text fonts__text1 mt-3">
       If you want to offer cooperation or invest to the project, please contact
@@ -129,19 +139,31 @@ export default {
 
   &__text {
     line-height: nonScalePx(22 * 1.3);
+    z-index: 2;
   }
 
   &__donates {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: nonScalePx(14);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+
+    &_item {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      grid-template-rows: 1fr;
+      margin-bottom: nonScalePx(14);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   &__contacts {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    z-index: 2;
 
     &_item {
       flex-grow: 1;
@@ -168,7 +190,9 @@ export default {
     }
 
     &__donates {
-      grid-gap: pxToVwDesktop(14);
+      &_item {
+        margin-bottom: pxToVwDesktop(14);;
+      }
     }
 
     &__contacts {

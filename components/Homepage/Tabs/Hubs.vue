@@ -12,10 +12,10 @@
     <div class="tab-hubs__hubs">
       <div class="tab-hubs__hubs_head fonts__text3 colors__font_gray">
         <span>{{ $t("homepage.content.hubs.table.name") }}</span>
-        <span class="cell-right">{{
+        <span class="text-right">{{
           $t("homepage.content.hubs.table.tags")
         }}</span>
-        <span class="cell-right">{{
+        <span class="text-right">{{
           $t("homepage.content.hubs.table.articles")
         }}</span>
       </div>
@@ -166,10 +166,6 @@ export default {
   &__hubs {
     display: flex;
     flex-direction: column;
-
-    .cell-right {
-      text-align: right;
-    }
 
     &_head {
       display: grid;

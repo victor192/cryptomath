@@ -14,10 +14,10 @@
         class="tab-organizations__organizations_head fonts__text3 colors__font_gray"
       >
         <span>{{ $t("homepage.content.hubs.table.name") }}</span>
-        <span class="cell-right">{{
+        <span class="text-right">{{
           $t("homepage.content.organizations.table.users")
         }}</span>
-        <span class="cell-right">{{
+        <span class="text-right">{{
           $t("homepage.content.hubs.table.articles")
         }}</span>
       </div>
@@ -161,10 +161,6 @@ export default {
   &__organizations {
     display: flex;
     flex-direction: column;
-
-    .cell-right {
-      text-align: right;
-    }
 
     &_head {
       display: grid;

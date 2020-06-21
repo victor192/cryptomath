@@ -62,6 +62,7 @@ export default {
 
   &__header {
     padding: nonScalePx(12) nonScalePx(15);
+    display: flex;
   }
 
   &__body {

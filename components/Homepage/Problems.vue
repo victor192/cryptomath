@@ -11,31 +11,31 @@
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">Bitcoin scalability problem</span>
-        <span class="problems-item__reward fonts__helvetica_bold">1000 BTC</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">1000 BTC</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">Hodge conjecture</span>
-        <span class="problems-item__reward fonts__helvetica_bold">200 BTC</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">200 BTC</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">P versus NP problem</span>
-        <span class="problems-item__reward fonts__helvetica_bold">100 BTC</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">100 BTC</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">Riemann hypothesis</span>
-        <span class="problems-item__reward fonts__helvetica_bold">90 BTC</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">90 BTC</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">Navier–Stokes existence and smoothness</span>
-        <span class="problems-item__reward fonts__helvetica_bold">80 BTC</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">80 BTC</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">Blockchain self-regulation</span>
-        <span class="problems-item__reward fonts__helvetica_bold">1000 ETH</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">1000 ETH</span>
       </div>
       <div class="problems-item fonts__text2 colors__font_downriver">
         <span class="problems-item__title fonts__georgia_regular">The elliptic curve discrete logarithm problem</span>
-        <span class="problems-item__reward fonts__helvetica_bold">750 ETH</span>
+        <span class="problems-item__reward fonts__text2_bold text-right">750 ETH</span>
       </div>
     </template>
   </ui-card-block>
@@ -97,7 +97,6 @@ export default {
     margin-bottom: pxToVwDesktop(10);
 
     &__reward {
-      text-align: right;
       min-width: pxToVwDesktop(90);
     }
   }

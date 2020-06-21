@@ -1,12 +1,12 @@
 <template>
   <div class="content about-content">
     <div class="about-content__octahedron">
-      <img src="~/assets/images/octahedron.svg" alt="octahedron icon" />
+      <img src="~/assets/images/octahedron.svg" alt="octahedron icon" >
     </div>
-    <h4 class="fonts__h4 colors__font_shark">
+    <h4 class="fonts__h4 colors__font_shark" itemprop="brand">
       The CryptoMath project
     </h4>
-    <p class="about-content__text fonts__text1 mt-3">
+    <p class="about-content__text fonts__text1 mt-3" itemprop="description">
       <span class="fonts__helvetica_bold">CryptoMath</span> is a system of
       publishing articles related to mathematics and blockchain with the
       possibility of funding the author using cryptocurrencies. We also support
@@ -38,13 +38,17 @@
         projects
       </nuxt-link>
       and find solutions to
-      <nuxt-link :to="localePath('/problems')"> problems </nuxt-link>. Each
+      <nuxt-link :to="localePath('/problems')">
+        problems
+      </nuxt-link>. Each
       article or problem can be classified by multiple
       <nuxt-link :to="localePath('/hubs')">
         hubs
       </nuxt-link>
       and
-      <nuxt-link :to="localePath('/tags')"> tags </nuxt-link>.
+      <nuxt-link :to="localePath('/tags')">
+        tags
+      </nuxt-link>.
     </p>
     <p class="about-content__text fonts__text1 mt-3">
       Our goal is to remove barriers to the dissemination of knowledge. We aim
@@ -91,7 +95,7 @@
       Our contacts
     </h4>
     <div class="about-content__contacts fonts__text1 mt-3">
-      <div class="about-content__contacts_item">
+      <div class="about-content__contacts_item" itemprop="email">
         Email: <a href="mailto:info@cryptomath.xyz">info@cryptomath.xyz</a>
       </div>
       <div class="about-content__contacts_item">
@@ -191,7 +195,7 @@ export default {
 
     &__donates {
       &_item {
-        margin-bottom: pxToVwDesktop(14);;
+        margin-bottom: pxToVwDesktop(14);
       }
     }
 

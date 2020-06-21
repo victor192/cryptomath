@@ -1,4 +1,5 @@
 {
+  "title": "CryptoMath",
   "hubs": {
     "mathematics": {
       "title": "Mathematics",
@@ -15,7 +16,6 @@
   },
   "layout": {
     "header": {
-      "project": "CryptoMath",
       "links": {
         "articles": "Articles",
         "hubs": "Hubs",

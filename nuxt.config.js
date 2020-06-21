@@ -21,6 +21,18 @@ export default {
         content:
           "blockchain, bitcoin, mathematics, math, researches, scientific articles, cryptography, articles, questions, answers, math problems, programming",
       },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:site", content: "@mathandcrypto" },
+      {
+        name: "twitter:image",
+        content: "https://cryptomath.xyz/images/twitter_card.png",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://cryptomath.xyz" },
+      {
+        property: "og:image",
+        content: "https://cryptomath.xyz/images/twitter_card.png",
+      },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     script: [

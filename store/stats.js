@@ -3,11 +3,12 @@ import { SET_ALL_STATS } from "~/consts/mutation-types"
 
 export const state = () => ({
   all: {
-    articles: 0,
-    users: 0,
+    articles: 6,
+    problems: 15,
+    users: 3,
     organizations: 0,
-    hubs: 0,
-    tags: 0,
+    hubs: 3,
+    tags: 3,
   },
 })
 

@@ -14,7 +14,7 @@
         <span>{{ tag.name }}</span>
       </ui-badge>
       <span class="fonts__text2_bold colors__font_pale-sky">{{
-        tag.articles
+        tag.articles_count
       }}</span>
     </div>
   </ui-card>
@@ -37,7 +37,7 @@ export default {
     ...mapState({
       tags: (state) =>
         state.tags.tags.filter((tag) =>
-          checkNested(tag, ["id", "name", "articles"])
+          checkNested(tag, ["id", "name", "articles_count"])
         ),
     }),
   },

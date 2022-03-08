@@ -10,16 +10,16 @@
         }}</span>
       </div>
       <div class="register-content__form_torus">
-        <img src="~/assets/images/torus.svg" alt="torus icon" />
+        <img src="~/assets/images/torus.svg" alt="torus icon"/>
       </div>
       <div class="register-content__form_fields">
         <transition name="fade">
           <ui-alert
-            v-if="globalError.show"
+            v-if="responseError.show"
             variant="danger"
             class="alert fonts__text2"
           >
-            {{ globalErrorText }}
+            {{ responseErrorText }}
           </ui-alert>
         </transition>
         <!-- Display name -->
@@ -201,6 +201,7 @@ import UiFormInput from "~/components/UI/Forms/FormInput"
 import MathJaxTypesetSvg from "~/components/MathJax/TypesetSvg"
 import UiButton from "~/components/UI/Buttons/Button"
 import UiFormAlert from "~/components/UI/Forms/FormAlert"
+import { ResponseError } from "~/tools/errors/response"
 
 export default {
   name: "RegisterContent",
@@ -234,10 +235,9 @@ export default {
           type: null,
         },
       },
-      globalError: {
+      responseError: {
         show: false,
-        source: null,
-        type: null,
+        code: null,
       },
     }
   },
@@ -245,12 +245,10 @@ export default {
     ...mapState({
       register: (state) => state.auth.register,
     }),
-    globalErrorText() {
-      if (
-        this.globalError.source === "user" &&
-        this.globalError.type === "already_exist"
-      ) {
-        return this.$t("auth.register.form.alerts.user_already_exist")
+    responseErrorText() {
+      switch (this.responseError.code) {
+        case "user_already_exists":
+          return this.$t("auth.register.form.alerts.user_already_exist")
       }
 
       return this.$t("auth.register.form.alerts.internal")
@@ -317,17 +315,15 @@ export default {
       return [true, null]
     },
     async submitRegister() {
-      this.globalError.show = false
+      this.responseError.show = false
 
       const [status, error] = this.validate()
 
       if (status) {
         const payload = {
-          captcha: {
-            token: this.register.captcha.token,
-            answer: this.captcha,
-          },
-          displayName: this.displayName,
+          captcha_token: this.register.captcha.token,
+          captcha_answer: this.captcha,
+          display_name: this.displayName,
           email: this.email,
           password: this.password,
         }
@@ -335,33 +331,28 @@ export default {
         const authRegister = Auth.register(this.$axios)
 
         try {
-          const data = await authRegister(payload)
+          const { user_id: userId } = await authRegister(payload)
 
-          if (!data.context.success) {
-            const error = data.context.error
-
-            if (error.source === "token") {
-              return location.reload()
-            }
-
-            if (this.errors[error.source]) {
-              const errorObject = this.errors[error.source]
-
-              errorObject.type = error.type
-              errorObject.error = true
-            } else if (error.source === "internal" || error.source === "user") {
-              this.globalError.source = error.source
-              this.globalError.type = error.type
-              this.globalError.show = true
+          this.setRegisterData({
+            userId,
+            email: this.email,
+            displayName: this.displayName,
+          })
+          await this.$router.push(
+            this.localePath({ name: "auth-register-confirm" })
+          )
+        } catch (err) {
+          if (err instanceof ResponseError) {
+            if (err.code === "wrong_captcha_answer") {
+              this.errors.captcha.type = "wrong_answer"
+              this.errors.captcha.error = true
+            } else {
+              this.responseError.code = err.code
+              this.responseError.show = true
             }
           } else {
-            this.setRegisterData(data.data)
-            this.$router.push(
-              this.localePath({ name: "auth-register-confirm" })
-            )
+            console.error(error)
           }
-        } catch (error) {
-          console.error(error)
         }
       } else {
         switch (error) {

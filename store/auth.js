@@ -14,7 +14,7 @@ export const state = () => ({
       math: "",
     },
     data: {
-      id: null,
+      userId: null,
       displayName: "",
       email: "",
     },
@@ -66,9 +66,7 @@ export const actions = {
     try {
       const data = await captchaGenerate()
 
-      if (data.context.success) {
-        commit(SET_REGISTER_CAPTCHA, data.data)
-      }
+      commit(SET_REGISTER_CAPTCHA, data)
     } catch (error) {
       throw new Error(error)
     }

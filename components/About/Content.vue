@@ -57,11 +57,11 @@
       projects.
     </p>
     <p class="about-content__text fonts__text1 mt-3">
-      My name is <a href="https://t.me/victor92sh">Viktor</a>. I am founder of
-      the project and the only developer for this project. In the near future,
+      My name is Viktor. I am founder of
+      this project and a lead developer in our small team. In the near future,
       we plan to release the MVP version of the product with the prospect of
-      further development. My work on the project is based on pure enthusiasm,
-      but if you find the idea interesting, i will be grateful for your help.
+      further development. Our work on the project is based on pure enthusiasm,
+      but if you find the idea interesting, we will be grateful for your help.
       You can donate any amount to the following addresses:
     </p>
     <div class="about-content__donates fonts__text1 mt-3">

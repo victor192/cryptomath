@@ -158,7 +158,7 @@
         },
         "article": {
           "stats": {
-            "answers": "answers",
+            "answers": "comments",
             "votes": "votes",
             "funded": "funded"
           },

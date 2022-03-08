@@ -19,7 +19,7 @@
         <nuxt-link :to="localePath('/problems')" class="stats__text">
           {{ $t("homepage.stats.problems") }}
         </nuxt-link>
-        <span class="stats__count">10</span>
+        <span class="stats__count">{{ stats.problems }}</span>
       </div>
       <div class="stats fonts__text2 colors__font_pale-sky">
         <ui-flat-icon :icon="['stats', 'user']" size="lg" fill="#6a737c" />

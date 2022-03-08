@@ -1,5 +1,10 @@
 import { Tags } from "~/api/index"
-import { SET_TAGS, SET_TAGS_CONTEXT } from "~/consts/mutation-types"
+import {
+  SET_TAGS,
+  SET_TAGS_CONTEXT,
+  SET_TAGS_ERROR,
+} from "~/consts/mutation-types"
+import { ResponseError } from "~/tools/errors/response"
 
 export const state = () => ({
   tags: [],
@@ -7,6 +12,10 @@ export const state = () => ({
     limit: 10,
     offset: 0,
     total: 0,
+  },
+  error: {
+    code: null,
+    message: "",
   },
 })
 
@@ -17,21 +26,31 @@ export const mutations = {
   [SET_TAGS_CONTEXT](state, data) {
     state.context = Object.assign(state.context, data)
   },
+  [SET_TAGS_ERROR](state, data) {
+    state.error = Object.assign(state.error, data)
+  },
 }
 
 export const actions = {
   async setTags({ commit }, { limit, offset }) {
+    commit(SET_TAGS_ERROR, { code: null, message: "" })
+
     const tagsAll = Tags.all(this.$axios)
 
     try {
-      const data = await tagsAll(limit, offset)
+      const { offset: skip, limit: took, total, tags } = await tagsAll(
+        limit,
+        offset
+      )
 
-      if (data.context.success) {
-        commit(SET_TAGS, data.data)
-        commit(SET_TAGS_CONTEXT, data.context)
+      commit(SET_TAGS, tags)
+      commit(SET_TAGS_CONTEXT, { offset: skip, limit: took, total })
+    } catch (err) {
+      if (err instanceof ResponseError) {
+        commit(SET_TAGS_ERROR, err)
+      } else {
+        throw new Error(err)
       }
-    } catch (error) {
-      throw new Error(error)
     }
   },
 }

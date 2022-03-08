@@ -20,7 +20,7 @@
         }}</span>
       </div>
       <div v-for="hub in hubs" :key="hub.id" class="tab-hubs__hubs_row">
-        <img :src="hub.logo" :alt="hub.name" class="logo" />
+        <img src="/images/hubs/blockchain.svg" :alt="hub.name" class="logo" />
         <div class="title">
           <nuxt-link
             :to="hubLink(hub)"
@@ -31,24 +31,13 @@
           <span class="title__description fonts__text2 colors__font_pale-sky">{{
             getHubDescription(hub)
           }}</span>
-          <div class="title__tags">
-            <ui-badge
-              v-for="tag in getTags(hub.tags.data)"
-              :key="tag.id"
-              :to="tagLink(tag)"
-              variant="tag"
-              class="title__tags_tag"
-            >
-              <span class="fonts__text2">{{ tag.name }}</span>
-            </ui-badge>
-          </div>
         </div>
         <span
           class="cell-right fonts__text1 fonts__text1_bold colors__font_downriver"
-        >{{ hub.tags.total }}</span>
+        >{{ hub.tags_count }}</span>
         <span
           class="cell-right fonts__text1 fonts__text1_bold colors__font_downriver"
-        >{{ hub.articles }}</span>
+        >{{ hub.articles_count }}</span>
       </div>
     </div>
     <ui-button
@@ -99,8 +88,8 @@ export default {
             "id",
             "name",
             "description",
-            "logo",
-            ["tags", ["data", "total"]],
+            "tags_count",
+            "articles_count",
           ])
         ),
       hubsTotal: (state) => state.hubs.context.total,
@@ -113,9 +102,6 @@ export default {
     ...mapActions({
       setHubs: "hubs/setHubs",
     }),
-    getTags(tags) {
-      return tags.filter((t) => checkNested, ["id", "name"])
-    },
     setSearchLoading(isCompliance) {
       this.search.isCompliance = isCompliance
 
@@ -146,6 +132,12 @@ export default {
         console.error(e.message)
       }
     },
+    hubTagsLink(hubId) {
+      return this.localePath({
+        name: "tags",
+        query: { hub: hubId },
+      })
+    }
   },
 }
 </script>
@@ -187,6 +179,10 @@ export default {
       .logo {
         width: nonScalePx(64);
         height: nonScalePx(64);
+      }
+
+      .cell-right {
+        text-align: right;
       }
 
       .title {

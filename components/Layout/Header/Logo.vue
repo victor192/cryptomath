@@ -1,6 +1,6 @@
 <template>
   <div class="header-logo" @click="goToHomepage">
-    <img src="~/assets/images/logo.svg" alt="logo image" >
+    <img src="~/assets/images/dodecahedron_1.svg" alt="logo image" >
     <h4 class="header-logo__title fonts__h4 colors__font_white">
       {{ $t("title") }}
     </h4>
@@ -27,8 +27,8 @@ export default {
   cursor: pointer;
 
   img {
-    width: nonScalePx(40);
-    height: nonScalePx(40);
+    width: nonScalePx(48);
+    height: nonScalePx(48);
   }
 
   &__title {
@@ -37,8 +37,8 @@ export default {
 
   @media (max-width: $desktop-break-point) {
     img {
-      width: pxToVwDesktop(40);
-      height: pxToVwDesktop(40);
+      width: pxToVwDesktop(48);
+      height: pxToVwDesktop(48);
     }
 
     &__title {

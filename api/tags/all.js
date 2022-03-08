@@ -1,4 +1,5 @@
 import { tags } from "~/consts/api"
+import { ResponseError } from "~/tools/errors/response"
 
 const all = ($axios) => async (limit, offset) => {
   try {
@@ -6,11 +7,13 @@ const all = ($axios) => async (limit, offset) => {
       limit: limit || 10,
       offset: offset || 0,
     }
-    const { data } = await $axios.post(`${tags}/all`, payload)
+    const { data } = await $axios.get(tags)
 
     return data
-  } catch (error) {
-    throw new Error(error)
+  } catch (err) {
+    throw err.response?.data
+      ? new ResponseError(err.response.data)
+      : new Error(err)
   }
 }
 

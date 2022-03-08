@@ -43,15 +43,10 @@ export default {
         limit: 10,
         offset: 0,
       })
-      await store.dispatch("organizations/setOrganizations", {
-        limit: 10,
-        offset: 0,
-      })
-      await store.dispatch("stats/setAllStats")
-    } catch (e) {
+    } catch (err) {
       error({
         statusCode: 500,
-        message: e.message,
+        message: err.message,
       })
     }
   },

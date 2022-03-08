@@ -10,11 +10,11 @@
       <div class="login-content__form_fields">
         <transition name="fade">
           <ui-alert
-            v-if="globalError.show"
+            v-if="responseError.show"
             variant="danger"
             class="alert fonts__text2"
           >
-            {{ globalErrorText }}
+            {{ responseErrorText }}
           </ui-alert>
         </transition>
         <!-- Email -->
@@ -99,6 +99,7 @@ import UiFormGroup from "~/components/UI/Forms/FormGroup"
 import UiFormInput from "~/components/UI/Forms/FormInput"
 import UiAlert from "~/components/UI/Alerts/Alert"
 import UiFormAlert from "~/components/UI/Forms/FormAlert"
+import { ResponseError } from "~/tools/errors/response"
 
 export default {
   name: "LoginContent",
@@ -118,22 +119,19 @@ export default {
         email: false,
         password: false,
       },
-      globalError: {
+      responseError: {
         show: false,
-        source: null,
-        type: null,
+        code: null,
       },
     }
   },
   computed: {
-    globalErrorText() {
-      if (this.globalError.source === "user") {
-        switch (this.globalError.type) {
-          case "not_found":
-            return this.$t("auth.login.form.alerts.user_not_found")
-          case "wrong_password":
-            return this.$t("auth.login.form.alerts.user_wrong_password")
-        }
+    responseErrorText() {
+      switch (this.responseError.code) {
+        case "user_not_exists":
+          return this.$t("auth.login.form.alerts.user_not_found")
+        case "invalid_password":
+          return this.$t("auth.login.form.alerts.user_wrong_password")
       }
 
       return this.$t("auth.login.form.alerts.internal")
@@ -155,7 +153,7 @@ export default {
       return [true, false]
     },
     async submitLogin() {
-      this.globalError.show = false
+      this.responseError.show = false
 
       const [status, error] = this.validate()
 
@@ -168,21 +166,21 @@ export default {
         const authLogin = Auth.login(this.$axios)
 
         try {
-          const data = await authLogin(payload)
+          const {
+            access_token: accessToken,
+            token_type: tokenType,
+          } = await authLogin(payload)
 
-          if (!data.context.success) {
-            const error = data.context.error
-
-            this.globalError.source = error.source
-            this.globalError.type = error.type
-            this.globalError.show = true
+          await this.setToken({ accessToken })
+          this.$axios.setToken(accessToken, tokenType)
+          await this.$router.push(this.localePath({ name: "profile" }))
+        } catch (err) {
+          if (err instanceof ResponseError) {
+            this.responseError.code = err.code
+            this.responseError.show = true
           } else {
-            this.setToken(data.data)
-            this.$axios.setToken(data.data.accessToken, "Bearer")
-            this.$router.push(this.localePath({ name: "profile" }))
+            console.error(err)
           }
-        } catch (error) {
-          console.error(error)
         }
       } else {
         switch (error) {

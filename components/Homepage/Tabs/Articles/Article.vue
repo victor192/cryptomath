@@ -6,7 +6,7 @@
         :class="{ 'article__stats_item-answered': isAnswered }"
       >
         <span class="fonts__text2">
-          <strong>{{ data.answers }}</strong>
+          <strong>{{ data.comments_count }}</strong>
         </span>
         <span class="fonts__text4">{{
           $t("homepage.content.articles.article.stats.answers")
@@ -16,7 +16,7 @@
         <span
           class="fonts__text2"
           :class="{ 'colors__font_persian-red': isNegativeVotes }"
-        >{{ data.votes }}</span>
+        >{{ data.rating }}</span>
         <span class="fonts__text4">{{
           $t("homepage.content.articles.article.stats.votes")
         }}</span>
@@ -65,11 +65,11 @@
           </div>
           <div class="author__user">
             <nuxt-link :to="userLink">
-              <ui-user-avatar :hash="data.author.hash" />
+              <ui-user-avatar :hash="userHash" />
             </nuxt-link>
             <div class="author__user_details">
               <nuxt-link :to="userLink" class="fonts__text2">
-                {{ data.author.displayName }}
+                {{ data.user.display_name }}
               </nuxt-link>
               <div class="flairs">
                 <div
@@ -115,27 +115,14 @@ export default {
   props: {
     data: {
       type: Object,
-      default: () => ({
-        id: 0,
-        title: "",
-        answers: 0,
-        votes: 0,
-        hubs: [],
-        tags: [],
-        createdAt: "2020-04-25T11:30:30",
-        author: {
-          hash: "23c6b4ac5756c0adfc5ecdc4a15b9d83",
-          displayName: "",
-        },
-      }),
       validator: (value) =>
         checkNested(value, [
           "id",
           "title",
-          "createdAt",
-          "answers",
-          "votes",
-          ["author", ["hash", "displayName"]],
+          "created_at",
+          "comments_count",
+          "rating",
+          ["user", ["id", "display_name"]],
           "hubs",
           "tags",
         ]),
@@ -148,10 +135,19 @@ export default {
     isNegativeVotes() {
       return this.data.votes < 0
     },
+    userHash() {
+      return Array.from(`${this.data.user.id}${this.data.user.display_name}`)
+        .map((c) =>
+          c.charCodeAt(0) < 128
+            ? c.charCodeAt(0).toString(16)
+            : encodeURIComponent(c).replace(/\%/g, "").toLowerCase()
+        )
+        .join("")
+    },
     userLink() {
       return this.localePath({
         name: "users-id",
-        params: { id: this.data.author.id },
+        params: { id: this.data.user.id },
       })
     },
   },
